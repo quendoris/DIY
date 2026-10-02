@@ -12,6 +12,8 @@ Status: **concept / deferred until budget allows**
 See: [projects/acoustic-volumetric-cad](projects/acoustic-volumetric-cad/README.md)
 
 ### Custom Mouse
-High-end fully wired custom mouse project.
+A fully wired, high-mass, modular precision mouse with contactless sensing, programmable magnetic button feel, an absolute magnetic wheel encoder, electromagnetic detents, owner-controlled firmware and a future security layer.
 
-Status: **design discussion in progress**
+Status: **architecture / bench-module development**
+
+See: [projects/custom-mouse](projects/custom-mouse/README.md)
