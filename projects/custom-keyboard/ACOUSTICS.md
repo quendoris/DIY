@@ -2,7 +2,7 @@
 
 Status: **highest-priority performance requirement**, ahead of RGB and premium CNC.
 
-The owner explicitly wants the contrast of a **solid, premium metal touch surface** and **near-silent key travel and return**. No traditional click should be necessary to know a key has actuated.
+The owner explicitly wants the contrast of a **solid, premium metal touch surface** and **near-silent key travel and return**. No traditional click should be necessary to know a key has actuated. The tactile force transition must arise **passively, with the electromagnet fully off**; see [PASSIVE-MAGNETIC-TACTILITY.md](PASSIVE-MAGNETIC-TACTILITY.md).
 
 Do not interpret Hall/TMR switching or magnetic return as sufficient proof of silence. The key and chassis are mechanical/acoustic structures; contactless electrical sensing only eliminates the electrical contact mechanism.
 
