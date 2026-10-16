@@ -9,8 +9,8 @@ Status: **requirements capture and feasibility studies**, not a frozen design.
 - User-facing keycaps in titanium or aluminium alloy (e.g. 7075), with a substantial metal chassis; considerable total mass is acceptable.
 - No conventional electrical switch contacts in the main sensing path.
 - Per-key adjustable actuation and reset, possibly with programmable force/tactile feel.
-- Passive permanent-magnet return rather than conventional return springs, subject to mechanical verification.
-- Optional active electromagnetic assistance for feel/damping; avoid continuous power consumption.
+- **Passive magnetic tactile force curve and return are required even when every electromagnetic actuator is fully unpowered.** The key must remain mechanically satisfying and near-silent without current.
+- Optional active electromagnetic assistance is limited to refining feel/damping; no constant power is needed for basic tactile behavior or return, subject to bench verification.
 - Independent, replaceable/hot-serviceable key modules and/or keycaps.
 - Very quiet operation; aspirational noise target around 30 dBA, **measurement conditions TBD**.
 - Liquid/spill resistance and safe cleaning: design for serviceability, not unverified waterproof claims.
@@ -27,7 +27,7 @@ Status: **requirements capture and feasibility studies**, not a frozen design.
 - Full-size / extended layout with generous functional, navigation, arrow and numpad gaps, while allowing unusual chassis geometry.
 - **Near-silent typing while touching real metal is the top interaction requirement.** Controlling mechanical/acoustic impact is integral to the key module from the beginning, not a final cosmetic fix.
 
-See [DESIGN-LANGUAGE.md](DESIGN-LANGUAGE.md) and [ACOUSTICS.md](ACOUSTICS.md).
+See [DESIGN-LANGUAGE.md](DESIGN-LANGUAGE.md), [ACOUSTICS.md](ACOUSTICS.md) and [PASSIVE-MAGNETIC-TACTILITY.md](PASSIVE-MAGNETIC-TACTILITY.md).
 
 ## Device philosophy
 
@@ -67,6 +67,7 @@ Our firmware can preserve and timestamp events internally and send intermediate 
 - [ROADMAP.md](ROADMAP.md)
 - [DESIGN-LANGUAGE.md](DESIGN-LANGUAGE.md)
 - [ACOUSTICS.md](ACOUSTICS.md)
+- [PASSIVE-MAGNETIC-TACTILITY.md](PASSIVE-MAGNETIC-TACTILITY.md)
 
 ## Scope control
 
