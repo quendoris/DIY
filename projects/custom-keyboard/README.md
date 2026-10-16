@@ -17,6 +17,18 @@ Status: **requirements capture and feasibility studies**, not a frozen design.
 - Reliable multi-key input and deterministic firmware event handling; no ghosting and robust simultaneous-key behavior.
 - Locally configurable profiles, per-key calibration, diagnostics and reproducible tests.
 
+## Accepted industrial-design direction (2026-10-16)
+
+- Crisp, angular, mostly straight-line metal chassis with disciplined, low-brightness light channels.
+- Long oval/slot illumination apertures are acceptable where they support the design and do not compromise structural or cleaning requirements.
+- Tall, visually sharp keys with an extremely small edge break only where safety and finger comfort require it; final edge radii to be decided from samples.
+- **Opaque matte metal keycaps with black laser-marked legends** in a bespoke consistent style, with no translucent legends.
+- Subtle localized red halo around an actuated key, optionally with a short pulse and configured fade; restrained baseline lines and underglow.
+- Full-size / extended layout with generous functional, navigation, arrow and numpad gaps, while allowing unusual chassis geometry.
+- **Near-silent typing while touching real metal is the top interaction requirement.** Controlling mechanical/acoustic impact is integral to the key module from the beginning, not a final cosmetic fix.
+
+See [DESIGN-LANGUAGE.md](DESIGN-LANGUAGE.md) and [ACOUSTICS.md](ACOUSTICS.md).
+
 ## Device philosophy
 
 **Separate position sensing, passive return force, tactile feedback and digital event generation.**
@@ -53,6 +65,8 @@ Our firmware can preserve and timestamp events internally and send intermediate 
 
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [ROADMAP.md](ROADMAP.md)
+- [DESIGN-LANGUAGE.md](DESIGN-LANGUAGE.md)
+- [ACOUSTICS.md](ACOUSTICS.md)
 
 ## Scope control
 
