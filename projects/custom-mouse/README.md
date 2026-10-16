@@ -21,9 +21,11 @@ The project intentionally rejects several assumptions of mainstream gaming mice:
 - low center of mass biased toward the palm;
 - replaceable ballast for center-of-mass tuning;
 - contactless sensing for primary controls wherever practical;
-- programmable electromagnetic feel for LMB/RMB and wheel;
+- programmable electromagnetic feel for LMB/RMB and main scroll wheel;
 - replaceable LMB and RMB cartridges;
-- precision wheel rotation without a contact encoder;
+- precision main-wheel rotation without a contact encoder;
+- **proposed second compact DPI wheel** replacing the original two DPI +/- top buttons;
+- configurable RGB gradient on the DPI wheel and restrained titanium-case accent lighting;
 - replaceable feet, cable and connector daughterboard;
 - firmware fully under our control;
 - future secure host/device authentication.
@@ -52,7 +54,7 @@ moving permanent magnet
  programmable force profile
 ```
 
-For the wheel:
+For the main wheel:
 
 ```text
 titanium wheel
@@ -62,6 +64,18 @@ precision bearings
 absolute magnetic angle sensor
     +
 electromagnetic torque/detent actuator
+```
+
+For the proposed secondary wheel:
+
+```text
+small DPI wheel
+    ↓
+contactless angular sensing
+    ↓
+DPI selection/profile mapping
+    ↓
+smooth RGB indication (green → yellow → red → violet → blue)
 ```
 
 ## Current status
@@ -79,3 +93,4 @@ See:
 - [MECHANICS.md](MECHANICS.md)
 - [MODULES.md](MODULES.md)
 - [ROADMAP.md](ROADMAP.md)
+- [DPI-WHEEL-AND-LIGHTING.md](DPI-WHEEL-AND-LIGHTING.md)
