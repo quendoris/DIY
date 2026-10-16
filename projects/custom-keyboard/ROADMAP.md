@@ -3,7 +3,7 @@
 | Gate | Bench | Evidence required |
 |---|---|---|
 | K0 | Formalize layout, industrial design and acoustic test plan | Key positions, sharp-edge samples, finish/legend samples, clear cluster gaps, target stroke, seals, acoustic and event-order definitions |
-| K1 | One passive magnetic key + metal-cap acoustic trial | Reproducible displacement/force/return curves; off-state stability; bottom-out/top-out measurements; cap resonance tests |
+| K1 | One **passive tactile** magnetic key + metal-cap acoustic trial | **Mandatory:** convincing passive force peak/drop, self-return and quiet travel with coil disconnected; force/travel plots, top/bottom-out and cap resonance tests |
 | K2 | One analog key with MCU | Calibration, latency/jitter, reset behavior and temperature drift |
 | K3 | One active tactile/damping key (optional) | Bidirectional force modulation; fast-press deceleration limits; thermal/power limits and coil noise |
 | K4 | Four-key magnetic cluster | Neighbor crosstalk, simultaneous operation, MUX/ADC timing, replaceability |
@@ -19,6 +19,10 @@
 - [ACOUSTICS.md](ACOUSTICS.md): separate keycap resonance, top/bottom-out, guide rattle and electrical noise, with reproducible listening and instrumented measurements.
 - Do not order final keycaps until multiple metal-keycap samples have been compared acoustically.
 - Silence is a pass/fail user-experience requirement, not a low-priority refinement.
+
+## Mandatory first gate
+
+[PASSIVE-MAGNETIC-TACTILITY.md](PASSIVE-MAGNETIC-TACTILITY.md): a high-quality tactile magnetic key must work with actuator coils disconnected. No coil matrix or premium CNC until this passes.
 
 ## Priority
 
