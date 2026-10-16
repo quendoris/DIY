@@ -39,7 +39,9 @@ Each key needs its own ID/calibration data only if the module/interface actually
 
 ## Magnetic return and active actuation
 
-Permanent magnets provide passive return/rest equilibrium without consuming continuous coil power. Constraining guides/stops are still required; stable unconstrained passive magnetic levitation is not an assumed solution.
+**Required design gate:** passive magnets must provide both return/rest equilibrium **and a perceptible tactile force peak/drop with all actuator coils disconnected**. The coil is a strictly optional tuning/damping layer, not the basic switch mechanism. Details and test gates: [PASSIVE-MAGNETIC-TACTILITY.md](PASSIVE-MAGNETIC-TACTILITY.md).
+
+Constraining guides/stops are still required; stable unconstrained passive magnetic levitation is not an assumed solution.
 
 Actuator questions to test:
 
