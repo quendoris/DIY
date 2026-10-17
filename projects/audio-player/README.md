@@ -2,6 +2,8 @@
 
 Status: **concept only; architecture and requirements not frozen**.
 
+Shared player/earbud constraints and validation gates: [Audio System Architecture](../audio-system/README.md).
+
 ## Intended experience
 
 A physically small but satisfyingly heavy premium portable music player, designed as an independent instrument rather than a smartphone substitute.
