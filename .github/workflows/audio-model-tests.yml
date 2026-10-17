@@ -1,0 +1,34 @@
+name: Audio model tests
+
+on:
+  push:
+    paths:
+      - "projects/audio-system/validation/**"
+      - ".github/workflows/audio-model-tests.yml"
+  pull_request:
+    paths:
+      - "projects/audio-system/validation/**"
+      - ".github/workflows/audio-model-tests.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  packet-model:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out source
+        uses: actions/checkout@v4
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic unit tests
+        working-directory: projects/audio-system/validation
+        run: python -m unittest -v
+      - name: Smoke-test JSON output
+        working-directory: projects/audio-system/validation
+        run: |
+          python packet_model.py --duration-seconds 1 --payload-bytes 400 --phy-rate-mbps 20 --link-efficiency 0.9 --loss-probability 0 > /tmp/audio-model.json
+          python -c "import json; d=json.load(open('/tmp/audio-model.json')); assert d['packets_generated'] == 100; assert d['packets_missed_deadline'] == 0; print('JSON smoke test passed')"
