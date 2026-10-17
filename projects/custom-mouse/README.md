@@ -34,6 +34,8 @@ The project intentionally rejects several assumptions of mainstream gaming mice:
 
 **Measure motion contactlessly; create tactile feel separately.**
 
+**Passive-first button rule:** LMB/RMB must provide their basic tactile click and return with the electromagnetic coils disconnected. Active control may refine a good passive force curve but must not be required to create the click.
+
 A control should not require the same mechanical element to perform sensing, return force and tactile feedback.
 
 For the primary buttons this means:
@@ -94,3 +96,5 @@ See:
 - [MODULES.md](MODULES.md)
 - [ROADMAP.md](ROADMAP.md)
 - [DPI-WHEEL-AND-LIGHTING.md](DPI-WHEEL-AND-LIGHTING.md)
+- [PASSIVE-BUTTON-FEEL.md](PASSIVE-BUTTON-FEEL.md)
+- [OPENSCAD-WORKFLOW.md](OPENSCAD-WORKFLOW.md)
