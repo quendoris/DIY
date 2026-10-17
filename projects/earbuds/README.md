@@ -2,6 +2,8 @@
 
 Status: **concept; common audio/radio validation required**.
 
+Shared player/earbud constraints and validation gates: [Audio System Architecture](../audio-system/README.md).
+
 ## User goals
 
 - Small earbud form factor, broadly inspired by AirPods Pro-like geometry.
