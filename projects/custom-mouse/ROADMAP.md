@@ -2,6 +2,8 @@
 
 ## Phase 0 — lock interfaces, not shapes
 
+The chosen white angular mouse reference is the primary silhouette. The first OpenSCAD blockout lives in [cad/mouse-envelope-v0.1.scad](cad/mouse-envelope-v0.1.scad). Its immediate review targets are: button-panel proportion, center-wheel reach, palm-crown height, and the two separate right-side finger-support steps. Do not freeze the exterior until a low-cost physical shell is tried with the user's mixed grip.
+
 Use OpenSCAD as the parametric source of truth. Keep manufacturing tolerances explicit and validate them with fit coupons; do not treat CAD precision as proof of physical precision.
 
 Define electrical and mechanical boundaries for:
