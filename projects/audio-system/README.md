@@ -4,6 +4,8 @@ Status: **architecture baseline only; component choices and performance targets 
 
 This document defines the shared contract between the independent local audio player and the companion earbuds. Device-specific details stay in [audio-player/](../audio-player/README.md) and [earbuds/](../earbuds/README.md). The intent is to settle interfaces and acceptance tests before buying expensive parts or machining final metal enclosures.
 
+The owner requires an **audiophile-grade engineering process**, format-specific FLAC/MP3 handling, and a simulation-first workflow. See [Reference Study](REFERENCE-STUDY.md), [Audio Format Paths](AUDIO-FORMAT-PATHS.md), and [Simulation and Validation](SIMULATION-AND-VALIDATION.md).
+
 ## Non-negotiable direction
 
 ### Player
@@ -43,7 +45,7 @@ The diagram is a logical partition, not a fixed chip count. Do not assume that e
 
 ## Highest-priority unresolved decision: audio delivery target
 
-The radio must be selected against an explicit target, not the other way around.
+The radio must be selected against an explicit target, not the other way around. FLAC and MP3 are separate format-aware source paths; neither is to be silently transcoded into a common lossy format. Compare native compressed-stream transport against a lossless PCM path, and select only after codec-corpus, payload, latency and energy measurements. See [AUDIO-FORMAT-PATHS.md](AUDIO-FORMAT-PATHS.md).
 
 Raw stereo PCM payload rates before packet overhead:
 
@@ -115,6 +117,14 @@ Metal enclosure design must preserve a dielectric RF/charging region and charact
 | A6 — import | Measured bulk transfer rate through the chosen data PHY; single-coil multiplexing validated if pursued |
 | A7 — mechanical | Battery service, seals, RF window, comfort, grip and thermal tests in representative housings |
 | A8 — integration | Long-duration playback, recovery, firmware update and reliability evidence |
+
+## Simulation-first workflow
+
+Before ordering radio boards, final coils or metal enclosures, build reproducible software models for source decoding, packet scheduling, waveform/channel behavior, antenna geometry, charging/data time multiplexing, ANC stability and power/thermal budgets. Use declared assumptions, sweeps, uncertainty bounds and explicit stop gates. The physical prototype later confirms quantified predictions and model boundaries. See [SIMULATION-AND-VALIDATION.md](SIMULATION-AND-VALIDATION.md).
+
+## Reference design discipline
+
+Study high-end portable players, reference DAC/headphone stages, IEM acoustic systems, ANC designs and wireless audio links as complete architectures. Use primary datasheets and reproducible measurement methods; do not select parts from prestige or headline chip metrics alone. See [REFERENCE-STUDY.md](REFERENCE-STUDY.md).
 
 ## Current decisions intentionally left open
 
