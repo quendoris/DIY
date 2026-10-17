@@ -76,9 +76,9 @@ Each cartridge should eventually contain:
 - local calibration data;
 - connector to the main board.
 
-The permanent magnets provide the passive equilibrium/return force and support the resting finger.
+The permanent-magnet geometry must provide passive equilibrium/return **and a perceptible tactile transition with the coil fully disconnected**. A simple repelling pair is not assumed to create the desired peak/drop; candidate geometries must be measured.
 
-The electromagnet modifies the force curve only when required.
+The electromagnet modifies a satisfactory passive force curve only when required. It is not required for the fundamental click or return. See [PASSIVE-BUTTON-FEEL.md](PASSIVE-BUTTON-FEEL.md).
 
 Conceptually:
 
@@ -134,6 +134,10 @@ The center of mass should be:
 - independently tunable from optical sensor position.
 
 Dense removable ballast such as tungsten is preferred over making every structural part unnecessarily thick.
+
+## Parametric mechanical design
+
+OpenSCAD is the preferred version-controlled parametric source for shell and module geometry. Keep fit allowances, bearing seats, magnet gaps, stroke limits, PCB keep-outs and USB-C envelope explicit; validate physical tolerances through coupons and measurement. See [OPENSCAD-WORKFLOW.md](OPENSCAD-WORKFLOW.md).
 
 ## Mechanical architecture
 
