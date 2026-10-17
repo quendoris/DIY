@@ -99,3 +99,5 @@ See:
 - [PASSIVE-BUTTON-FEEL.md](PASSIVE-BUTTON-FEEL.md)
 - [OPENSCAD-WORKFLOW.md](OPENSCAD-WORKFLOW.md)
 - [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md)
+- [cad/README.md](cad/README.md)
+- [cad/mouse-envelope-v0.1.scad](cad/mouse-envelope-v0.1.scad)
