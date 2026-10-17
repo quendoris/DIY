@@ -18,6 +18,11 @@ Status: **concept / one-key research next**
 
 See: [projects/custom-keyboard](projects/custom-keyboard/README.md)
 
+### Shared Audio System
+The player and earbuds share a dedicated digital radio link, audio-quality acceptance criteria, ANC timing requirements and joint validation gates.
+
+See: [projects/audio-system](projects/audio-system/README.md)
+
 ### Local Audio Player
 A compact but substantial metal-bodied offline audio player with owner-controlled embedded firmware, high-capacity digital music storage, wireless charging and a dedicated digital audio link.
 
