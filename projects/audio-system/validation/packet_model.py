@@ -60,7 +60,8 @@ def simulate(config: Config, payload_trace_bytes: Sequence[int] | None = None) -
     packet_count = math.ceil(config.duration_seconds * 1000 / config.packet_interval_ms)
     tx_available_ms = 0.0
     arrivals: list[float] = []
-    queue_delays: list[float] = []
+    first_queue_delays: list[float] = []
+    attempt_queue_delays: list[float] = []
     payload_sizes: list[int] = []
     on_time_bytes = 0
     misses = 0
@@ -83,7 +84,9 @@ def simulate(config: Config, payload_trace_bytes: Sequence[int] | None = None) -
 
         for attempt in range(config.max_retries + 1):
             start_ms = max(generated_ms, tx_available_ms)
-            queue_delays.append(start_ms - generated_ms)
+            attempt_queue_delays.append(start_ms - generated_ms)
+            if attempt == 0:
+                first_queue_delays.append(start_ms - generated_ms)
             wire_bytes = payload + config.overhead_bytes
             airtime_ms = (wire_bytes * 8) / (effective_rate_mbps * 1000)
             tx_available_ms = start_ms + airtime_ms
@@ -121,8 +124,9 @@ def simulate(config: Config, payload_trace_bytes: Sequence[int] | None = None) -
         "on_time_goodput_mbps": on_time_bytes * 8 / (duration_ms * 1000),
         "attempts_total": attempts_total,
         "retries_total": retries_total,
-        "mean_queue_delay_ms": sum(queue_delays) / len(queue_delays) if queue_delays else 0.0,
-        "p95_queue_delay_ms": percentile(queue_delays, 0.95),
+        "mean_queue_delay_ms": sum(first_queue_delays) / len(first_queue_delays) if first_queue_delays else 0.0,
+        "p95_queue_delay_ms": percentile(first_queue_delays, 0.95),
+        "mean_attempt_queue_delay_ms": sum(attempt_queue_delays) / len(attempt_queue_delays) if attempt_queue_delays else 0.0,
         "mean_on_time_latency_ms": sum(arrivals) / len(arrivals) if arrivals else None,
         "p95_on_time_latency_ms": percentile(arrivals, 0.95),
         "note": "A deadline miss means the packet was unavailable at its playout deadline; it is not a psychoacoustic audibility prediction.",
