@@ -2,6 +2,10 @@
 
 Status: **direction approved; exact ergonomic geometry remains open until grip style and hand measurements are confirmed.**
 
+## Primary reference is now selected
+
+The user-selected white angular mouse image shared on 2026-10-17 supersedes the earlier candidate references. Adapt this silhouette deliberately rather than inventing a different mouse: preserve the long faceted top, split LMB/RMB panels, recessed center controls and restrained cyan channels, while replacing the weak right-side finger area with two distinct support steps and removing dust-trapping ornaments.
+
 ## Reference synthesis
 
 The supplied white futuristic mouse is the primary silhouette reference:
@@ -30,6 +34,8 @@ The mouse should read as a **right-handed precision instrument**, not a mass-mar
 - External titanium is a preferred direction, but material and finish must be selected for actual grip, cleaning, wear and manufacturing—not appearance alone.
 
 ## Right-side finger support
+
+The current user-approved ergonomic direction is a **mixed/individual grip** with **two separate steps**: a higher/front ring-finger support and a lower/rear pinky support. Heights and longitudinal positions remain parameters until a hand-fit mockup is evaluated.
 
 The current reference designs do not provide a sufficiently considered support surface for the ring finger and pinky. Our shell must solve this deliberately.
 
@@ -91,6 +97,10 @@ Light should be restrained:
 5. Side-button reach and accidental-press limits.
 6. Optical sensor position relative to the grip and center of mass.
 7. Minimum wall/edge radii that preserve the crisp visual language without uncomfortable contact.
+
+## CAD implementation
+
+The first OpenSCAD envelope is stored in [cad/mouse-envelope-v0.1.scad](cad/mouse-envelope-v0.1.scad); scope and limitations are documented in [cad/README.md](cad/README.md). It is intentionally a blockout, not a production-ready model.
 
 ## CAD implementation
 
