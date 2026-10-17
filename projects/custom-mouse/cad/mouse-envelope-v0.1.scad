@@ -12,8 +12,8 @@ $fn = 40;
 
 // ---- Global envelope ----
 body_length = 132;
-body_width_max = 78;
-body_height_max = 42;
+body_width_max = 76;          // central shell width, excluding the right finger shelves
+body_height_max = 34.5;       // current visual envelope height
 show_shell = true;
 show_buttons = true;
 show_wheels = true;
@@ -26,7 +26,7 @@ show_right_finger_shelves = true;
 // The current values are a starting envelope, not a hand-fit guarantee.
 scale_x = 1.00;
 scale_y = 1.00;
-palm_hump_delta = 0;          // reserved for raised/curved crown variants
+palm_hump_delta = 0;          // raises/lowers the rear palm panel
 ring_shelf_z = 15;             // higher forward support for ring finger
 pinky_shelf_z = 11;            // separate lower/rear support for pinky
 shelf_projection = 11.5;       // nominal projection from right body side
@@ -65,7 +65,7 @@ module core_envelope() {
 module palm_crown() {
     // Broad, sharply outlined rear palm panel. Its planar top is deliberate for v0.1;
     // later variants can compare faceted/raised crowns against ergonomic hand-fit shells.
-    translate([0,0,29])
+    translate([0,0,29+palm_hump_delta])
         linear_extrude(height=3, convexity=4)
             polygon(points=[
                 [-28, 83], [-12, 87], [12, 86], [29, 81],
@@ -194,7 +194,7 @@ module cable_stub() {
 }
 
 module mouse_envelope() {
-    scale([scale_x, scale_y, 1]) {
+    scale([scale_x * body_width_max/76, scale_y * body_length/132, body_height_max/34.5]) {
         if (show_shell) {
             color(metal) core_envelope();
             color(metal) palm_crown();
