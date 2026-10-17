@@ -2,6 +2,8 @@
 
 ## Phase 0 — lock interfaces, not shapes
 
+Use OpenSCAD as the parametric source of truth. Keep manufacturing tolerances explicit and validate them with fit coupons; do not treat CAD precision as proof of physical precision.
+
 Define electrical and mechanical boundaries for:
 
 - button cartridge;
@@ -23,9 +25,11 @@ These are the most novel subsystems and therefore deserve validation first.
 
 Deliverables:
 
-- repeatable force/travel plots;
+- repeatable force/travel plots with the coil disconnected first;
+- a clear passive tactile peak/drop and reliable return from the intended stroke;
 - stable Hall measurement;
-- several convincing button profiles;
+- acoustic and repeatability results for the passive baseline;
+- evidence that optional coil assistance improves rather than creates the button feel;
 - free-spin + programmable wheel detents;
 - thermal/current measurements.
 
