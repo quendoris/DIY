@@ -2,15 +2,17 @@
 
 | Gate | Goal |
 |---|---|
-| P0 | Define audio formats, library capacity, typical use, acceptable import time and no-contacts constraint |
-| P1 | Benchmark offline file read and media library using temporary development hardware |
-| P2 | Establish digital radio link with companion receiver and deterministic audio buffers |
-| P3 | Validate worst-case sustained bit-perfect delivery with real-world interference |
-| P4 | Prototype screen, embedded UI and sealed single-button control |
-| P5 | Prototype wireless charging and battery SoC/temperature management |
-| P6 | Validate candidate *contactless bulk data* transport and actual 1 TB import time |
-| P7 | Build thermal/RF mockup with metal body and dielectric window |
-| P8 | Integrate and perform ingress, recovery and reliability testing |
+| P0 | Freeze requirements: formats, library capacity, listening profiles, lossless policy, acceptable import time, battery target and no-contacts constraint |
+| P1 | Build trusted FLAC/MP3 reference corpus and deterministic decoder/PCM correctness tests; compare format-native transport with a lossless PCM path |
+| P2 | Software packet-level model: payload distributions, buffering, packet deadlines, stereo clock contract, retry/recovery and energy estimate |
+| P3 | GNU Radio waveform/channel simulation and link-budget sweeps; establish candidate modulation/coding, goodput, interference margin and latency budget |
+| P4 | Simulate antenna position behind the rear dielectric insert with display, battery, PCB and metal enclosure present; record S11, efficiency/pattern assumptions and uncertainty |
+| P5 | Model charging, battery SoC/temperature and the single-coil charge/cooldown/data schedule with coupled circuit, EM, data-link and thermal analyses |
+| P6 | Confirm the chosen radio/antenna/audio pipeline on development boards against the simulation's predicted throughput, error rate, latency and power |
+| P7 | Prototype display, embedded UI, local library and sealed single-button control |
+| P8 | Run physical wireless-power, RF, thermal and ingress tests on representative material-stack mockups; reconcile discrepancies with models |
 | P9 | Manufacture final metal housing only after P0–P8 evidence |
 
-The audio link gate (P2–P3) is shared with the companion earbuds. Hardware for P6 may be especially expensive or may reveal an unacceptable throughput tradeoff: keep it unresolved until tested.
+The software models must precede expensive physical integration. A simulation result only supports the assumptions represented by the model; development hardware and final assemblies confirm the high-risk predicted behavior.
+
+The audio-link gate is shared with [earbuds](../earbuds/README.md). The proposed single-coil bulk-data link remains unresolved until its modeled bandwidth, coupling, heating and interference budget closes.
