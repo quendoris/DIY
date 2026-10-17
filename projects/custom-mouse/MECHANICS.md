@@ -2,6 +2,8 @@
 
 ## Primary-button cartridge
 
+**Core acceptance condition:** the button must have a clear, repeatable passive tactile transition and return with its coil disconnected. The electromagnet is optional refinement, not the source of basic click feel. See [PASSIVE-BUTTON-FEEL.md](PASSIVE-BUTTON-FEEL.md).
+
 The current preferred direction is a bearing-supported lever rather than a flexure.
 
 Reason:
@@ -164,3 +166,12 @@ Design goals:
 - left/right trim capability if later measurements justify it.
 
 The development chassis should permit changing ballast position before the final titanium body is committed.
+
+
+## Parametric CAD
+
+OpenSCAD is the preferred source of truth for the parametric mouse geometry. Keep the envelope, button cartridges, wheel, DPI wheel, optical module, USB daughterboard, feet and ballast as separate reusable modules with explicit datums.
+
+Dimensional parameters and manufacturing clearances must be explicit. The model's numeric precision does not guarantee printed or machined accuracy; validate bearing seats, shaft fits, magnet gaps and module alignment with fit coupons and measured prototypes.
+
+See [OPENSCAD-WORKFLOW.md](OPENSCAD-WORKFLOW.md).
