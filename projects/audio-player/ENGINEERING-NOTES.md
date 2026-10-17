@@ -56,6 +56,14 @@ Full potting can degrade repairability and create thermal/mechanical stresses. W
 - Wireless Power Consortium Qi: https://www.wirelesspowerconsortium.com/standards/qi-wireless-charging/
 - FLAC format: https://www.rfc-editor.org/rfc/rfc9639.html
 
+## Format-aware transport requirement
+
+FLAC and MP3 must have explicit format-native or decode-to-PCM paths. FLAC remains lossless; MP3 must not be re-encoded into another lossy codec. Compare native compressed-frame transport against a lossless PCM path with deterministic reference vectors, worst-case FLAC payloads, variable-bitrate MP3, gapless boundaries, latency, energy and radio airtime. See [../audio-system/AUDIO-FORMAT-PATHS.md](../audio-system/AUDIO-FORMAT-PATHS.md).
+
+## Simulation-first requirement
+
+Before physical radio/coil hardware, build software models for payload scheduling, waveform/channel behavior, antenna/metal-stack effects and single-coil charging/data multiplexing. Use explicit assumptions and stop criteria. The physical prototype confirms the modeled predictions after a feasibility gate; it is not the first discovery tool. See [../audio-system/SIMULATION-AND-VALIDATION.md](../audio-system/SIMULATION-AND-VALIDATION.md).
+
 ## Practical prototype principle
 
 Start with a reusable external development rig: storage, display, processor and audio radio outside the final titanium enclosure. Physical miniaturization, hermetic sealing and expensive metal machining should be later gates.
