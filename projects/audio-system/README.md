@@ -118,6 +118,10 @@ Metal enclosure design must preserve a dielectric RF/charging region and charact
 | A7 — mechanical | Battery service, seals, RF window, comfort, grip and thermal tests in representative housings |
 | A8 — integration | Long-duration playback, recovery, firmware update and reliability evidence |
 
+## Executable software-validation baseline
+
+The first runnable model and its unit tests live in [validation/](validation/README.md). CI runs deterministic packet-model tests and a JSON-output smoke test. This is an initial packet scheduling model only; it is not yet a waveform, codec-conformance, RF or acoustic proof.
+
 ## Simulation-first workflow
 
 Before ordering radio boards, final coils or metal enclosures, build reproducible software models for source decoding, packet scheduling, waveform/channel behavior, antenna geometry, charging/data time multiplexing, ANC stability and power/thermal budgets. Use declared assumptions, sweeps, uncertainty bounds and explicit stop gates. The physical prototype later confirms quantified predictions and model boundaries. See [SIMULATION-AND-VALIDATION.md](SIMULATION-AND-VALIDATION.md).
