@@ -2,6 +2,10 @@
 
 This directory begins the simulation-first workflow with a small, reproducible packet-level model. It deliberately uses Python's standard library only.
 
+## Status
+
+The first packet-level model is an executable baseline. It is not yet a calibrated RF model and its assumptions must not be treated as measured device properties. A GitHub Actions workflow runs the unit tests and a JSON-output smoke test on relevant changes.
+
 ## Files
 
 - `packet_model.py` — deterministic FIFO radio-queue model with packet overhead, PHY rate, effective link efficiency, random loss, retry/backoff, latency/jitter and a playout deadline.
