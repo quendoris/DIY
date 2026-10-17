@@ -25,6 +25,15 @@
 
 The overall width includes the finger shelves and is therefore greater than `body_width_max`.
 
+## Approximate v0.1 envelope
+
+- Central body: about 132 mm long × 76 mm maximum width.
+- Right-side shelves extend the total width to about 91 mm at their widest points.
+- Current maximum modeled height: about 34.5 mm.
+- Cable stub extends forward beyond the 132 mm body envelope.
+
+These are CAD envelope dimensions, not ergonomic or manufacturing acceptance dimensions.
+
 ## What this version establishes
 
 1. Long, faceted body inspired by the selected reference.
