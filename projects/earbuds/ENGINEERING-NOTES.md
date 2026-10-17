@@ -1,5 +1,13 @@
 # Engineering Notes — Earbuds
 
+## Audiophile reference and measurement discipline
+
+Treat the player and earbuds as one carefully engineered audio instrument. Reference complete signal paths—not only DAC-chip headline numbers—and record the actual measurement conditions. Track digital correctness, noise, THD+N, frequency response, channel matching, crosstalk, output impedance/load behavior, acoustic response, ANC stability, latency and power separately. See [../audio-system/REFERENCE-STUDY.md](../audio-system/REFERENCE-STUDY.md).
+
+## Simulation-first radio and ANC gate
+
+Use waveform and packet-level software simulation before selecting final radio hardware; use numerical acoustic/control models before building the ANC mechanism. Simulation inputs, uncertainty and unmodeled effects must be recorded. Development boards and calibrated acoustic fixtures later confirm the predictions. See [../audio-system/SIMULATION-AND-VALIDATION.md](../audio-system/SIMULATION-AND-VALIDATION.md).
+
 ## Radio proof gate
 
 A Nordic nRF54H20-class part supports proprietary 2.4 GHz protocols with a stated PHY/throughput target up to 4 Mbit/s; **that is not an automatic application payload guarantee** and cannot alone justify worst-case 24/96 stereo lossless.
