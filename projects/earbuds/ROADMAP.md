@@ -4,7 +4,7 @@
 |---|---|
 | E0 | Record fit, grip, sound, battery service and ANC requirements; collect real transducer/microphone/cell datasheets |
 | E1 | Build FLAC/MP3 reference decode tests and a common PCM/DAC interface; verify channel/sample-rate/gapless behavior |
-| E2 | Model audio packet scheduling, buffer depths, retransmission deadlines, L/R synchronization, power and worst-case payloads |
+| E2 | Model audio packet scheduling, buffer depths, retransmission deadlines, L/R synchronization, power and worst-case payloads (**initial packet-model baseline implemented; format traces and stereo/power extensions pending**) |
 | E3 | GNU Radio waveform/channel simulations across SNR, interference, body shadowing, timing/frequency offsets and fading; define a candidate link budget |
 | E4 | Numerically model DAC/amp, transducer and ANC/transparency loops with declared assumptions; sweep fit leakage, phase/delay, limiter and output constraints |
 | E5 | Component-level power/thermal model for radio, decoder, DAC/amp, ANC and sensors; determine feasible battery budget with margin |
