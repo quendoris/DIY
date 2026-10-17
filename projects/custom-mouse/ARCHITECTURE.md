@@ -118,6 +118,10 @@ Wheel press:
 - passive magnetic return;
 - programmable tactile force where useful.
 
+## Industrial design and right-hand ergonomics
+
+The white angular reference defines the preferred elongated silhouette; the black reference contributes layered planes and recessed light channels. The shell is intentionally right-handed and must provide real ring-finger and pinky support. Avoid dust-trapping decorative openings and exposed ornamental mechanisms. Exact contours remain open until grip style and ergonomic shells are tested. See [DESIGN-DIRECTION.md](DESIGN-DIRECTION.md).
+
 ## Center of mass
 
 The mouse is intentionally relatively heavy.
