@@ -31,3 +31,7 @@
 - [CAD notes](cad/README.md) and [OpenSCAD v0.1 assembly](cad/biolam-s11-envelope-v0.1.scad).
 
 **CAD provenance:** published overall envelope 230x140x360 mm is a family maximum; exact optical offsets and mounts have **not** been measured. Current geometry uses deliberately labeled assumptions. Factory reference: https://www.biolam.su/files/biolam.pdf and https://www.zenit-npk.ru/fcatalog/info/49
+
+## Private conversation archive
+
+This public DIY repository holds technical design documents, **not plaintext conversations**. The [offline authenticated archive utility](private-archive/README.md) provides an Argon2id + AES-256-GCM path for an owner-provided full transcript export. **No complete encrypted transcript has been uploaded yet.**
