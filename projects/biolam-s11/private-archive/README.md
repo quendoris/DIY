@@ -2,7 +2,7 @@
 
 **This is a public repository. Do not commit unencrypted chat exports, private messages, plaintext ZIPs or passphrases.**
 
-The reusable encrypt/decrypt CLI and its tests live in [quendoris/snippets → qar-authenticated-archive](https://github.com/quendoris/snippets/tree/feat/qar-authenticated-archive/qar-authenticated-archive). The DOI/DIY microscope project owns only policy and links, not duplicate cryptographic code.
+The reusable encrypt/decrypt CLI and its tests live in [quendoris/snippets → qar-authenticated-archive](https://github.com/quendoris/snippets/tree/feat/qar-authenticated-archive/qar-authenticated-archive). The DIY microscope project owns only policy and links, not duplicate cryptographic code.
 
 An encrypted conversation backup may be placed in this project's `snapshots/*.qar` after verifying its original source and a successful decrypt/byte-for-byte check locally. **There is currently no `.qar` snapshot committed in this repository**; the user keeps the created local copy.
 
