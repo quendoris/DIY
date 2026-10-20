@@ -44,6 +44,13 @@ Status: **concept / deferred until budget allows**
 
 See: [projects/acoustic-volumetric-cad](projects/acoustic-volumetric-cad/README.md)
 
+### Motorized Biolam S-11 Microscope
+An Ethernet/PC-controlled restoration and upgrade of the LOMO Biolam S-11: dual transmitted/reflected LED illumination, 3-axis parked upper head, closed-loop focus, nonmetallic ESD-aware XY stage, and reproducible imaging.
+
+Status: **requirements, safety boundaries, and preliminary dimension-unverified parametric OpenSCAD assembly v0.1**.
+
+See: [projects/biolam-s11](projects/biolam-s11/README.md), [system architecture](projects/biolam-s11/ARCHITECTURE.md), [OpenSCAD CAD](projects/biolam-s11/cad/biolam-s11-envelope-v0.1.scad).
+
 ## Repository policy
 
 Concept documents distinguish **owner requirements**, **implementation candidates** and **unvalidated claims**. Expensive metal fabrication follows bench validation, not the other way around.
