@@ -28,7 +28,8 @@
 - [Architecture](ARCHITECTURE.md): system boundaries, modes, motion and safety.
 - [Validation](VALIDATION.md): instrument measurement, electronics and motion acceptance gates.
 - [Discussion evidence record](SOURCE-NOTES-2026-10-20.md): edited source notes, **not a raw chat export**.
-- [Coordinate-based measurement worksheet](MEASUREMENT-PLAN.md): precise measurements for v0.2+ CAD.\n- [CAD notes](cad/README.md) and [OpenSCAD v0.1 assembly](cad/biolam-s11-envelope-v0.1.scad).
+- [Coordinate-based measurement worksheet](MEASUREMENT-PLAN.md): precise measurements for v0.2+ CAD.
+- [CAD notes](cad/README.md) and [OpenSCAD v0.1 assembly](cad/biolam-s11-envelope-v0.1.scad).
 
 **CAD provenance:** published overall envelope 230x140x360 mm is a family maximum; exact optical offsets and mounts have **not** been measured. Current geometry uses deliberately labeled assumptions. Factory reference: https://www.biolam.su/files/biolam.pdf and https://www.zenit-npk.ru/fcatalog/info/49
 
