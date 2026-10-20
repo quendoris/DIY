@@ -1,0 +1,10 @@
+# Plaintext and secret working areas must never be published.
+raw/
+decrypted/
+secrets/
+*.key
+*.passphrase
+*.plaintext
+*.zip
+__pycache__/
+.pytest_cache/
