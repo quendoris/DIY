@@ -1,0 +1,39 @@
+name: KVM routing model tests
+
+on:
+  push:
+    paths:
+      - "projects/kvm-switch/simulation/**"
+      - ".github/workflows/kvm-routing-model.yml"
+  pull_request:
+    paths:
+      - "projects/kvm-switch/simulation/**"
+      - ".github/workflows/kvm-routing-model.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  logical-router:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run routing unit tests
+        working-directory: projects/kvm-switch/simulation
+        run: python3 -m unittest -v
+      - name: Check N x N permutations
+        working-directory: projects/kvm-switch/simulation
+        run: |
+          python3 router.py --square 2 > /tmp/kvm-2.json
+          python3 router.py --square 3 > /tmp/kvm-3.json
+          python3 router.py --square 5 > /tmp/kvm-5.json
+          python3 -c "import json; assert [(json.load(open(f'/tmp/kvm-{n}.json'))['permutation_count']) for n in (2,3,5)] == [2,6,120]"
+      - name: Check 3 hosts 4 monitors
+        working-directory: projects/kvm-switch/simulation
+        run: |
+          python3 router.py > /tmp/kvm-demo.json
+          python3 -c "import json; d=json.load(open('/tmp/kvm-demo.json')); assert d['feasible']; assert d['routes']['M1']['host'] == 'laptop' and d['routes']['M2']['host'] == 'laptop'"
