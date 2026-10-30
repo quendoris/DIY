@@ -26,9 +26,9 @@ Status: **concept / one-key research next**
 See: [projects/custom-keyboard](projects/custom-keyboard/README.md)
 
 ### Premium DIY Loudspeakers
-Research-first budget-conscious high-fidelity stereo loudspeakers with measured driver integration, optional active DSP, durable wood cabinetry, and a clear path to sound-engine integration.
+Research-first, incremental high-fidelity desktop 2.1 audio concept: two midrange-focused near-field speakers, a separate deep-bass 10–12-inch subwoofer, optional active DSP, real-wood finishes and integration with the sound engine.
 
-Status: **concept / listening requirements and budget open**
+Status: **requirements captured / modular 2.1 simulation next**
 
 See: [projects/diy-speakers](projects/diy-speakers/README.md)
 
