@@ -142,3 +142,8 @@ Study high-end portable players, reference DAC/headphone stages, IEM acoustic sy
 - Final metal/dielectric enclosure design.
 
 Keep expensive custom PCBs, titanium machining and final waterproofing until the relevant bench gates have passed.
+
+
+## Optional stationary loudspeaker output
+
+The separate [DIY Loudspeakers](../diy-speakers/README.md) project studies local stereo playback and DSP integration. Its speaker-specific crossovers, gain, protection and response compensation must remain separate from the content/sound-engine processing path. No fixed cabinet, driver or amp is yet selected.
