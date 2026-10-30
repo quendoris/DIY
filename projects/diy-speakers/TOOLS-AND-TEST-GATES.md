@@ -10,6 +10,10 @@ Research-first workflow. Simulations predict behavior for assumed inputs; physic
 - **REW / Room EQ Wizard**: free acoustic measurement software, available for Linux and other platforms, **freeware rather than open-source**. https://www.roomeqwizard.com/
 - **open-source additional projects** for BEM/FEM or structural/thermal modeling can be explored only when their geometry and measured material parameters are available.
 
+## Current proposed system to test
+
+The user prefers a **modular 2.1 system**: two compact near-field two-way satellites and a 10–12-inch independent subwoofer. Room area is approximately 19 m². Total cost develops incrementally (initially 50–100k RUB, potentially up to ~200k RUB over time). Compare bass extension with SPL/THD/excursion constraints and reserve clean midrange headroom in the satellites. Details in [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md).
+
 ## Stage S0 — Requirements
 
 Room/listening distance, placement, cabinet maximum dimensions, preferred appearance and finish, target SPL, bass frequency at defined SPL, expected movie/music use, speakers/subwoofer topology, and whole-system budget.
