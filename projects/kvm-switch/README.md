@@ -5,7 +5,7 @@ Status: **feasibility and architecture**, not a frozen BOM or build-ready schema
 ## Original user proposal
 
 - A desktop rectangular low-profile switch appliance, not a rack chassis.
-- **Ten HDMI connectors**, arranged five on one edge and five on another.
+- **Scalable host/display count (N×M), not fixed to ten HDMI connectors.** The earlier 5+5 concept is retained only as a historical reference and 5×5 validation case.
 - HDMI goal **4K at 240 Hz**, with source/display feature compatibility verified per use case.
 - As many sensible additional USB-A and USB-C ports as the architecture and packaging allow, with a **top-tier USB performance goal** (investigate USB4 80 Gbit/s, but do not silently equate every Type-C receptacle with USB4).
 - A dedicated STM32-class management MCU with ample performance margin and fully controlled, open-source management firmware.
@@ -13,7 +13,7 @@ Status: **feasibility and architecture**, not a frozen BOM or build-ready schema
 - Separate auxiliary power to keep the control plane running independently of source PCs.
 - Independent **Management / Video / USB** boards, with possible replaceable daughtercards and future protocol upgrades.
 
-**Important ambiguity:** ten HDMI connectors do not by themselves define a topology. The provisional interpretation is **five HDMI sources + five HDMI sinks**; determine whether the user needs (A) one-to-one arbitrary assignments (a 5x5 permutation matrix), (B) outputs freely duplicating one source (multicast), or (C) only one selected host to one selected monitor. Architecture, power, EDID/HDCP complexity and cost differ greatly.
+**Accepted direction (2026-10-30):** independently route monitors across multiple host computers. Core example: **3 PCs and 4 monitors**, two extended displays assigned to a laptop and the other two to a desktop. One laptop cable may carry two distinct streams only with a suitable DP MST/USB4 display path, GPU/OS support, and sufficient bandwidth. Standard HDMI SST alone cannot produce two independent extended displays. Test topology with 2×2, 3×3, 5×5 and arbitrary N×M — see [SCALABLE-ROUTING.md](SCALABLE-ROUTING.md).
 
 The project is feasible in principle. The risk is **high-speed PHY, routing topology and host-link semantics**, not MCU computation alone.
 
@@ -35,7 +35,7 @@ The project is feasible in principle. The risk is **high-speed PHY, routing topo
   optional retiming                USB-C CC / PD
   independent outputs              USB4-specific router/path
        |                                 |
-  5× HDMI IN / 5× HDMI OUT         host/device USB ports
+  N× video uplinks, M outputs       host/device USB ports
 ```
 
 Boards share only fully specified power, management and service interfaces. **Three PCBs do not remove the need for high-speed signal-integrity design**: any high-rate mezzanine, flex or cable between boards becomes part of the measured insertion-loss/reflection budget.
@@ -54,3 +54,5 @@ Read:
 - [ARCHITECTURE.md](ARCHITECTURE.md)
 - [REVIEW-OF-INITIAL-PROPOSAL.md](REVIEW-OF-INITIAL-PROPOSAL.md)
 - [VALIDATION.md](VALIDATION.md)
+- [SCALABLE-ROUTING.md](SCALABLE-ROUTING.md)
+- [simulation/README.md](simulation/README.md)
