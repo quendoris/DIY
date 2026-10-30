@@ -4,12 +4,13 @@ Status: early proposed architecture. No device part is selected for production.
 
 ## 1. Routing topology must be explicit
 
-Baseline **5 HDMI inputs to 5 HDMI outputs** with five simultaneously active but distinct source→sink routes (permutation/routing with no source multicast). A true free 5×5 crossbar has up to 25 possible source/destination pairs, but **at most five output routes concurrently**; fan-out of one source to multiple independent displays is a different, substantially harder design requiring validated electrical duplication/HDCP/EDID/link-training behavior.
+**Revised baseline:** scalable multi-host / multi-display routing with independently counted host computers, physical video uplinks, logical independent video streams and output monitors. Test 2×2, 3×3, 5×5 logical permutations and the owner's 3-host/4-display scenario. A full 5×5 SST fabric remains one important special case, not the top-level system limit. Upstream DP MST/USB4 display transport can carry more than one independent stream if the host, link, conversion/router and target modes support it. Standard HDMI SST cannot be made a two-display extended-desktop source by a passive splitter. Full details: [SCALABLE-ROUTING.md](SCALABLE-ROUTING.md).
 
 Three functional modes to separate:
 - `SINGLE`: one selected host/sink, basic KVM;
 - `PERMUTATION`: independent routes for five sources to five monitors without duplicating a single source;
-- `MULTICAST`: one source to multiple sinks — **research only** until active split/HDCP/EDID behavior is modeled and validated.
+- `MULTICAST`: one source image cloned to multiple sinks — separate and possibly expensive path;
+- `MULTI_HOST_EXTEND`: multiple hosts own different monitors simultaneously, with multiple independent streams per host where available — **core use case**.
 
 Do not assume that a tree of four-lane 2:1 muxes will automatically become a functional multi-output HDMI matrix. Inspect per-lane routing, termination, redriving, mux insertion loss, cable lengths and management channels.
 
