@@ -4,14 +4,20 @@ All gates are to be backed by scripts or repeatable measurements. Open-source ar
 
 ## K0 — topology and acceptance definition
 
-Record exact input/output counts and meaning of ten HDMI ports, permitted simultaneous routes, source duplication requirements, number of independent USB upstream computers, USB-C power roles, required keyboard/mouse persistence and protected-content support.
+Record independently variable counts of PCs, upstream physical connectors, independent rendered video streams and monitor outputs. Cover 2×2, 3×3, 5×5 plus **3 PCs/4 monitors** with two independently extended displays on one suitable laptop MST/USB4 uplink. Define the separable MIRROR and EXTEND semantics, required stream and bandwidth budgets, number of USB upstream hosts, USB-C roles, HID continuity and protected-content behavior.
 
 Define acceptance cases at minimum:
 - 4K240 8-bit and 10-bit RGB full chroma, with explicit DSC support assumptions;
 - lower-rate fallback to 4K120/144 and 1440p240;
 - HDR, VRR, stereo/audio behavior as needed;
-- 5×5 permutation routing with illegal source/sink conflicts rejected;
+- 2×2, 3×3, 5×5 permutation routing with illegal source/sink conflicts rejected;
+- reject two independent extended screens on a single HDMI SST uplink;
+- accept two independent screens via a hypothetical MST uplink only when both stream-count and payload budgets fit;
 - USB2/3/USB4 host disconnect/re-enumeration as a **measured separate property**.
+
+## Free executable Stage K0
+
+The current [simulation/router.py](simulation/router.py) computes logical host/display assignment with per-host screen counts and per-uplink stream and bandwidth limits. [simulation/test_router.py](simulation/test_router.py) exercises positive and negative cases. No PHY or firmware feasibility is implied by these passes. The next model must include dynamic route changes and state-machine invariants.
 
 ## K1 — math and protocol models
 
@@ -21,7 +27,7 @@ Compute:
 - USB4 router/domain constraints and CC/PD role states;
 - end-to-end connection state machine and timeouts;
 - hardware token challenge-response and authorization expiry;
-- power-supply sequence/current limits for 10 HDMI ports plus USB.
+- power-supply sequence/current limits for variable N uplinks and M outputs plus USB.
 
 ## K2 — data-driven part selection
 
