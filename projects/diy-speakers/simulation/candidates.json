@@ -1,0 +1,213 @@
+{
+  "metadata": {
+    "status": "research candidates only; no selected parts",
+    "date": "2026-10-30",
+    "units": {
+      "fs_hz": "Hz",
+      "qts": "dimensionless",
+      "vas_l": "L",
+      "sd_cm2": "cm²",
+      "xmax_mm": "mm one-way (manufacturer-defined)",
+      "illustrative_box_l": "L net sealed volume"
+    },
+    "important": "No SPL, distortion, baffle/room response or purchasing guarantee follows from these fields. The test box size is an assumed scenario, not a recommendation."
+  },
+  "midwoofers": [
+    {
+      "id": "SB15MFC30-8",
+      "maker": "SB Acoustics",
+      "diameter_in": 5,
+      "fs_hz": 39,
+      "qts": 0.37,
+      "vas_l": 17.7,
+      "sd_cm2": 82,
+      "illustrative_box_l": 8,
+      "nominal_ohm": 8,
+      "source": "https://sbacoustics.com/product/5in-sb15mfc30-8/",
+      "note": "Polypropylene cone, 5-in desk-friendly research baseline"
+    },
+    {
+      "id": "SB17MFC35-8",
+      "maker": "SB Acoustics",
+      "diameter_in": 6,
+      "fs_hz": 33,
+      "qts": 0.37,
+      "vas_l": 39,
+      "sd_cm2": 118,
+      "illustrative_box_l": 12,
+      "nominal_ohm": 8,
+      "source": "https://sbacoustics.com/product/6in-sb17mfc35-8/",
+      "note": "6-inch polypropylene candidate; larger Vas"
+    },
+    {
+      "id": "SB17NRX2C35-8",
+      "maker": "SB Acoustics",
+      "diameter_in": 6,
+      "fs_hz": 36.5,
+      "qts": 0.42,
+      "vas_l": 27,
+      "sd_cm2": 118,
+      "illustrative_box_l": 12,
+      "nominal_ohm": 8,
+      "source": "https://sbacoustics.com/product/6in-sb17nrx2c35-8-norex/",
+      "note": "6-inch natural fiber candidate"
+    },
+    {
+      "id": "HiVi-M6N-B",
+      "maker": "HiVi",
+      "diameter_in": 6,
+      "fs_hz": 46,
+      "qts": 0.39,
+      "vas_l": 21.9,
+      "sd_cm2": null,
+      "illustrative_box_l": 12,
+      "nominal_ohm": 8,
+      "source": "https://www.parts-express.com/pedocs/specs/297-488--hivi-m6n-b-spec-sheet.pdf",
+      "note": "Chinese manufacturer spec; Sd omitted because it was not reported in the primary datasheet"
+    },
+    {
+      "id": "RS180-8",
+      "maker": "Dayton Audio",
+      "diameter_in": 7,
+      "fs_hz": 35.7,
+      "qts": 0.31,
+      "vas_l": 24.4,
+      "sd_cm2": 124.7,
+      "xmax_mm": 6,
+      "illustrative_box_l": 12,
+      "nominal_ohm": 8,
+      "source": "https://daytonaudio.com/product/101/rs180-8-7-reference-woofer-8-ohm",
+      "note": "7-inch aluminum cone; crossover and breakup require investigation"
+    }
+  ],
+  "tweeters": [
+    {
+      "id": "SB26STCN-C000-4",
+      "maker": "SB Acoustics",
+      "kind": "fabric compact neodymium dome",
+      "fs_hz": 960,
+      "sensitivity_2v83_1m_db": 92.5,
+      "nominal_ohm": 4,
+      "source": "https://sbacoustics.com/product/sb26stcn-c000-4/",
+      "note": "Compact geometry; crossover choice depends on acoustic measurements"
+    },
+    {
+      "id": "SB26ADC-C000-4",
+      "maker": "SB Acoustics",
+      "kind": "aluminum dome with back chamber",
+      "fs_hz": 680,
+      "sensitivity_2v83_1m_db": 90,
+      "nominal_ohm": 4,
+      "source": "https://sbacoustics.com/product/sb26adc-c000-4/",
+      "note": "Used in SB Acoustics open-source Kinnara / Bromo designs"
+    },
+    {
+      "id": "SB26STWGC-4",
+      "maker": "SB Acoustics",
+      "kind": "fabric dome + integrated waveguide",
+      "fs_hz": 780,
+      "sensitivity_2v83_1m_db": 93,
+      "nominal_ohm": 4,
+      "source": "https://sbacoustics.com/product/sb26stwgc-4-fabric/",
+      "note": "Waveguide/directivity research candidate"
+    }
+  ],
+  "subwoofers": [
+    {
+      "id": "DCS255-4",
+      "maker": "Dayton Audio",
+      "diameter_in": 10,
+      "fs_hz": 37.7,
+      "qts": 0.46,
+      "vas_l": 32.1,
+      "sd_cm2": 346.4,
+      "xmax_mm": 8.3,
+      "illustrative_box_l": 35,
+      "nominal_ohm": 4,
+      "source": "https://daytonaudio.com/product/38/dcs255-4-10-classic-subwoofer-4-ohm",
+      "note": "Budget 10-inch reference; low-frequency output at 25–30 Hz requires scrutiny"
+    },
+    {
+      "id": "RSS265HO-4",
+      "maker": "Dayton Audio",
+      "diameter_in": 10,
+      "fs_hz": 26.9,
+      "qts": 0.35,
+      "vas_l": 29.4,
+      "sd_cm2": 349.7,
+      "xmax_mm": 12.3,
+      "illustrative_box_l": 35,
+      "nominal_ohm": 4,
+      "source": "https://daytonaudio.com/product/120/rss265ho-4-10-reference-ho-subwoofer-4-ohm",
+      "note": "High-output 10-inch candidate for small enclosure"
+    },
+    {
+      "id": "SB29SWNRX-S75-6",
+      "maker": "SB Acoustics",
+      "diameter_in": 10,
+      "fs_hz": 20,
+      "qts": 0.29,
+      "vas_l": 66,
+      "sd_cm2": 312,
+      "xmax_mm": null,
+      "illustrative_box_l": 35,
+      "nominal_ohm": 6,
+      "source": "https://sbacoustics.com/product/10in-sb29swnrx-s75-6-norex/",
+      "note": "Vendor lists voice-coil p-p travel, not directly comparable one-way Xmax; Vd deliberately omitted"
+    },
+    {
+      "id": "RSS315HF-4",
+      "maker": "Dayton Audio",
+      "diameter_in": 12,
+      "fs_hz": 24.2,
+      "qts": 0.39,
+      "vas_l": 84.1,
+      "sd_cm2": 514.7,
+      "xmax_mm": 14.3,
+      "illustrative_box_l": 60,
+      "nominal_ohm": 4,
+      "source": "https://daytonaudio.com/product/121/rss315hf-4-12-reference-hf-subwoofer-4-ohm",
+      "note": "12-inch displacement/headroom benchmark, larger box"
+    },
+    {
+      "id": "SB34SWNRX-S75-6",
+      "maker": "SB Acoustics",
+      "diameter_in": 12,
+      "fs_hz": 19,
+      "qts": 0.32,
+      "vas_l": 164,
+      "sd_cm2": 508,
+      "xmax_mm": null,
+      "illustrative_box_l": 60,
+      "nominal_ohm": 6,
+      "source": "https://sbacoustics.com/product/12in-sb34swnrx-s75-6-norex/",
+      "note": "Lower Fs; substantial Vas and more volume; manufacturer Xmax not defined comparably"
+    }
+  ],
+  "pricing_examples": [
+    {
+      "id": "SB15MFC30-8",
+      "market": "Russian importer Wallegro",
+      "amount": 8412,
+      "currency": "RUB",
+      "source": "https://wallegro.ru/item/12691592144/Dinamik-SB-Acoustics-SBMFC-.html",
+      "caution": "import listing; may change, seller mislabeled 5-inch part as 6-inch in heading; verify final landed cost"
+    },
+    {
+      "id": "DCS255-4",
+      "market": "Russian importer Shopozz brand listing",
+      "amount": 18990,
+      "currency": "RUB",
+      "source": "https://shopozz.ru/brand/dayton-audio/page/3",
+      "caution": "importer price observation, not universal, excludes possible other costs"
+    },
+    {
+      "id": "SB26ADC-C000-4",
+      "market": "EU retailer AudioHobby",
+      "amount": 36,
+      "currency": "EUR",
+      "source": "https://www.audiohobby.eu/ru/dinamiki/10725-sb-acoustics-1-metal-dome-chmbr-tweeter-sb26adc-c000-4.html",
+      "caution": "ex-VAT EU price; not equivalent to landed Russia price"
+    }
+  ]
+}
