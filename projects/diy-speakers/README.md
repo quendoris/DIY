@@ -5,14 +5,14 @@ Status: **owner constraints captured / stereo 2.1 preferred research baseline; p
 ## Owner clarification — 2026-10-30
 
 - Room approximately 19 m², with future room changes possible.
-- Main loudspeakers **on/near the desk with several computer monitors**; physical dimensions secondary to acoustics and total cost.
+- Main loudspeakers **on/near the desk with several computer monitors**, listener approximately **0.60–0.80 m** from the speaker; physical dimensions secondary to acoustics and total cost.
 - **Deep, physically perceptible bass is mandatory**, but the midrange must retain clarity and headroom. A dedicated **10-inch subwoofer** in a third enclosure is welcome; 12-inch and dual-sub alternatives remain worth comparing.
 - Real wood appearance is preferred; pear is not mandatory. Composite, resin and carbon-like details are optional aesthetic experiments, not assumed acoustic necessities.
 - **50–100k RUB** is a practical initial spending target, with incremental development perhaps **up to 200k RUB** over time. Modularity and buying subsystems independently are non-negotiable priorities.
-- Listening benchmark: remembered as ADAM 'R5' with an 'R8'-level ambition. Exact product identity is unresolved and must be verified rather than silently corrected.
+- Listening benchmark: **ADAM Audio T5V** was heard, **ADAM Audio T8V** is the comparison target. Both are now explicitly confirmed; do not confuse them with KRK ROKIT.
 - Initial hypothesis: two high-quality near-field two-way satellites + one independent active 10–12-inch subwoofer. No product or wattage freeze.
 
-Full architecture: [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md).
+Full architecture: [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md). Initial executable calculation: [simulation/](simulation/README.md).
 
 ## User intent
 
@@ -80,9 +80,8 @@ See [AUDIT-QWEN.md](AUDIT-QWEN.md) and [TOOLS-AND-TEST-GATES.md](TOOLS-AND-TEST-
 
 ## Remaining questions — not yet answered
 
-1. Ear-to-speaker listening distance, positions available beside/behind the monitors, and whether elevated stands are acceptable.
+1. Physical placement possibilities around multiple monitors: can small stands/arms position the speakers at ear height, and is a separate sub floor position available?
 2. Comfortable and maximum intended listening levels; target bass SPL at the listening seat.
-3. Exact speaker make/model from the user's listening reference (ADAM vs KRK identification).
-4. First input path: PC sound-engine/DAC or a separate standalone digital receiver.
+3. First digital input path: PC sound-engine/DAC or a separate standalone digital receiver.
 
 The 2.1 design is a preferred starting hypothesis, not a completed specification. No irreversible mechanical or electrical decision is made before the modeled requirements and component data support it.
