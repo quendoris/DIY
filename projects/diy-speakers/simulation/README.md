@@ -2,6 +2,20 @@
 
 The first executable, dependency-free Python bench for the owner's **60–80 cm** desktop listening position and modular stereo 2.1 direction.
 
+## Candidate comparison (new)
+
+The [catalog](candidates.json) has 5 midwoofer, 3 tweeter and 5 subwoofer candidates with individual manufacturer source URLs and explicitly labeled sample enclosure volumes. [compare_candidates.py](compare_candidates.py) computes simple sealed-box Fc, Qtc, F3 and only derives Vd where the manufacturer supplies comparable one-way Xmax; [test_compare_candidates.py](test_compare_candidates.py) validates provenance, representative sealed results and unknown data handling. These are **not buying recommendations**.
+
+Run:
+
+```bash
+python3 compare_candidates.py --format markdown
+python3 compare_candidates.py --format json > candidate-comparison.json
+python3 -m unittest -v
+```
+
+Narrative interpretation: [../CANDIDATE-COMPARISON.md](../CANDIDATE-COMPARISON.md). Development gates: [../ATOMIC-ROADMAP.md](../ATOMIC-ROADMAP.md).
+
 ## Usage
 
 ```bash
