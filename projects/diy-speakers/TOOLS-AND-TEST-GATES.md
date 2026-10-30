@@ -12,7 +12,11 @@ Research-first workflow. Simulations predict behavior for assumed inputs; physic
 
 ## Current proposed system to test
 
-The user prefers a **modular 2.1 system**: two compact near-field two-way satellites and a 10–12-inch independent subwoofer. Room area is approximately 19 m². Total cost develops incrementally (initially 50–100k RUB, potentially up to ~200k RUB over time). Compare bass extension with SPL/THD/excursion constraints and reserve clean midrange headroom in the satellites. Details in [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md).
+The user prefers a **modular 2.1 system**: two compact near-field two-way satellites and a 10–12-inch independent subwoofer. Room area is approximately 19 m²; the listener is **60–80 cm** from the main speakers; the heard reference is **ADAM T5V** and the comparison benchmark **ADAM T8V**. Total cost develops incrementally (initially 50–100k RUB, potentially up to ~200k RUB over time). Compare bass extension with SPL/THD/excursion constraints and reserve clean midrange headroom in the satellites. Details in [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md).
+
+## Executable initial model
+
+[simulation/](simulation/README.md) contains Python stdlib tests for sealed small-signal resonance and ideal LR4 electrical sub/satellite crossovers. This establishes implementation correctness for simplified formulas, not actual loudspeaker acoustic performance. CI executes the tests and JSON report smoke test.
 
 ## Stage S0 — Requirements
 
