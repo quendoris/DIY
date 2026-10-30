@@ -13,6 +13,7 @@ We preserve its worthwhile architecture without treating all prior assistant cla
 | STM32 can coordinate video/USB link changes | **Correct at the control-plane level.** The MCU neither serializes HDMI FRL nor implements USB4 PHY by itself. |
 | A three-board split fixes 90% of high-speed issues | **Unsupported:** improves serviceability and functional isolation but introduces possible mezzanine loss; link budget remains mandatory. |
 | ASM2464PD is a generic USB4 hub | **Incorrect:** vendor calls it USB4-to-PCIe/NVMe device/endpoint controller. |
+| MegaChips MCDP6000 is a 48-Gbit/s HDMI 2.1 crosspoint | **Incorrect:** MCDP6000 datasheet identifies a USB Type-C DisplayPort Alt-Mode switching retimer; it is not an HDMI 2.1 5×5 crosspoint. |
 | VIA VL830 is a plug-and-play multi-host USB4 router | **Incorrect for the proposed job:** vendor describes USB4 endpoint functionality with integrated USB3.2 hub and DP. |
 | TUSB546 supports USB4/DP tunneling | **Incorrect:** TI specifies USB 3.1 Gen1 up to 5G and DP Alt Mode. |
 | STUSB4500 handles any Type-C source/sink role | **Incorrect:** STUSB4500 is sink-only. |
@@ -21,6 +22,10 @@ We preserve its worthwhile architecture without treating all prior assistant cla
 | PCB pricing $150–300 per 5×5 HDMI+USB4 iteration | **Not substantiated:** no layout, stackup, fabrication quote, connector specification, specific retimers, assembly/validation instrumentation or yield assumptions were shown. Treat every given total as illustrative at best. |
 | 5 mil length matching or mandatory Rogers for every path | **Overgeneralized:** topology-specific impedance, insertion/return loss, skew budget, vias, stackup and simulation determine requirements. |
 | 1k stars in year one | **Unfounded commercial/social prediction:** not a technical requirement. |
+
+## Confirmed MCDP6000 source
+
+The public MCDP6000 PDF is titled *USB Type-C DP Alt-Mode Switching Retimer*, not an HDMI FRL 48-Gbit/s matrix: https://media.digikey.com/pdf/Data%20Sheets/MegaChips%20PDFs/MCDP6000_DS.pdf
 
 ## Additional modern standards point
 
