@@ -4,6 +4,13 @@ Experimental DIY hardware and tools — custom peripherals, mechanisms, electron
 
 ## Projects
 
+### Modular KVM / Matrix Switch
+A high-bandwidth, fully programmable HDMI/USB/USB-C switching appliance with a separate management MCU, hardware authorization and replaceable video/USB boards. The initial concept includes ten HDMI connectors and a 4K240 target, subject to signal-integrity and protocol validation.
+
+Status: **feasibility / topology definition**
+
+See: [projects/kvm-switch](projects/kvm-switch/README.md)
+
 ### Custom Mouse
 A fully wired, high-mass, modular precision mouse with contactless sensing, programmable magnetic button feel, absolute wheel angle measurement, electromagnetic detents and a planned secondary DPI wheel with subtle RGB indication.
 
