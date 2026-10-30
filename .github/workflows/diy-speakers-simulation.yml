@@ -1,0 +1,32 @@
+name: DIY speakers acoustic models
+
+on:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/**"
+      - ".github/workflows/diy-speakers-simulation.yml"
+  pull_request:
+    paths:
+      - "projects/diy-speakers/simulation/**"
+      - ".github/workflows/diy-speakers-simulation.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  acoustic-baseline:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run mathematical baseline tests
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v
+      - name: Validate report JSON
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          python3 acoustic_baseline.py > /tmp/acoustic-baseline.json
+          python3 -c "import json; d=json.load(open('/tmp/acoustic-baseline.json')); assert d['sealed_f3_hz'] > 0 and d['sealed_qtc'] > 0; print('JSON baseline smoke test passed')"
