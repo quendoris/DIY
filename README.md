@@ -25,6 +25,13 @@ Status: **concept / one-key research next**
 
 See: [projects/custom-keyboard](projects/custom-keyboard/README.md)
 
+### Premium DIY Loudspeakers
+Research-first budget-conscious high-fidelity stereo loudspeakers with measured driver integration, optional active DSP, durable wood cabinetry, and a clear path to sound-engine integration.
+
+Status: **concept / listening requirements and budget open**
+
+See: [projects/diy-speakers](projects/diy-speakers/README.md)
+
 ### Shared Audio System
 The player and earbuds share a dedicated digital radio link, audio-quality acceptance criteria, ANC timing requirements and joint validation gates.
 
