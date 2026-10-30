@@ -12,7 +12,9 @@ Status: **owner constraints captured / stereo 2.1 preferred research baseline; p
 - Listening benchmark: **ADAM Audio T5V** was heard, **ADAM Audio T8V** is the comparison target. Both are now explicitly confirmed; do not confuse them with KRK ROKIT.
 - Initial hypothesis: two high-quality near-field two-way satellites + one independent active 10–12-inch subwoofer. No product or wattage freeze.
 
-Full architecture: [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md). Initial executable calculation: [simulation/](simulation/README.md).
+Full architecture: [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md).
+
+New source-linked comparison: [CANDIDATE-COMPARISON.md](CANDIDATE-COMPARISON.md); phased spending and verification plan: [ATOMIC-ROADMAP.md](ATOMIC-ROADMAP.md). All mathematical models and test data: [simulation/](simulation/README.md).
 
 ## User intent
 
