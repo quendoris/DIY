@@ -5,7 +5,7 @@ Experimental DIY hardware and tools — custom peripherals, mechanisms, electron
 ## Projects
 
 ### Modular KVM / Matrix Switch
-A high-bandwidth, fully programmable HDMI/USB/USB-C switching appliance with a separate management MCU, hardware authorization and replaceable video/USB boards. The initial concept includes ten HDMI connectors and a 4K240 target, subject to signal-integrity and protocol validation.
+A high-bandwidth, fully programmable HDMI/USB/USB-C switching appliance with a separate management MCU, hardware authorization and replaceable video/USB boards. Port count is scalable rather than fixed: simulate 2×2, 3×3, 5×5 and multi-host/multi-display assignments, with 4K240 remaining a per-link research target subject to full protocol and signal-integrity validation.
 
 Status: **feasibility / topology definition**
 
