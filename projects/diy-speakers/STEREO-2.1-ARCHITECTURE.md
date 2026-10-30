@@ -7,14 +7,31 @@ Updated after the owner clarified placement, sound goals, aesthetics and increme
 
 - **Use:** serious music listening, including bass-heavy phonk, not exclusively mixing or a treated studio.
 - **Environment:** room around **19 m²**, but future room/placement will vary.
-- **Placement:** main loudspeakers on/near a desk used with multiple computer monitors; exact dimensions are *secondary* to quality and sensible spending.
+- **Placement:** main loudspeakers on/near a desk used with multiple computer monitors, at a **listening distance of 60–80 cm**; exact dimensions are *secondary* to quality and sensible spending.
 - **Music priority:** exceptionally clear, intelligible midrange; clean detailed treble; **very deep, physically impactful bass** is mandatory for the total system.
 - **Subwoofer:** a separate third enclosure with a **10-inch** driver is acceptable, with **12 inches** open to comparison if extra output requires it.
 - **Appearance:** visible attractive wood is a priority. Pear was a spontaneous example, *not* a mandatory species. Carbon composite, resin coating and other finishes may be explored if appearance, safety and cost warrant them. A plastic-looking or all-metal exterior is not the preferred visual identity.
 - **Budget philosophy:** initial investment roughly **50,000–100,000 RUB**, possibly **up to 200,000 RUB** across years of incremental work. This is *not* a promise to buy the finished system all at once, and no component vendor/price is selected.
 - **Modularity:** evaluate, buy, test and improve each module independently, while preserving future replacement/upgrade paths.
-- **Listening reference:** owner recalls listening to "ADAM R5" and wants an experience comparable in ambition to "R8" (exact model/brand **needs confirmation**, so do not invent or claim a matching product).
+- **Listening reference:** user confirmed **ADAM Audio T5V** as heard reference and **ADAM Audio T8V** as target benchmark (not KRK ROKIT). Use real manufacturer specs and measurement data, but do not promise superior sound from nominal specs alone.
 - **Integration:** should complement the user's content/sound engine and local audio system without double-EQ or conflating separate digital transfer requirements.
+
+## Near-field reference dimensions
+
+ADAM manufacturer data (not DIY design targets):
+
+| Model | Size H × W × D | LF driver | Frequency extension (-6 dB) | Crossover |
+|---|---|---|---|---|
+| T5V | 298 × 179 × 297 mm | 5 in | 45 Hz | 3 kHz |
+| T8V | 400 × 250 × 335 mm | 8 in | 33 Hz | 2.6 kHz |
+
+Sources: [T5V](https://www.adam-audio.com/en/t-series/t5v/) · [T8V](https://www.adam-audio.com/en/t-series/t8v/).
+
+At 60–80 cm, prioritize low idle hiss, listener-angle stability, tweeter-midwoofer vertical spacing, desk reflections and positioning alongside monitors. The sub should be independently positioned off-desk. A smaller near-field satellite plus sub is an *architectural hypothesis* for the user's goals, not a proven T8V-beating design.
+
+## First executable calculation
+
+[simulation/acoustic_baseline.py](simulation/acoustic_baseline.py) implements a deliberately small-signal sealed-enclosure model (Fs, Qts, Vas, Vb) and ideal Linkwitz–Riley 4 electrical crossover response with reproducible numerical tests. It has **no real measured driver**, no SPL/excursion prediction, no diffraction, desk, room or acoustic time alignment. The baseline is a math sanity test before comparing actual drivers and cabinets.
 
 ## Preferred starting hypothesis: 2.1
 
