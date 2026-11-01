@@ -44,7 +44,8 @@ jobs:
                   "SCREEN 35",s["monitor_occlusion_proxies"]["screen_top_35cm"]["blocking_bands"],
                   "SCREEN 45",s["monitor_occlusion_proxies"]["screen_top_45cm"]["blocking_bands"],
                   "APERTURE_NOT_CERTIFIED",s["monitor_occlusion_proxies"]["screen_top_45cm"]["not_certified_full_flange_clear"],
-                  "SCREEN 55",s["monitor_occlusion_proxies"]["screen_top_55cm"]["blocking_bands"])
+                  "SCREEN 55",s["monitor_occlusion_proxies"]["screen_top_55cm"]["blocking_bands"],
+                  "HEAD_WINDOW45",s["monitor_clearance_through_head_movement"]["screen_top_45cm"])
           for s in j["scenarios"]:
             if s["center_vertical_offset_m"]>.29 and s["layout"]=="A_minimum_practical_vertical":
               print("HIGH-MOUNT",s["scenario"],"SCREEN45",
