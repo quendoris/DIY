@@ -71,3 +71,8 @@ Our proposed 2.1 system distributes deep bass to the independent sub, rather tha
 ## Three Chinese midwoofer offers — source-separated model
 
 The owner supplied descriptions and unit prices for **HiVi F6N, D6G, M6N**. [hivi_offers_2026-11-01.json](hivi_offers_2026-11-01.json) preserves seller parameters, third-party data and significant F6N disagreement as distinct scenarios. [hivi_offer_sweep.py](hivi_offer_sweep.py) compares a purely **hypothetical 8L sealed-box** test fixture and the inverse Qtc=1/sqrt(2) relation; [test_hivi_offer_sweep.py](test_hivi_offer_sweep.py) asserts scenarios aren't silently merged and prices aren't misinterpreted as per pair. Run `python3 hivi_offer_sweep.py` or `python3 -m unittest -v`. See the [full engineering review](../HIVI-F6N-D6G-M6N-REVIEW.md).
+
+
+## Final-intent Chinese and international benchmark — 2026-11-01
+
+[final_intent_longlist_2026-11.json](final_intent_longlist_2026-11.json) records the serious production-candidate longlist, including HiVi M6N/D6G, Wavecor WF152BD06/14, WF168WA02/06, SB17NBAC 4/8ohm, Scan-Speak 18W, SEAS and PURIFI. Russian seller prices from indexed listings are stored as **observed** prices rather than confirmed payable quotes; incompatible source revisions and absent data remain explicit. The [test_final_intent_longlist.py](test_final_intent_longlist.py) audit asserts provenance, unit currency, corrected nominal 2.83V vs 1W conversion, variant identity and documented uncertainty. No script claims measured THD or determines a brand winner. Full [competitive review](../FINAL-INTENT-MIDWOOFER-COMPETITION.md).
