@@ -100,3 +100,8 @@ python3 threeway_coplanar_mount_mechanics.py > threeway-coplanar-demand-model.js
 The first successful GitHub Actions source-model run: https://github.com/quendoris/DIY/actions/runs/41328266363
 
 **No mechanical part, anchor, tabletop, power supply or suspended speaker was physically tested. No safe attachment claim is made.**
+
+
+## D2-FRAME-01 desk as metal frame plus moving solid timber
+
+Owner states **2000×1000mm** main desk, 50×50mm frame profile, a main worktop and upper shelf, proposed **50mm solid-wood** main top and **double-sided screws** for wood-to-frame attachment. Profile type, alloy, wall, exact cross members and threaded joint details are not known. This is meaningful: top volume 0.1m³ and hypothetical mass 45–85kg, but the loudspeaker should transmit its moments to a **validated reinforced metal frame receiver** (or separate safe floor support), not rely solely on screw withdrawal through wood. The main top should accommodate cross-grain seasonal movement via its separate fasteners and detailing. [D2-FRAME-01 full model/safety study](D2-FRAME-01-50X50-STEEL-WOOD-DESK.md). The `50×50` is NOT a sufficient description to assert any material, wall thickness or load rating.
