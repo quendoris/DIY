@@ -97,14 +97,16 @@
           "sensitivity_db_2v83_1m": 89,
           "qms": 4.69,
           "qes": 0.42,
-          "mms_g": 13.9,
+          "mms_g": null,
           "bl_tm": 7.8,
           "voice_coil_mm": 25,
           "vc_winding_mm": 14.5,
           "gap_mm": 6,
           "provenance": "user_supplied_seller_listing",
           "source": "https://www.rumoh.eu/speakers/hivi/woofer/1711/hivi-m6n",
-          "note": "Seller labels Mms 13.9 'L'; dimensional typo: physical moving mass in grams; alternate published sources give 13.6 g. No M6N-B substitution without confirming actual variation."
+          "note": "Seller labels moving mass 13.9 'L' (dimensionally invalid); independent specs report 13.6 g. Model does not use Mms until direct part verification.",
+          "seller_moving_mass_raw": "13.9 л",
+          "mms_g_reference": 13.6
         }
       ],
       "purchase_status": "FIRST BENCH CANDIDATE, not final system selection"
