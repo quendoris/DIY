@@ -43,11 +43,13 @@ jobs:
                   "HEAD",s["unobstructed_ideal_piston_head_window"],
                   "SCREEN 35",s["monitor_occlusion_proxies"]["screen_top_35cm"]["blocking_bands"],
                   "SCREEN 45",s["monitor_occlusion_proxies"]["screen_top_45cm"]["blocking_bands"],
+                  "APERTURE_NOT_CERTIFIED",s["monitor_occlusion_proxies"]["screen_top_45cm"]["not_certified_full_flange_clear"],
                   "SCREEN 55",s["monitor_occlusion_proxies"]["screen_top_55cm"]["blocking_bands"])
           for s in j["scenarios"]:
             if s["center_vertical_offset_m"]>.29 and s["layout"]=="A_minimum_practical_vertical":
               print("HIGH-MOUNT",s["scenario"],"SCREEN45",
-                s["monitor_occlusion_proxies"]["screen_top_45cm"]["blocking_bands"])
+                s["monitor_occlusion_proxies"]["screen_top_45cm"]["blocking_bands"],
+                "APERTURE_UNKNOWN",s["monitor_occlusion_proxies"]["screen_top_45cm"]["not_certified_full_flange_clear"])
           PY
       - name: Archive source-generated measurements classed as analytical only
         uses: actions/upload-artifact@v4
