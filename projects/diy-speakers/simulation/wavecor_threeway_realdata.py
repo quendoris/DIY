@@ -138,7 +138,10 @@ def make_report(
     for f in sample_f:
         l1,h1=lr4_pair(f,fc_low_mid)
         l2,h2=lr4_pair(f,fc_mid_high)
-        filters={"LOW":l1,"MID":h1*l2,"HIGH":h1*h2}
+        # The upper LR4 split rotates MID+HIGH by an allpass phase.
+        # Apply the same allpass to LOW to preserve ideal flat-driver
+        # sum across two cascaded LR4 crossovers.
+        filters={"LOW":l1*(l2+h2),"MID":h1*l2,"HIGH":h1*h2}
         raw={name:curves[name]["spl"].complex_at(f)*trims[name]*filters[name]
              for name in SOURCES}
         coherent=sum(raw.values())
@@ -175,7 +178,8 @@ def make_report(
       "status":"MANUFACTURER_MEASURED_INFINITE_BAFFLE_INPUTS; INTEGRATED_SPEAKER_NOT_MEASURED",
       "candidate":"Wavecor WF168WA06 + MR120BD02/04 + TW030WA22",
       "fc_low_mid_hz":fc_low_mid,"fc_mid_high_hz":fc_mid_high,
-      "electrical_filter":"ideal 4th-order Linkwitz-Riley cascaded, not an actual acoustic target",
+      "electrical_filter":"ideal 4th-order Linkwitz-Riley cascaded plus upper-split allpass phase bridge on LOW, not actual acoustic target",
+      "upper_crossover_allpass_bridge_for_low_band":True,
       "normalization":"Each source scaled to 86dB magnitude at LF180/MID1100/HF6000Hz; relative voltage gains only.",
       "measured_three_way_phase_aligned":False,
       "measured_finite_baffle":False,
