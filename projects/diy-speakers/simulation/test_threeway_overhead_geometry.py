@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from threeway_overhead_geometry import (
   Setup, Screen, tilt_deg, unit_vectors, sources, distance, projected_baffle_extents,
-  crossing, visibility, angle_to_normal, band_pressure, compare_window,
+  crossing, visibility, clearance_over_head_window, angle_to_normal, band_pressure, compare_window,
   stand_height_for_acoustic_center, scenarios
 )
 from threeway_baffle_geometry import default_layouts, ideal_filters
@@ -96,6 +96,18 @@ class OverheadGeometryTests(unittest.TestCase):
         self.assertIn("show_placeholder_stand=false",scad)
         for v in ("low_xy","mid_xy","high_xy","screen_top_height_m"):
             self.assertIn(v,scad)
+
+    def test_nominal_clearance_does_not_prove_moving_head_clearance(self):
+        high=Setup("over",VERT,90,.65,.35)
+        screen=Screen(.35,.45,.3)
+        centered=visibility(high,screen)
+        self.assertTrue(all(r["conservative_full_flange_clear"]
+                            for r in centered.values()))
+        window=clearance_over_head_window(high,screen)
+        self.assertEqual(window["head_positions_tested"],45)
+        self.assertLess(window["all_three_conservative_flange_clear_positions"],45)
+        self.assertLess(window["fraction_all_flange_clear"],1.)
+        self.assertFalse(window["is_obstructed_acoustic_field_quantified"])
 
     def test_acoustic_axis_and_platform_height_are_not_synonyms(self):
         st=stand_height_for_acoustic_center(self.s)
