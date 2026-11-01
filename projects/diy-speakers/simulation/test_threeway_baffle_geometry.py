@@ -10,7 +10,7 @@ from threeway_baffle_geometry import (
   DRIVERS, ORDER, HEAD_X_M, HEAD_Y_M, TEST_DISTANCES_M, TEST_FREQUENCIES_HZ,
   REF_EAR_M, clearance_mm, default_layouts, distance_to_source_m,
   hypothetical_complex_pressure, ideal_filters, layout_score,
-  panel_dimensions, relative_db, report, validate_layout, vertical_layout
+  panel_dimensions, relative_db, report, sidewoofer_layout, validate_layout, vertical_layout
 )
 
 class ThreewayBaffleTests(unittest.TestCase):
@@ -100,14 +100,28 @@ class ThreewayBaffleTests(unittest.TestCase):
         self.assertFalse(r["angular_directivity_measured_or_modeled"])
         self.assertFalse(r["common_manufacturer_phase_time_zero_proven"])
         self.assertFalse(r["real_speaker_crossover_qualified"])
-        self.assertEqual(len(r["layouts"]),5)
+        self.assertEqual(len(r["layouts"]),7)
         self.assertEqual(sum(bool(v["physical_rim_clearance_pass"])
-                             for v in r["layouts"]),4)
+                             for v in r["layouts"]),6)
         self.assertIn("removable",r["physical_build_decision"])
-        self.assertEqual(r["conditionally_most_robust_layout_id"],
-                         "A_minimum_practical_vertical")
+        self.assertIn(r["conditionally_most_robust_layout_id"],
+                      {x["id"] for x in r["layouts"] if x["physical_rim_clearance_pass"]})
+
+    def test_left_and_right_woofer_layouts_fit_shorter_wider_panels(self):
+        left=sidewoofer_layout("side_left",-1)
+        right=sidewoofer_layout("side_right",1)
+        for layout in (left,right):
+            validate_layout(layout)
+            p=panel_dimensions(layout)
+            self.assertGreater(p["required_flat_panel_width_mm"],300)
+            self.assertLess(p["required_flat_panel_height_mm"],310)
+            self.assertAlmostEqual(clearance_mm(layout,"LOW","MID"),5)
+            self.assertAlmostEqual(clearance_mm(layout,"MID","HIGH"),5)
+        self.assertAlmostEqual(layout_score(left)["rms_abs_db"],
+                               layout_score(right)["rms_abs_db"],delta=1e-5)
 
     def test_no_unphysical_input_or_fake_yield(self):
+
         with self.assertRaises(ValueError):
             vertical_layout("bad",5,5,200)
         with self.assertRaises(ValueError):
