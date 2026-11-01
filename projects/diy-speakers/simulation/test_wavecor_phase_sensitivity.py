@@ -43,6 +43,10 @@ class SensitivityTests(unittest.TestCase):
         with self.assertRaises(ValueError):
             responses_for(flat_inputs(),3000,1000)
         with self.assertRaises(ValueError):
+            responses_for(flat_inputs(),350,500)
+        with self.assertRaises(ValueError):
+            responses_for(flat_inputs(),250,2500)
+        with self.assertRaises(ValueError):
             flattening_metric([])
 
     def test_genuine_uncertainty_is_not_overridden(self):
