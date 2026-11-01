@@ -111,3 +111,8 @@ To run locally on Arch Linux, from projects/diy-speakers/simulation:
 7. **Retain final-production candidacy** of owner-sourced HiVi M6N/D6G for the lower band until their own FRD/impedance and comparison are measured in the same fixture.
 
 This is the first real, source-audited layer of crossover engineering, not an assertion of a finished high-end speaker.
+
+
+## Follow-up geometry gate — D2-GEO-01
+
+[Factory-dimensioned three-way test baffle study](D2-GEO-01-WAVECOR-BAFFLE.md) has now compared vertically stacked LF/MID/HF against short/wide **mirrored side-woofer** layouts with full nominal flange bounding (Ø168/120/104mm), a 5mm physical rim-gap rule and 0.6/0.7/0.8m nearfield ideal point-source phase/grid sensitivity. The practical **205×440mm vertical** and **330×290mm side-LF** options were effectively tied by the conditional model (worst-case ~1.3404 vs 1.3401dB), **not proven acoustically equal in a real cabinet**. A parameterized [OpenSCAD research panel](simulation/threeway_baffle_reference.scad) supports all three (vertical/side-left/side-right). The final enclosure must follow measured geometry, not force it; the test panel itself is NOT a final-cabinet or production CNC drawing. Remaining critical gaps are real off-axis wavefront/directivity, finite baffle diffraction, and shared acoustic-phase reference.
