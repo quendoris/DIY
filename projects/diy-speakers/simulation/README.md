@@ -104,3 +104,13 @@ python3 optical_host_probe.py probe --host 127.0.0.1 --port 50808 --count 100 --
 
 **Full STM32 → 1/2/5m fiber workflow:** [../OPTICAL-TEST-PROCEDURE.md](../OPTICAL-TEST-PROCEDURE.md). No genuine fiber/device tests have been run yet; this code only validates assumptions and host framing.
 
+
+
+## Current acoustic integration task
+
+Wavecor WF168WA06 (LF), MR120BD02 (dedicated MID), TW030WA22 (HF) are the current **8Ω three-way reference triad**; HiVi M6N/D6G remain final-design LF rivals. Independent SUB research continues. See [../D2-THREE-WAY-ACOUSTIC-INTEGRATION.md](../D2-THREE-WAY-ACOUSTIC-INTEGRATION.md) and the exact [manufacturer data availability manifest](threeway_acoustic_sources.json).
+
+[threeway_acoustic_geometry.py](threeway_acoustic_geometry.py) computes **ideal complex LR4** crossover sensitivity to relative delay and **nearfield listener vertical movement**. The [tests](test_threeway_acoustic_geometry.py) show that equal-phase LR4 branches sum coherently in an idealized model but 100µs inter-driver delay mismatch at 2.5kHz creates ~3.01dB cancellation at crossover. A **3-column magnitude-and-phase FRD importer** rejects amplitude-only source files: we explicitly cannot infer actual acoustic crossover summation from the manufacturer's magnitude-only response or uncalibrated baffles. All geometry lengths are illustrative, not measured driver mounting layouts.
+
+The optical STM32 experiment is held as a parallel future physical experiment; [ADR-003](../ADR-003-RESEARCH-HARDWARE-QUALIFICATION.md) accepts imperfect, safe, documented research boards but requires full qualification of final custom PCBs.
+
