@@ -110,7 +110,27 @@ python3 optical_host_probe.py probe --host 127.0.0.1 --port 50808 --count 100 --
 
 Wavecor WF168WA06 (LF), MR120BD02 (dedicated MID), TW030WA22 (HF) are the current **8Ω three-way reference triad**; HiVi M6N/D6G remain final-design LF rivals. Independent SUB research continues. See [../D2-THREE-WAY-ACOUSTIC-INTEGRATION.md](../D2-THREE-WAY-ACOUSTIC-INTEGRATION.md) and the exact [manufacturer data availability manifest](threeway_acoustic_sources.json).
 
-[threeway_acoustic_geometry.py](threeway_acoustic_geometry.py) computes **ideal complex LR4** crossover sensitivity to relative delay and **nearfield listener vertical movement**. The [tests](test_threeway_acoustic_geometry.py) show that equal-phase LR4 branches sum coherently in an idealized model but 100µs inter-driver delay mismatch at 2.5kHz creates ~3.01dB cancellation at crossover. A **3-column magnitude-and-phase FRD importer** rejects amplitude-only source files: we explicitly cannot infer actual acoustic crossover summation from the manufacturer's magnitude-only response or uncalibrated baffles. All geometry lengths are illustrative, not measured driver mounting layouts.
+[threeway_acoustic_geometry.py](threeway_acoustic_geometry.py) computes **ideal complex LR4** crossover sensitivity to relative delay and **nearfield listener vertical movement**. The [tests](test_threeway_acoustic_geometry.py) show that equal-phase LR4 branches sum coherently in an idealized model but 100µs inter-driver delay mismatch at 2.5kHz creates ~3.01dB cancellation at crossover. A **3-column magnitude-and-phase FRD importer** rejects amplitude-only source files: manufacturer numeric response files **actually include individual phase**, but common time zero across three independent factory measurements and the finite baffle are not verified, so actual acoustic crossover summation is still unproven. All geometry lengths are illustrative, not measured driver mounting layouts.
 
 The optical STM32 experiment is held as a parallel future physical experiment; [ADR-003](../ADR-003-RESEARCH-HARDWARE-QUALIFICATION.md) accepts imperfect, safe, documented research boards but requires full qualification of final custom PCBs.
 
+
+
+## D2-REAL-01: original Wavecor phase and impedance (acquired)
+
+Source-based results [full report](../D2-REAL-01-WAVECOR-PHASE.md); raw manufacturer files are retrieved live, not embedded in this repo, and **SHA-256 verified** against [threeway_acoustic_sources.json](threeway_acoustic_sources.json).
+
+- [wavecor_probe.py](wavecor_probe.py) finds manufacturer page links without inventing filenames.
+- [wavecor_threeway_realdata.py](wavecor_threeway_realdata.py) fetches **6×800** real manufacturer numeric triples (3 SPL + measured per-driver acoustic phase, 3 impedance + electrical phase), interpolates them, preserves source SHA and calculates a conditional filter transfer function; direct URL/phase mismatch => fail.
+- [wavecor_phase_sensitivity.py](wavecor_phase_sensitivity.py) compares crossover hypotheses around **350–600 Hz / 2–3 kHz**, relative delays and vertical head displacement using measured single-driver curves under **explicit unknown cross-driver phase time zero**.
+- A NEGATIVE test proves naïve concatenation of two LR4 branches can create nonflat THREE-way response even for perfect transducers. A LOW-channel **upper-split allpass phase bridge** makes the flat-driver ideal transfer a unit-magnitude allpass product. Code and tests do not claim actual production acoustic phase.
+
+Execute in this folder:
+
+```bash
+python3 -m unittest -v
+python3 wavecor_threeway_realdata.py --out wavecor-report.json
+python3 wavecor_phase_sensitivity.py --out wavecor-phase-sweep.json
+```
+
+GitHub Action: [wavecor-primary-phase.yml](../../../.github/workflows/wavecor-primary-phase.yml). **Manufacturer FRD does not replace common-reference microphone measurements on a temporary baffle, angular data, driver THD or genuine DAC/amp synchrony.**
