@@ -87,4 +87,4 @@ Reference standards:
 - [USB Audio Class](https://www.usb.org/document-library/usb-audio-devices-release-40-and-adopters-agreement): native device audio interface option.
 - [NIST message authentication code](https://csrc.nist.gov/glossary/term/message_authentication_code): origin/integrity without requiring payload confidentiality.
 
-See [CONTRACT.md](CONTRACT.md), [SIMULATION-PLAN.md](SIMULATION-PLAN.md), and the [first executable model](simulation/README.md).
+See [CONTRACT.md](CONTRACT.md), [SIMULATION-PLAN.md](SIMULATION-PLAN.md), [FOUR-PLANE-ARCHITECTURE.md](FOUR-PLANE-ARCHITECTURE.md), and the [four-plane logical model](four-plane/README.md). The earlier [single-receiver model](simulation/README.md) remains a separate first-stage baseline.
