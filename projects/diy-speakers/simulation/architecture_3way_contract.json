@@ -1,0 +1,174 @@
+{
+  "schema_version": 1,
+  "decision_id": "ADR-001",
+  "decision_date": "2026-11-01",
+  "decision_status": "owner_selected_topology_frozen",
+  "reference": "projects/diy-speakers/ADR-001-ACTIVE-THREE-WAY-SUB.md",
+  "source_program_channels": 2,
+  "output_channels_required": 7,
+  "speaker_units": [
+    {
+      "id": "left",
+      "role": "active_satellite",
+      "acoustic_bands": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "dac_output_channels": 3,
+      "amplifier_output_channels": 3,
+      "local_audio_clock_domain": "left_local",
+      "power_domain": "left_AC_DC",
+      "midrange_independent_rear_volume": true
+    },
+    {
+      "id": "right",
+      "role": "active_satellite",
+      "acoustic_bands": [
+        "low",
+        "mid",
+        "high"
+      ],
+      "dac_output_channels": 3,
+      "amplifier_output_channels": 3,
+      "local_audio_clock_domain": "right_local",
+      "power_domain": "right_AC_DC",
+      "midrange_independent_rear_volume": true
+    },
+    {
+      "id": "sub",
+      "role": "active_subwoofer",
+      "acoustic_bands": [
+        "low_sub"
+      ],
+      "dac_output_channels": 1,
+      "amplifier_output_channels": 1,
+      "local_audio_clock_domain": "sub_local",
+      "power_domain": "sub_AC_DC",
+      "midrange_independent_rear_volume": null
+    }
+  ],
+  "audio_planes": [
+    {
+      "id": "health_trust",
+      "duty": "attested identities, measured health, fresh error reports",
+      "independent_from_media_buffer": true
+    },
+    {
+      "id": "command",
+      "duty": "authenticated priority commands, non-replay session+epoch counters",
+      "independent_from_media_buffer": true
+    },
+    {
+      "id": "media",
+      "duty": "verified prebuffered source data and assigned sample indices",
+      "independent_from_media_buffer": false
+    },
+    {
+      "id": "clock_sync",
+      "duty": "calibrated playout clock tracking and sample-time mapping",
+      "independent_from_media_buffer": true
+    }
+  ],
+  "timing": {
+    "sample_rate_hz_study": [
+      48000,
+      96000,
+      192000
+    ],
+    "bits_per_sample_study": [
+      24,
+      32
+    ],
+    "common_playout_epoch_required": true,
+    "inter_device_clock_discipline": "REQUIRED_BUT_NOT_YET_IMPLEMENTED",
+    "inter_device_sample_alignment": "NOT_TESTED",
+    "local_channels_shared_clock_by_enclosure": true,
+    "fiber_length_invariant_without_calibration": false,
+    "total_delay_accounts_for": [
+      "fiber",
+      "PHY_reassembly",
+      "receiver_fifo",
+      "DAC_filter",
+      "DSP_crossover",
+      "power_amp",
+      "driver_geometry",
+      "acoustic_distance"
+    ]
+  },
+  "digital_analog": {
+    "per_driver_conversion_channel_required": true,
+    "per_driver_discrete_dac_IC_required": false,
+    "nominal_driver_amp_sizing": "TBD per driver, no equal amp wattage assumption",
+    "protection_hardware_independent_from_network": true,
+    "soft_mute_start_stop_fault": "REQUIRED_BUT_NOT_YET_BENCH_TESTED",
+    "normal_operation_wire_audio_encrypted": false,
+    "media_integrity_policy": "TBD threat model; CRC not MAC",
+    "command_authentication_implemented": false
+  },
+  "power": {
+    "first_hardware_stage": "DC-only monitored protected rails using certified external AC/DC PSU",
+    "separate_enclosure_power_domains": true,
+    "analog_and_power_rail_noise_separation": "REQUIRED_NOT_YET_MEASURED",
+    "thermal_cooling_design": "passive-first; isolated fan compartment if justified"
+  },
+  "mechanical": {
+    "owner_listening_m": [
+      0.6,
+      0.8
+    ],
+    "temporary_fixture": "interchangeable plywood test box with isolated dedicated mid chamber",
+    "finished_aesthetic_enclosure": "LAST",
+    "driver_models_selected": false
+  },
+  "openness": {
+    "public_complete_source_release_goal": true,
+    "licensing_status": "TBD",
+    "planned_releasable_artifacts": [
+      "source_and_build_scripts",
+      "digital_protocol_specification",
+      "DSP_crossover_profiles",
+      "math_models_and_formal_contracts",
+      "firmware",
+      "PCB_schematics_layouts",
+      "mechanical_models",
+      "BOM_with_alternates",
+      "assembly_and_safety_instructions",
+      "raw_measurements_and_unit_tests",
+      "qualification_dossiers_with_limits"
+    ],
+    "closed_proprietary_blackbox_dependency_as_design_goal": "MINIMIZE",
+    "official_safety_certification_current_status": "NOT_TESTED",
+    "qualifier_levels": [
+      "MODEL_ONLY",
+      "UNIT_TESTED",
+      "FORMALLY_PROVED_UNDER_ASSUMPTIONS",
+      "BENCH_MEASURED",
+      "EXTERNAL_CERTIFIED",
+      "NOT_TESTED"
+    ]
+  },
+  "candidate_crossovers_hz": {
+    "sub_satellite": [
+      70,
+      110
+    ],
+    "satellite_low_mid": [
+      350,
+      600
+    ],
+    "satellite_mid_high": [
+      2000,
+      3000
+    ],
+    "note": "ranges for simulation, NOT predetermined actual acoustic filters"
+  },
+  "prohibited_inferences": [
+    "7 discrete DAC ICs required",
+    "7 independent DAC channels alone prove audible advantage",
+    "error-free fiber guarantees synchronized DAC playback",
+    "formal protocol tests prove physical loudspeaker fidelity",
+    "DIY qualification dossier equals accredited compliance certification",
+    "two-way+sub is an alternative target topology"
+  ]
+}
