@@ -80,6 +80,14 @@ Sources:
 
 For every tested candidate: source and units; exact model revision; envelope of model predictions with assumptions; missing/contradictory manufacturer facts; comparable current delivered Russian prices; a `MEASURED` / `SIMULATED` / `NOT_TESTED` evidence flag; tests and reason codes for rejected choices. It is acceptable to have **no chosen driver** until the predicted acoustic performance and price both check out.
 
+## Construction order clarification — 2026-11-01
+
+The final cabinet is explicitly **last**: the owner wants exceptional industrial/futuristic styling with detailed acoustic/mechanical and aesthetic modeling, possibly real wood/resin/composite, not a finalized plywood box.
+
+A **temporary, practical plywood measurement enclosure** and interchangeable baffle are approved intermediate research tooling. An **open-frame test** is suitable only for low-power mechanical/impedance/T/S experiments; unrestricted free-air LF playback can produce excess excursion, and rear cancellation invalidates cabinet-response conclusions.
+
+Three direct AliExpress candidates, with exact listing/SKU references, are now recorded in [ALIEXPRESS-CANDIDATES.md](ALIEXPRESS-CANDIDATES.md). Vendor and model identities remain **unverified**, despite the owner's observation that each selected unit costs less than 10,000 RUB. Purchase consideration is conditional on a clear model identity or explicit acceptance of measurement-only uncertainty.
+
 ## Immediate prototype configurations
 
 1. SB15MFC30-8 + SB26STWGC-4, matched against SB15MFC30-8 + SB26ADC-C000-4.
