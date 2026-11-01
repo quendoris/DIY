@@ -27,7 +27,7 @@ def trims_for(curves):
 def responses_for(curves, fc1: float, fc2: float, 
                   low_delay_us: float=0., mid_delay_us: float=0., high_delay_us: float=0.,
                   freqs=KEY_FREQS, bridge_low_phase: bool=True) -> list[tuple[float, float]]:
-    if not 200 <= fc1 < fc2 <= 5000:
+    if not 300 <= fc1 <= 800 or not 1800 <= fc2 <= 3500 or not fc1 < fc2:
         raise ValueError("invalid crossover hypothesis")
     factors=trims_for(curves)
     delays={"LOW":low_delay_us,"MID":mid_delay_us,"HIGH":high_delay_us}
@@ -71,7 +71,7 @@ def physical_path_increment_us(head_z_m, source_z_m,
 
 def investigate(curves) -> dict:
     baseline=responses_for(curves,450,2500)
-    sample_points=[(250,350),(350,500),(400,2000),(400,2500),
+    sample_points=[(350,2000),(350,2500),(400,2000),(400,2500),
                    (450,2000),(450,2500),(450,3000),
                    (500,2500),(600,3000),(700,3500)]
     sweep=[]
