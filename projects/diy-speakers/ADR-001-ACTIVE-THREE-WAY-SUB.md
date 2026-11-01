@@ -93,3 +93,8 @@ The owner wants **reproducible complete designs** rather than undisclosed commer
 Frozen topology: 2 active 3-way satellites + 1 independent sub, 7 independent DAC-output/amp channels, four logical planes, openness/reproducibility, final aesthetic enclosure LAST.
 
 Still open: exact manufacturer drivers, crossover frequencies/slopes, 4Ω vs 8Ω mix, per-band DAC chip count, global vs local DSP allocation, analog amplifier classes and power, exact optical PHY, circuit parts, cabinet dimensions, realistic performance metrics, implementation language and release license.
+
+
+## Acoustic layout is a derived requirement, not aesthetic input
+
+[Dimensioned geometric investigation D2-GEO-01](D2-GEO-01-WAVECOR-BAFFLE.md) now preserves **two viable real-dimension fixture shapes**, 205×440mm vertical and 330×290mm mirrored side-low; the source-based ideal monopole study cannot physically distinguish them because angular data, finite baffle and common-driver acoustic phase have not been measured. **Do not freeze the futuristic cabinet until the driver layout and acoustic directivity are measured**. Future shell geometry is built around the validated acoustics, and any shell change triggers requalification.
