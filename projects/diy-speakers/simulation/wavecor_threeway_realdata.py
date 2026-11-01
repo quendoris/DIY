@@ -39,6 +39,17 @@ SOURCES={
     },
 }
 EXAMPLE_F=[100,250,400,500,1000,2000,2500,3000,5000,10000]
+PINNED_MANIFEST=Path(__file__).with_name("threeway_acoustic_sources.json")
+MANIFEST_KEYS={"LOW":"LOW_WF168WA06_8ohm",
+               "MID":"MID_MR120BD02_8ohm",
+               "HIGH":"HF_TW030WA22_8ohm"}
+
+def validate_original_source_sha(name: str, kind: str, sha: str, manifest: dict) -> None:
+    rows={row["id"]:row for row in manifest["datasets"]}
+    expected=rows[MANIFEST_KEYS[name]][f"{kind if kind=='spl' else 'impedance'}_sha256"]
+    if sha != expected:
+        raise ValueError(f"manufacturer content changed for {name}/{kind}: expected {expected}, received {sha}; audit source revision before acceptance")
+
 
 class Curve:
     def __init__(self, kind: str, rows: list[tuple[float,float,float]]):
@@ -208,6 +219,7 @@ def main():
     args=parser.parse_args()
     data={}
     provenance={}
+    manifest=json.loads(PINNED_MANIFEST.read_text(encoding="utf8"))
     for name,src in SOURCES.items():
         data[name]={}
         provenance[name]={}
@@ -219,6 +231,8 @@ def main():
                 n=len(b)
             else:
                 raw,sha,n=fetch(src[kind])
+            if not args.offline_dir:
+                validate_original_source_sha(name,kind,sha,manifest)
             curve=parse_wavecor(raw,kind)
             data[name][kind]=curve
             provenance[name][kind]={"url":src[kind],"sha256":sha,"size_bytes":n}
