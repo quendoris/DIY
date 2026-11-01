@@ -136,3 +136,8 @@ GitHub workflow [threeway-geometry-study.yml](../../.github/workflows/threeway-g
 **Proof state:** dimensions **FACTORY_PUBLISHED**; non-overlap **GEOMETRY_TESTED**; acoustic head-window **IDEAL_POINT_SOURCE_MODEL_ONLY**; real finite-baffle response **NOT_TESTED**; actual 3-way speaker mechanical/safety qualification **NOT_TESTED**. Not a certification, not an optimality proof.
 
 This project's "crystal growth" rule: don't claim a more accurate layer until source dimensions and model assumptions were independently checked; and re-test after every material/geometry change.
+
+
+## New conditional physics layer — D2-WAVE-02
+
+[Physical assumptions & research results](D2-WAVE-02-DIRECTIVITY-DESK-DIFFRACTION.md) supplement this geometry-only panel with **ideal baffled circular-piston directivity**, a rectangle-edge geometric lag list (NOT an actual diffraction transfer function), and infinite-table / conditional finite specular reflection. At an example ear height 350mm above the desk, the vertical panel bottom is at 39.5mm while the side-LF panel bottom requires 189mm clearance. That raises the side-LF center from 142.5mm to 291.5mm above desk, though MID/HF centers align at 291.5mm and 408.5mm in both. A measured winner is **NOT established**. See new [models](simulation/threeway_wave_desk_model.py) and [conditional full-array desk model](simulation/threeway_desk_array.py).
