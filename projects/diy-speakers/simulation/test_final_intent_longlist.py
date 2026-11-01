@@ -50,7 +50,8 @@ class FinalIntentResearchTests(unittest.TestCase):
     def test_discrepancies_remain_visible(self):
         self.assertIsNone(C["HIVI-F6N"]["fs_hz"])
         self.assertIn("seller",C["WAVECOR-WF168WA06"]["note"])
-        self.assertIn("8Ω",C["SB-SB17NBAC35-8"]["note"])
+        self.assertEqual(C["SB-SB17NBAC35-8"]["ohm"], 8)
+        self.assertIn("4-ohm tested variant", C["SB-SB17NBAC35-8"]["note"])
         self.assertEqual(C["SB-SB17NBAC35-4"]["ohm"],4)
 
     def test_four_ohm_sensitivity_requires_power_normalization(self):
