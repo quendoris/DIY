@@ -2,6 +2,12 @@
 
 Status: **owner constraints captured / stereo 2.1 preferred research baseline; parts and manufacturing not frozen**.
 
+## New wired digital transport concept — 2026-11-01
+
+The owner proposed a **wired-only, optical** distributed audio system: PC→digital controller over USB-C, separate duplex optical links to independently powered satellites and subwoofer, deep receiver buffering with independent high-priority commands, sample-clock synchronization, authenticated device identities and rigorous model-level contracts. The correct digital-audio interpretation places local DACs *after the fiber* in the active speakers, unless a separately modeled analog-optical link is deliberately chosen.
+
+This is a **research direction**, not a fixed PHY or complete cryptographic architecture. The portable player+earbud radio design is a separate scope. Documents and first executable contract: [wired-audio-fabric/](wired-audio-fabric/README.md).
+
 ## Owner clarification — 2026-10-30
 
 - Room approximately 19 m², with future room changes possible.
