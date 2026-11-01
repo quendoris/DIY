@@ -141,3 +141,8 @@ This project's "crystal growth" rule: don't claim a more accurate layer until so
 ## New conditional physics layer — D2-WAVE-02
 
 [Physical assumptions & research results](D2-WAVE-02-DIRECTIVITY-DESK-DIFFRACTION.md) supplement this geometry-only panel with **ideal baffled circular-piston directivity**, a rectangle-edge geometric lag list (NOT an actual diffraction transfer function), and infinite-table / conditional finite specular reflection. At an example ear height 350mm above the desk, the vertical panel bottom is at 39.5mm while the side-LF panel bottom requires 189mm clearance. That raises the side-LF center from 142.5mm to 291.5mm above desk, though MID/HF centers align at 291.5mm and 408.5mm in both. A measured winner is **NOT established**. See new [models](simulation/threeway_wave_desk_model.py) and [conditional full-array desk model](simulation/threeway_desk_array.py).
+
+
+## D2-OVERHEAD-01 extension — stand height, downward pitch and driver-array roll
+
+The owner also proposes **elevated stands above monitors** with the speaker aimed down at the ears, and full-body array roll of **0°,45°,90°**. This significantly changes the geometric line-of-sight, first reflection, vertical sound image and horizontal vs vertical MID/HF lobes. A compact vertical plywood panel is no longer privileged for initial industrial implementation; [full over-monitor study](D2-OVERHEAD-01-MONITOR-MOUNTING.md) includes exact height semantics, screen ray interception, angle and structural risks. Neither current desktop layout nor raised layout is approved. OpenSCAD: [threeway_overhead_scene.scad](simulation/threeway_overhead_scene.scad).
