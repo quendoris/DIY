@@ -10,16 +10,25 @@
 // It is NOT modeled here. Do not attach a 3-way speaker to an open panel for
 // unrestricted bass testing.
 //
-// Correct reference layout: center XYZ from BOTTOM-LEFT FRONT VIEW:
-// LOW=(102.5,103.0); MID=(102.5,252.0); HIGH=(102.5,369.0).
-// Vertical acoustic ear target is halfway between MID and HF at y=310.5mm
-// measured from lower edge; nominal only.
+// Two geometry-only options with full circular faceplates and >=5mm rim gaps:
+// VERTICAL 205x440: L=(102.5,103), M=(102.5,252), H=(102.5,369).
+// SIDE 330x290 left-low: L=(102.5,102.5), M=(251.5,102.5), H=(251.5,219.5).
+// SIDE 330x290 right-low: L=(227.5,102.5), M=(78.5,102.5), H=(78.5,219.5).
+// Both side layouts are mirror-related; ideal point-source scores differ from
+// vertical by only millidecibels and are NOT an acoustic quality ranking.
 // Source: https://www.wavecor.com/Driver%20specifications%20PDF/
 // Fixture study: projects/diy-speakers/simulation/threeway_baffle_geometry.py
 
 $fn = 128;
-panel_w = 205; // mm
-panel_h = 440; // mm
+// Choose vertical, side_left, or side_right. No final enclosure implied.
+layout_mode = "vertical";
+is_vertical = layout_mode == "vertical";
+is_side_left = layout_mode == "side_left";
+is_side_right = layout_mode == "side_right";
+assert(is_vertical || is_side_left || is_side_right,
+       "layout_mode must be vertical, side_left, or side_right");
+panel_w = is_vertical ? 205 : 330; // mm
+panel_h = is_vertical ? 440 : 290; // mm
 panel_thickness = 18; // preview-grade plywood only
 
 show_plate = true;
@@ -29,9 +38,11 @@ show_ear_axis = true;
 // DO NOT set this to true and machine the result without remeasuring parts.
 illustrative_rear_cutouts = false;
 
-low_xy = [102.5,103.0];
-mid_xy = [102.5,252.0];
-high_xy= [102.5,369.0];
+low_xy  = is_vertical ? [102.5,103.0] : (is_side_left ? [102.5,102.5] : [227.5,102.5]);
+mid_xy  = is_vertical ? [102.5,252.0] : (is_side_left ? [251.5,102.5] : [78.5,102.5]);
+high_xy = is_vertical ? [102.5,369.0] : (is_side_left ? [251.5,219.5] : [78.5,219.5]);
+// This is where the listener's ear projects onto the physical front face.
+ear_xy  = is_vertical ? [102.5,310.5] : (is_side_left ? [251.5,161.0] : [78.5,161.0]);
 
 low_outer_d = 168;
 mid_outer_d = 120;
@@ -90,8 +101,13 @@ if (show_mount_circle_guides) {
 
 if (show_ear_axis)
   color([0.05,0.74,0.85,0.8])
-    translate([0,310.5,panel_thickness+3.0])
+    translate([0,ear_xy[1],panel_thickness+3.0])
       cube([panel_w,0.8,0.8]);
+
+if (show_ear_axis)
+  color([0.05,0.74,0.85,1])
+    translate([ear_xy[0]-0.5,ear_xy[1]-7,panel_thickness+3.0])
+      cube([1.0,14,0.8]);
 
 // Keep the panel as a REMOVABLE jig. Real speaker construction should use
 // actual measured acoustic centres, angular FRD/IR and updated clearances.
