@@ -64,6 +64,26 @@ The p95 values are produced by *ideal piston/point source + simulated filters an
 
 The diagonal **45°** test is a real research candidate, not merely decorative. Our model's 45° p95 (~0.951dB in hypothesis C) hides a worse maximum over some sampled head positions (~2.505dB vs 1.2785dB for horizontal); record both p95 AND worst-case rather than cherry-pick one metric.
 
+## Whole head-window monitor clearance changes the apparent winner
+
+The **central listening ray is not enough**. D2-OVERHEAD-01 now evaluates **45 distinct ear positions** across 60/70/80cm listening depths, ±8cm sideways and ±10cm vertical, using a conservative projected **full circular speaker flange** clearance bound rather than center rays alone.
+
+With hypothesis C: source-axis height **65cm above table**, ear height **35cm**, monitor plane halfway forward and monitor top **45cm**, results are:
+
+| Whole-array rotation from vertical | All three CENTER rays clear | All three full nominal FLANGES conservatively clear |
+|---|---:|---:|
+| 0° vertical | **9 / 45** | **0 / 45** |
+| 45° diagonal | **15 / 45** | **0 / 45** |
+| 90° horizontal | **36 / 45** | **24 / 45** |
+
+These are **geometric fractions over our arbitrarily chosen head grid**, NOT the probability of good sound, not measured high-frequency attenuation and not actual user-monitor geometry.
+
+In fact the horizontal all-flanges-clear centre position only has about **8mm vertical margin** for LOW under this screen model. Moving the head closer and down can invalidate it. The study includes an exact conservative rearrangement of the ray-clearance formula for a horizontal original triple at this screen geometry. **To guarantee the full nominal FLANGE above the hypothetical 45cm monitor throughout all 45 head positions** (ignoring potential escape around the side), its acoustic axis would need **~81.4cm above the table** with ear height 35cm, requiring **~33.5° downward tilt** at 70cm horizontal distance. This is a valid bound for these fictitious simple-screen assumptions, NOT a recommended installation height. It would greatly exceed the ±15° conventional monitoring guidance and could introduce ceiling/vertical localization and mount-safety problems.
+
+**Better engineering direction than blindly raising everything to 81cm:** test speaker x-offset outside actual monitor panels, support behind or beside screens, adjust speaker-to-screen depth, reduce required vertical separation or use an angled layout after measuring the real screen tops, while keeping the direct sound at ears and stereo alignment. For a desk with several monitors, one 60cm centered screen is an inadequate final obstacle model: future iteration must handle multiple distinct rectangular screen surfaces and true stereo speaker x/yaw.
+
+This failed universal clearance test is exactly the falsifying experiment we want: the idea is promising, but its first winning-looking configuration is not robust enough yet.
+
 ### Stand and overhead safety
 
 The owner has not selected actual speaker weights or final shape; heavy multi-kilogram baffles above people's heads **must not be supported by an unverified desk clamp, 3D-printed joint or arm**. Before a real physical elevated prototype:
@@ -87,9 +107,9 @@ We now need a **three-dimensional stereo installation contract**, not just an is
 ## Reproducible implementation
 
 - [threeway_overhead_geometry.py](simulation/threeway_overhead_geometry.py) — 3D rigid rotation, true centre coordinates, conservative screen ray-blocking, sample-phase/piston model and single desk image ray.
-- [test_threeway_overhead_geometry.py](simulation/test_threeway_overhead_geometry.py) — 15 tests of pitch, 3D rotation, geometric clearance, zero-reflection model, phase reference, test uncertainty and correct OpenSCAD setup.
+- [test_threeway_overhead_geometry.py](simulation/test_threeway_overhead_geometry.py) — 17 tests of pitch, 3D rotation, geometric clearance, zero-reflection model, phase reference, test uncertainty and correct OpenSCAD setup.
 - [threeway_overhead_scene.scad](simulation/threeway_overhead_scene.scad) — adjustable 3D scene containing experimental baffle, driver envelopes, down-tilt, sample screen, table and reference rays. Param `roll_deg=0,45,90`. OpenSCAD is a preview, NOT finished CAD or safe stand mount.
-- [threeway-overhead-study.yml](../../.github/workflows/threeway-overhead-study.yml) — runs the study on GitHub-hosted CI and retains complete JSON; [actual successful first run](https://github.com/quendoris/DIY/actions/runs/41324088770).
+- [threeway-overhead-study.yml](../../.github/workflows/threeway-overhead-study.yml) — runs the study on GitHub-hosted CI and retains complete JSON; [current full listening-window run](https://github.com/quendoris/DIY/actions/runs/41324663082).
 
 ```bash
 cd projects/diy-speakers/simulation
