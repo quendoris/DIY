@@ -1,6 +1,12 @@
 # Premium DIY Loudspeakers — Research Concept
 
-Status: **owner constraints captured / stereo 2.1 preferred research baseline; parts and manufacturing not frozen**.
+Status: **owner constraints captured / stereo 2.1 preferred research baseline; final aesthetic cabinet deliberately postponed until last**.
+
+## Experimental enclosure and AliExpress shortlist — 2026-11-01
+
+The final enclosure will be designed **last** with serious attention to acoustics, futuristic aesthetics and material engineering. For measurements use **open-frame driver fixtures only where appropriate**, or a cheap temporary plywood test cabinet with a replaceable baffle; do not treat the test fixture as the final speaker housing. The owner has woodworking tools.
+
+Three selected Chinese driver listings with item/SKU IDs and **user-reported prices under 10,000 RUB per unit** are logged in [ALIEXPRESS-CANDIDATES.md](ALIEXPRESS-CANDIDATES.md). Web retrieval failed: no spec, model or price is independently validated yet.
 
 ## New wired digital transport concept — 2026-11-01
 
