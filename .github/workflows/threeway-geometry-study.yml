@@ -8,6 +8,8 @@ on:
       - "projects/diy-speakers/simulation/test_threeway_baffle_geometry.py"
       - "projects/diy-speakers/simulation/threeway_wave_desk_model.py"
       - "projects/diy-speakers/simulation/test_threeway_wave_desk_model.py"
+      - "projects/diy-speakers/simulation/threeway_desk_array.py"
+      - "projects/diy-speakers/simulation/test_threeway_desk_array.py"
       - "projects/diy-speakers/simulation/threeway_baffle_reference.scad"
       - ".github/workflows/threeway-geometry-study.yml"
 
@@ -25,7 +27,7 @@ jobs:
           python-version: "3.12"
       - name: Test dimension boundaries and ideal head-window model
         working-directory: projects/diy-speakers/simulation
-        run: python3 -m unittest -v test_threeway_baffle_geometry.py test_threeway_wave_desk_model.py
+        run: python3 -m unittest -v test_threeway_baffle_geometry.py test_threeway_wave_desk_model.py test_threeway_desk_array.py
       - name: Reproduce factory-dimensioned panel study
         working-directory: projects/diy-speakers/simulation
         run: |
@@ -81,6 +83,22 @@ jobs:
               for k in ("LOW","MID","HIGH"):
                   if k in x["ideal_infinite_table_image_source_examples"]:
                       print("DESK",k,x["ideal_infinite_table_image_source_examples"][k])
+          PY
+      - name: Compare composite 3-way desk pressure under finite desk extent hypotheses
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          python3 threeway_desk_array.py > analysis/threeway-desk-array.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          x=json.loads(Path("analysis/threeway-desk-array.json").read_text())
+          print("REAL DESK DIMENSIONS KNOWN:",x["real_desktop_dimensions_known"])
+          print("WAVEFORMS PHASE-ALIGNED IN HARDWARE:",x["component_phase_time_zero_verified"])
+          for l in x["results"]:
+              print("GEOMETRY",l["layout_id"],"panel bottom mm",l["panel_bottom_above_desk_mm"])
+              for c in l["scenarios"]:
+                  if c["reflection_pressure_coefficient"] in (.3,.6) and c["forward_desk_length_from_speaker_m"] in (None,.2,.45):
+                      print("conditional comparison",c)
           PY
       - name: Archive derived geometry model without proprietary vendor PDFs
         uses: actions/upload-artifact@v4
