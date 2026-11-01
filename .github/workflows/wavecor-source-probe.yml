@@ -1,0 +1,24 @@
+name: Wavecor source measurement discovery
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/wavecor_probe.py"
+      - ".github/workflows/wavecor-source-probe.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  inspect-real-manufacturer-links:
+    runs-on: ubuntu-latest
+    timeout-minutes: 3
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Inspect Wavecor response dataset URLs and provenance
+        working-directory: projects/diy-speakers/simulation
+        run: python3 wavecor_probe.py
