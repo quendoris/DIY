@@ -280,6 +280,45 @@ def stand_height_for_acoustic_center(setup:Setup):
             "legacy_panel_axis_from_bottom_mm":p["nominal_ear_projection_from_lower_left_mm"][1],
             "note":"stand platform position requires real cabinet mass, support and orientation measurements"}
 
+def required_axis_height_if_horizontal_above_whole_screen(setup:Setup,screen:Screen)->dict:
+    """Conservative minimum acoustic-axis height for 0% projected-flange top obstruction.
+
+    Defined ONLY for the roll=90 vertical-group test where all physical
+    driver centers share exactly one height and depth. No yaw, real monitor
+    scattering, safe mount, true cabinet outline or human localization.
+    Side-of-screen escape is not used to lower this bound.
+    """
+    if abs(setup.roll_deg-90)>1e-9 or setup.layout_id!="A_minimum_practical_vertical":
+        raise ValueError("only horizontal rotation of original vertical LF/MID/HF array supported")
+    placed=sources(setup)
+    if any(abs(p[1]-setup.center_height_m)>1e-9 for p in placed.values()):
+        raise ValueError("unexpected source heights")
+    critical=None
+    requirement=-math.inf
+    for depth in DISTANCES_M:
+        for lateral in HEAD_X_M:
+            for shift in HEAD_Y_M:
+                ear=(lateral,setup.ear_height_m+shift,setup.z_separation_m-depth)
+                for name,p in placed.items():
+                    t=(screen.plane_z_m-p[2])/(ear[2]-p[2])
+                    if not 0<t<1: raise ValueError("screen not intersecting source-ear range")
+                    radius=DRIVERS[name].outer_diameter_mm/2000
+                    needed=radius+(screen.top_height_m-t*ear[1])/(1-t)
+                    if needed>requirement:
+                        requirement=needed
+                        critical={"band":name,"ear":[round(e,3) for e in ear],
+                                  "depth_m":depth,
+                                  "screen_top_m":screen.top_height_m}
+    return {
+      "conservative_acoustic_axis_height_m":round(requirement,4),
+      "corresponding_down_tilt_deg":round(
+          math.degrees(math.atan2(requirement-setup.ear_height_m,setup.z_separation_m)),3),
+      "critical_case":critical,
+      "conditions":"entire circular flange above rectangular screen for all 45 head positions; no lateral escape; spherical bound, not measured sound",
+      "real_stand_safe_or_listener_perception_guaranteed":False,
+    }
+
+
 def scenarios()->dict:
     layouts={"A_minimum_practical_vertical":"vertical",
              "F_side_LOW_left":"side_left"}
@@ -327,6 +366,10 @@ def scenarios()->dict:
               f"screen_top_{int(sc.top_height_m*100)}cm":
                   clearance_over_head_window(st,sc)
               for sc in screens},
+          "axis_height_needed_for_full_zone_clearance_above_screen45_m":
+              required_axis_height_if_horizontal_above_whole_screen(st,screens[1])
+              if st.roll_deg==90 and st.layout_id=="A_minimum_practical_vertical"
+              else None,
           "unobstructed_ideal_piston_head_window":score,
           "stand_mechanics_qualified":False,
           "true_angular_array_measured":False
