@@ -1,5 +1,7 @@
 # Stereo Three-Way Satellites + Independent Subwoofer — Full Driver-System Research
 
+> **CURRENT DESIGN WORK:** [D2-THREE-WAY-ACOUSTIC-INTEGRATION.md](D2-THREE-WAY-ACOUSTIC-INTEGRATION.md) is now active: Wavecor WF168WA06 + MR120BD02 + TW030WA22 with HiVi M6N/D6G lower-band alternatives and separate deep SUB. Manufacturer text-response downloads exist, but acoustic **phase and actual cabinet data are missing**; ideal LR4+head-motion tests explicitly remain `MODEL_ONLY`. STM research-board policy is frozen in [ADR-003](ADR-003-RESEARCH-HARDWARE-QUALIFICATION.md).
+
 > **ARCHITECTURE DECISION — 2026-11-01:** The owner chose **full active 3-way satellites plus an independent powered sub**. The 2-way controls and previous comments about 'earning' the 3-way topology are **historical research questions only**. We shall use 2-way or commercial references for **external performance comparison**, not to reconsider our own topology. See [ADR-001](ADR-001-ACTIVE-THREE-WAY-SUB.md). Final system budget and schedule are flexible and the final cabinet comes last.
 
 Date: 2026-11-01. Status: **components sourced, electrical/physics hypotheses; NO proven optimal crossover, no purchase, no measured response**.
