@@ -72,8 +72,9 @@ class OwnerArchitectureDecisionTests(unittest.TestCase):
         self.assertTrue(SPEC["digital_analog"]["protection_hardware_independent_from_network"])
 
     def test_initial_crossovers_remain_unfrozen(self):
-        for key, (lo, hi) in SPEC["candidate_crossovers_hz"].items():
-            if not key.endswith("hz") and key != "note":
+        for key, bounds in SPEC["candidate_crossovers_hz"].items():
+            if key != "note":
+                lo, hi = bounds
                 self.assertGreater(hi, lo)
         self.assertIn("NOT predetermined", SPEC["candidate_crossovers_hz"]["note"])
 
