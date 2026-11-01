@@ -1,5 +1,7 @@
 # OPT-00 through OPT-04 — Runnable Lab Procedure (Before Custom Power)
 
+> **UPDATED OPT-00 GATE:** The marketplace NUCLEO may be an atypical, imperfect or non-genuine research fixture. It need not pass an authenticity gate to be used. Before energizing, verify actual electrical safety, real MCU part, IO pinouts, supply and debug/boot path; re-target builds and register its deviations, then measure what this specific device can do. Do not pretend tests on a variant establish official STM32 benchmark specs or production acceptance. See [ADR-003](ADR-003-RESEARCH-HARDWARE-QUALIFICATION.md). No audio crossover work depends on this board.
+
 Date: 2026-11-01. Status: **prepared**, no physical board, media converter or fiber tested.
 
 This is a strict research procedure, not a declaration that a link or embedded device already works.
