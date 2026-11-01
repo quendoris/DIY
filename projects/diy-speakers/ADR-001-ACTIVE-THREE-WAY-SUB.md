@@ -98,3 +98,8 @@ Still open: exact manufacturer drivers, crossover frequencies/slopes, 4Ω vs 8Ω
 ## Acoustic layout is a derived requirement, not aesthetic input
 
 [Dimensioned geometric investigation D2-GEO-01](D2-GEO-01-WAVECOR-BAFFLE.md) now preserves **two viable real-dimension fixture shapes**, 205×440mm vertical and 330×290mm mirrored side-low; the source-based ideal monopole study cannot physically distinguish them because angular data, finite baffle and common-driver acoustic phase have not been measured. **Do not freeze the futuristic cabinet until the driver layout and acoustic directivity are measured**. Future shell geometry is built around the validated acoustics, and any shell change triggers requalification.
+
+
+## Current D2 physics boundary
+
+The [D2-WAVE-02](D2-WAVE-02-DIRECTIVITY-DESK-DIFFRACTION.md) geometry-plus-desk study adds ideal finite-diaphragm directivity, geometric baffle edge path delays and desk image-source models. All are explicitly tagged **analytical model**, not a solved actual finite-baffle acoustic response; the builder still needs directivity and common-phase measurements. The final enclosure is designed around the chosen qualified placement **last**, not fixed by the current plywood panel rectangles.
