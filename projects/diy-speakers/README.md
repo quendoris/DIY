@@ -24,6 +24,8 @@ This is a **research direction**, not a fixed PHY or complete cryptographic arch
 - Listening benchmark: **ADAM Audio T5V** was heard, **ADAM Audio T8V** is the comparison target. Both are now explicitly confirmed; do not confuse them with KRK ROKIT.
 - Initial hypothesis: two high-quality near-field two-way satellites + one independent active 10–12-inch subwoofer. No product or wattage freeze.
 
+Complete three-way + independent deep-sub options: **[THREE-WAY-PLUS-SUB-RESEARCH.md](THREE-WAY-PLUS-SUB-RESEARCH.md)** — dedicated midranges, tweeters, 10/12in bass and actual 7-channel component budgets. Full 3-way only if a measured benefit beats 2-way+sub.
+
 Serious **final-intent** Chinese vs international driver competition: **[FINAL-INTENT-MIDWOOFER-COMPETITION.md](FINAL-INTENT-MIDWOOFER-COMPETITION.md)** — independent same-SPL test evidence, more buyable Chinese alternatives and unbiased qualification criteria. No 'cheap now, Western upgrade later' policy.
 
 Design starting point: **[DESIGN-KICKOFF-D0.md](DESIGN-KICKOFF-D0.md)** — manufacturer-audited satellite/sub/tweeter alternatives, quantitative scenarios and a decision-gated roadmap.
