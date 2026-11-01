@@ -19,6 +19,7 @@ source_axis_height=.92;
 head_reference_height=.60; // MEASURED HEAD not ear canal
 speaker_roll_deg=90;  // 0 vertical, ±45 diagonal, ±90 horizontal
 nominal_horizontal_stereo_half_angle=30;
+triangle_strategy="true_3d_equilateral";  // "plan_60deg" or "true_3d_equilateral"
 show_baffles=true;
 show_rays=true;
 show_table=true;
@@ -33,7 +34,13 @@ function len(a)=sqrt(dot(a,a));
 function normalized(a)=a/len(a);
 function add(a,b)=a+b;
 function scaled(t,a)=t*a;
-function drivers_x(side)=side*speaker_depth*tan(nominal_horizontal_stereo_half_angle);
+function speaker_half_base()=
+    triangle_strategy=="plan_60deg"
+      ? speaker_depth*tan(nominal_horizontal_stereo_half_angle)
+      : sqrt((speaker_depth*speaker_depth+
+             (source_axis_height-head_reference_height)*
+             (source_axis_height-head_reference_height))/3);
+function drivers_x(side)=side*speaker_half_base();
 
 module line3(a,b,r=.002){
   hull(){translate(a) sphere(r=r);translate(b) sphere(r=r);}
