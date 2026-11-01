@@ -1,0 +1,63 @@
+name: DIY three-way coplanar screen mounting and mechanics
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/threeway_coplanar_mount_mechanics.py"
+      - "projects/diy-speakers/simulation/test_threeway_coplanar_mount_mechanics.py"
+      - ".github/workflows/threeway-coplanar-mount-mechanics.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  screen-coplanar-placement-and-load-path:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify numerical load cases and prohibit false safety claims
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v test_threeway_coplanar_mount_mechanics.py
+      - name: Reproduce load arm and coplanar monitor clearance scenarios
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          mkdir -p analysis
+          python3 threeway_coplanar_mount_mechanics.py > analysis/threeway-coplanar-mount-demands.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("analysis/threeway-coplanar-mount-demands.json").read_text())
+          print("USER DESIGN TARGETS:",j["owner_requested"])
+          print("NOT A SAFETY CERTIFICATE:", j["load_rating_claimed_for_real_joint"])
+          print("ACTUAL MEASURED USERS HEIGHTS:",j["owner_measured"])
+          print("PREINSTALL APPROVAL:",j["preinstallation_passed"])
+          print("FORCE TABLE: arm and moments at row pitch 80mm:")
+          for x in j["force_and_moment_demands"]:
+              if x["fastener_effective_row_spacing_m"]==.08:
+                print(x["component"],x["source_CoM_horizontal_eccentricity_m"],
+                      "nominal Nm",x["nominal_10kg_demand"]["moment_Nm"],
+                      "WLL Nm",x["working_target_50kgf_demand"]["moment_Nm"],
+                      "PROOF Nm",x["proof_target_100kgf_demand"]["moment_Nm"],
+                      "IDEAL CARRYING COUPLE N",x["proof_target_100kgf_demand"]["ideal_two_row_force_couple_N"])
+          for x in j["coplanar_speaker_position_scenarios"]:
+              if (x["local_driver_array_roll_deg"]==90
+                  and x["true_3d_equilateral"]
+                  and x["axis_height_m"] in (.82,.85,.90,.925,1.00)):
+                rays=x["source_to_listener_screen_ray_grid"]
+                print("COPLANAR",x["front_face_clearance_l_r"][0]["screen_top_m"],
+                      "h",x["axis_height_m"],
+                      "front face gap",x["front_face_clearance_l_r"][0]["idealized_front_plane_min_gap_m"],
+                      "front face top margin PASS",x["front_face_clearance_l_r"][0]["front_plane_passes_nominal_top_margin"],
+                      "all 6 flanges clear across head grid",rays["two_speaker_all_six_faceplates_clear_count"],"/27")
+          PY
+      - name: Retain analytical demands, NOT rated mechanical approval
+        uses: actions/upload-artifact@v4
+        with:
+          name: threeway-coplanar-mount-load-geometry
+          path: projects/diy-speakers/simulation/analysis/threeway-coplanar-mount-demands.json
+          if-no-files-found: error
