@@ -1,5 +1,7 @@
 # Atomic Development Plan — Modular Stereo 2.1
 
+> **CURRENT TOPOLOGY — 2026-11-01:** Owner has selected **3-way active L/R + active independent sub**, not a 2-way/3-way decision exercise. The first budget target and alternative 2-way diagrams below are **historical planning assumptions**, not a fixed monetary cap, competing architecture, or mandatory upgrade ladder. Current authority: [ADR-001](ADR-001-ACTIVE-THREE-WAY-SUB.md). Engineering gates are now about finding the best three-way *components and interface implementation*; physical power DC-only first, finished cabinet LAST. Open reproducibility is mandatory.
+
 Date: 2026-10-30. Status: **decision gates only; no unapproved purchases**.
 
 ## Owner objectives
