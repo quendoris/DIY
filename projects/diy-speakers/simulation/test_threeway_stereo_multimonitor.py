@@ -106,7 +106,7 @@ class StereoMultiMonitorTests(unittest.TestCase):
         self.assertEqual(result["user_measured"]["central_32_monitor_top_above_table_m"],.70)
         self.assertEqual(result["unmeasured_assumptions"]["future_54_top_height_m"],.80)
         self.assertEqual(result["unmeasured_assumptions"]["future_42_sides_top_height_m"],.73)
-        self.assertEqual(len(result["scenarios"]),72)
+        self.assertEqual(len(result["scenarios"]),150)
         self.assertTrue(all(
           r["visibility"]["complete_acoustic_diffraction_and_directionality"] is False
           for r in result["scenarios"]))
