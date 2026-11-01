@@ -111,3 +111,8 @@ The full Wavecor 3-way+sub architecture and final enclosure-last strategy remain
 - [CI test + 300-scenario JSON artifact (plan-view and full 3D equilateral)](https://github.com/quendoris/DIY/actions/runs/41327049427), with same reference files, no inferred real acoustics.
 
 **Claim grades:** +60/+70/+60 heights = OWNER_MEASURED; 10cm shelf = OWNER_STATED; future 42–54-inch = OWNER_TARGET; nominal 16:9 widths = DERIVED_ONLY; monitor x and depth/future tops = HYPOTHETICAL; driver geometry = MANUFACTURER_DRAWINGS; 3D source visibility and no-obstruction fractions = MODEL_ONLY; soundfield/thermal/mechanical safety/psychoacoustics = NOT_YET_MEASURED.
+
+
+## Latest owner depth and load-boundary correction — D2-MOUNT-01
+
+The owner now explicitly selects **zero nominal speaker-to-monitor depth offset**, placing HORIZONTAL 3-way satellites directly above their screen planes, with firmly anchored desk mount. Mechanical criteria: ~10kg estimated whole satellite, at least **50kgf rated working** and **100kgf test/proof targets** on the full mount chain, not a generic labelled hinge. Desk bolt is intended to be recessed/embedded; the exact distinction between a blind insert and a countersunk THROUGH-bolt remains unresolved and must be validated for tabletop pull-out and frame stiffness. **[D2-MOUNT-01 requirements, load arm matrix and 3D coplanar conflict checks](D2-MOUNT-01-COPLANAR-STRUCTURAL-SAFETY.md)**. Earlier examples using 35cm speaker setback from the measured monitor plane were hypothetical and are NOT the user's favored placement.
