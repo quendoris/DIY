@@ -206,6 +206,20 @@ def layout_score(layout: Layout) -> dict:
         round(relative_db(layout,2500,(0.,.1,.7)),4),
     }
 
+def sidewoofer_layout(name: str, side: int) -> Layout:
+    """One lateral LOW, compact vertical MID/HIGH: lower/wider test fixture."""
+    if side not in (-1,1):
+        raise ValueError("side must be -1 (left) or +1 (right)")
+    d_lm=(DRIVERS["LOW"].outer_diameter_mm +
+          DRIVERS["MID"].outer_diameter_mm)/2 + 5.0
+    d_mh=(DRIVERS["MID"].outer_diameter_mm +
+          DRIVERS["HIGH"].outer_diameter_mm)/2 + 5.0
+    return Layout(name,{
+        "LOW":(side*d_lm,-d_mh/2),
+        "MID":(0.,-d_mh/2),
+        "HIGH":(0.,d_mh/2),
+    },"LOW horizontally beside MID, MID/HIGH vertically aligned; 5mm rim gaps")
+
 def default_layouts() -> list[Layout]:
     return [
       vertical_layout("A_minimum_practical_vertical",5,5,0),
@@ -213,6 +227,8 @@ def default_layouts() -> list[Layout]:
       vertical_layout("C_offset_HF_40mm",5,5,40),
       vertical_layout("D_compact_but_too_tight",2,2,0),
       vertical_layout("E_wide_gaps_vertical",35,40,0),
+      sidewoofer_layout("F_side_LOW_left",-1),
+      sidewoofer_layout("G_side_LOW_right",1),
     ]
 
 def report() -> dict:
