@@ -96,3 +96,8 @@ Three direct AliExpress candidates, with exact listing/SKU references, are now r
 4. In parallel: RSS265HO-4 vs RSS315HF-4 vs cheaper DCS255-4 under identical sub requirements.
 
 Do **not** choose drivers solely by Fs, Vas, Xmax, paper/metal cones or brand.
+
+
+## Final-intent competition extension
+
+The owner clarified that budget Chinese units are **possible final-design drivers**, not merely temporary prototypes. The expanded [cross-manufacturer competition](FINAL-INTENT-MIDWOOFER-COMPETITION.md) now includes Wavecor 6/6.5inch 8Ω drivers with **Russian same-market observations** (WF168WA06 8,600 RUB, WF168WA02 9,200 RUB, WF152BD14 14,000 RUB), 4Ω SB17NBAC independent-measurement baseline, Scan-Speak and upper-bound PURIFI. The goal is a real equal-acoustic-SPL, matching-filter, same-baffle and off-axis comparison, plus replacement availability and total system cost; no driver can graduate from 'prototype' to 'prestige' based solely on country of origin.
