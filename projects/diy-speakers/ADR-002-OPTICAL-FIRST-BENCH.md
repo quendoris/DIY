@@ -1,5 +1,7 @@
 # ADR-002 — Optical Transport as FIRST Physical Experiment
 
+> **RESEARCH/PRODUCTION CLARIFICATION — 2026-11-01:** An imperfect or cloned NUCLEO is acceptable as a **documented research stress fixture** if electrical safety and real MCU/pin compatibility are verified. It does **not** need to match official ST MB1737 to produce meaningful data for that actual board. It also does **not** qualify a final custom PCB. No acoustic research shall wait for STM delivery. **[ADR-003](ADR-003-RESEARCH-HARDWARE-QUALIFICATION.md)** supersedes any suggestion below to reject the whole optical experiment only because the supplied board is not genuine. Keep actual chip/boot/PHY/revision facts and lower evidence grade.
+
 Date: 2026-11-01. **Owner decision:** test a real optical connection **before** building a DIY power module, then progressively add full four-plane protocol, real clock sync, power, DACs and finally the exquisite permanent cabinets. This is compatible with [ADR-001](ADR-001-ACTIVE-THREE-WAY-SUB.md), the fixed 7-output-channel active 3-way stereo + SUB architecture.
 
 ## The 'growing a crystal' method
