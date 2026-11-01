@@ -118,3 +118,8 @@ Every numerical result receives source file URL, exact part revision, model comm
 ## Cross-cutting research: wired optical audio fabric
 
 [Wired Audio Fabric](wired-audio-fabric/README.md) adds separate digital data/control scheduling, local per-speaker DACs, receiver-side buffering, endpoint identities, clock discipline and wired optical link research. The [first executable contract](wired-audio-fabric/simulation/README.md) covers logical pause/stop/epoch/fault handling, not PHY, security hardware, clock synchronization or analog performance. Treat it as a reusable foundational module that can be prototyped in software **in parallel with** driver/acoustic planning, without purchasing a full enclosure or complete amplifiers.
+
+
+## First physical foundation: reusable power modules
+
+The owner selected power supply/protection development as the first physical foundation, reused by multiple DIY devices. The [shared-power module](../shared-power/README.md) compares certified external AC/DC adapters and serviceable low-voltage local regulators, hardware short/overtemperature protection, output-noise qualifications and fanless vs acoustically isolated fan-cooled electronics compartments. All unsafe mains and surge testing remains for appropriately qualified facilities. The independent four-plane logical audio system is described in [FOUR-PLANE-ARCHITECTURE.md](wired-audio-fabric/FOUR-PLANE-ARCHITECTURE.md).
