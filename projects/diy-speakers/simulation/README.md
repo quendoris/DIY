@@ -134,3 +134,10 @@ python3 wavecor_phase_sensitivity.py --out wavecor-phase-sweep.json
 ```
 
 GitHub Action: [wavecor-primary-phase.yml](../../../.github/workflows/wavecor-primary-phase.yml). **Manufacturer FRD does not replace common-reference microphone measurements on a temporary baffle, angular data, driver THD or genuine DAC/amp synchrony.**
+
+
+## D2-GEO-01: dimensioned baffle and head movement
+
+[threeway_baffle_geometry.py](threeway_baffle_geometry.py) imports nominal factory dimensions **Ø168/120/104mm** (stored with official original PDF sources), checks center packing with 5mm rim clearance, computes board dimensions and head-window phase of three **ideal monopoles** using the already-tested phase-bridged LR4. It sweeps ±10cm vertically, ±8cm horizontally and 0.6–0.8m distance. [test_threeway_baffle_geometry.py](test_threeway_baffle_geometry.py) guards dimensional identity, geometric collisions, correct LR4 sum, limited calibration, mirror symmetry, and **OPENSCAD source consistency**. [threeway_baffle_reference.scad](threeway_baffle_reference.scad) previews vertical 205×440mm and mirrored low-profile 330×290mm experimental plywood panels (default cutouts disabled; NOT machining-ready).
+
+[Full D2-GEO-01 analysis](../D2-GEO-01-WAVECOR-BAFFLE.md) and [CI model artifacts](https://github.com/quendoris/DIY/actions/workflows/threeway-geometry-study.yml). The conditional model cannot distinguish vertical and side layouts as physical winners without measured directional impulse responses and finite-baffle response.
