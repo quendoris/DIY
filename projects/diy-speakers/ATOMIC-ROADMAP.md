@@ -128,3 +128,8 @@ The owner selected power supply/protection development as the first physical fou
 ## Design kickoff — 2026-11-01
 
 We start with [DESIGN-KICKOFF-D0.md](DESIGN-KICKOFF-D0.md): compare SB15MFC30-8 (5in), SB17NRX2C35-8 (6in), HiVi M6N-B, two SB Acoustics tweeters, and three 10/12in Dayton sub drivers. First preliminary inverse-Qtc closed-box calculation is [simulation/design_sweep.py](simulation/design_sweep.py), with reproducible assertions. The **first physical build remains the independent safe low-voltage DC power module**; its detailed rail/power ratings will follow acoustic/electronics envelope calculations. No components have been ordered or mechanically frozen.
+
+
+## Three-way / subwoofer combination extension — 2026-11-01
+
+The user explicitly requested **missing bands of a true three-way satellite (LF+dedicated MID+HF)** plus a serious independent low-frequency sub. See [THREE-WAY-PLUS-SUB-RESEARCH.md](THREE-WAY-PLUS-SUB-RESEARCH.md) and [simulation/threeway_system_candidates_2026-11.json](simulation/threeway_system_candidates_2026-11.json) for full seven-channel/driver-only costs and same-market Chinese Wavecor candidates. Continue to compare a five-channel two-way+sub baseline at 0.6–0.8 m and never assume that adding a dedicated mid makes the speaker objectively better. The final aesthetic enclosure remains LAST.
