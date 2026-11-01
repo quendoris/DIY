@@ -1,0 +1,64 @@
+name: DIY three-way baffle geometry study
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/threeway_baffle_geometry.py"
+      - "projects/diy-speakers/simulation/test_threeway_baffle_geometry.py"
+      - "projects/diy-speakers/simulation/threeway_baffle_reference.scad"
+      - ".github/workflows/threeway-geometry-study.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  dimension-and-nearfield-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test dimension boundaries and ideal head-window model
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v test_threeway_baffle_geometry.py
+      - name: Reproduce factory-dimensioned panel study
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          mkdir -p analysis
+          python3 threeway_baffle_geometry.py > analysis/threeway-baffle-model.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("analysis/threeway-baffle-model.json").read_text())
+          print("REAL ACOUSTIC MEASUREMENT:",data["measured_acoustic_head_window"])
+          print("CONDITIONALLY ROBUST GEOMETRY:",data["conditionally_most_robust_layout_id"])
+          for row in data["layouts"]:
+            print("LAYOUT:", row["id"])
+            if not row["physical_rim_clearance_pass"]:
+              print("  REJECTED:",row["reason"])
+              continue
+            p=row["tooling_panel"]
+            a=row["ideal_model_head_window"]
+            print("  panel(mm):", p["required_flat_panel_width_mm"],
+                  p["required_flat_panel_height_mm"])
+            print("  center x,y from lower-left (mm):",
+                  p["center_xy_from_lower_left_mm"])
+            print("  target ear-axis x,y(mm):",
+                  p["nominal_ear_projection_from_lower_left_mm"])
+            print("  min rim clearance(mm):", p["min_frame_clearance_mm"])
+            print("  p95 abs change(dB):", a["percentile_95_abs_db"],
+                  "max:", a["worst_case"],
+                  "RMS:",a["rms_abs_db"])
+            print("  y=+10cm z=70cm at 2.5kHz(dB):",
+                  a["mid_high_2500hz_ear_up_10cm_70cm_db"])
+          print("CAUTION:",data["warnings"][0])
+          PY
+      - name: Archive derived geometry model without proprietary vendor PDFs
+        uses: actions/upload-artifact@v4
+        with:
+          name: threeway-geometric-window
+          path: projects/diy-speakers/simulation/analysis/threeway-baffle-model.json
+          if-no-files-found: error
