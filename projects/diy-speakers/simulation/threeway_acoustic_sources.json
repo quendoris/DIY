@@ -2,7 +2,7 @@
   "schema_version": 1,
   "date": "2026-11-01",
   "purpose": "Three-way production-candidate integration with source-measurement provenance, never fabricated phase",
-  "evidence_status": "manufacturer_pages_verified; manufacturer_txt_not_yet_downloaded",
+  "evidence_status": "DOWNLOADED_AND_PARSED_IN_GITHUB_ACTIONS; six 800-point source files with amplitude and phase, no common phase reference validated",
   "reference_assembly": "Wavecor WF168WA06 + MR120BD02 + TW030WA22 satellite, 2 units; separate sub TBD",
   "datasets": [
     {
@@ -11,13 +11,22 @@
       "maker_page": "https://www.wavecor.com/html/wf168wa05_06.html",
       "manufacturer_text_spl_download_advertised": true,
       "manufacturer_text_impedance_download_advertised": true,
-      "downloaded": false,
+      "downloaded": true,
       "sha256": null,
-      "phase_measured": null,
+      "phase_measured": true,
       "spl_basis": "infinite baffle 2.83Vrms 1m 1/6 oct",
       "impedance_basis": "free air low-current sine",
       "stock_variant": "WF168WA06-01",
-      "note": "Manufacturer Fo 41Hz and nominal 88dB; seller has conflicting values"
+      "note": "Manufacturer Fo 41Hz and nominal 88dB; seller has conflicting values",
+      "spl_points": 800,
+      "impedance_points": 800,
+      "spl_url": "https://www.wavecor.com/Driver%20measurements%20TXT/SPL%20response/WF168WA06_FR.txt",
+      "spl_sha256": "abf4c00e8d771bd4e775e0f80beda8a14d9a803a4bf5d3cb09e7fc08319451ab",
+      "impedance_url": "https://www.wavecor.com/Driver%20measurements%20TXT/Impedance%20response/WF168WA06_IMP.txt",
+      "impedance_sha256": "be71e653f07360ecabc7ff101debfb7101f9c668715967a9fdeb23810b59033e",
+      "spl_phase_column_measured": true,
+      "impedance_phase_column_measured": true,
+      "phase_common_reference_verified": false
     },
     {
       "id": "MID_MR120BD02_8ohm",
@@ -25,14 +34,23 @@
       "maker_page": "https://www.wavecor.com/html/mr120bd01_02_03_04.html",
       "manufacturer_text_spl_download_advertised": true,
       "manufacturer_text_impedance_download_advertised": true,
-      "downloaded": false,
+      "downloaded": true,
       "sha256": null,
-      "phase_measured": null,
+      "phase_measured": true,
       "spl_basis": "infinite baffle 2.83Vrms 1m 1/6 oct",
       "impedance_basis": "free air low-current sine",
       "stock_variant": "MR120BD02-01",
       "distortion_fixture": "manufacturer 2L sealed chamber at 0.5m 5.1Vrms stepped sine, 1/12oct",
-      "note": "Time/phase and final baffle directivity not supplied by referenced magnitude tables"
+      "note": "Time/phase and final baffle directivity not supplied by referenced magnitude tables",
+      "spl_points": 800,
+      "impedance_points": 800,
+      "spl_url": "https://www.wavecor.com/Driver%20measurements%20TXT/SPL%20response/MR120BD02_04-SPL-response.txt",
+      "spl_sha256": "77a543bc651d1e06467548129f0e80d994ef01a0437c3c395b7c8e638cb6f5f4",
+      "impedance_url": "https://www.wavecor.com/Driver%20measurements%20TXT/Impedance%20response/MR120BD02_04-impedance-response.txt",
+      "impedance_sha256": "da57cb8aae638d9cd1b6ceb43c075f8f917c0433918d48d5ec6e58644b17d572",
+      "spl_phase_column_measured": true,
+      "impedance_phase_column_measured": true,
+      "phase_common_reference_verified": false
     },
     {
       "id": "HF_TW030WA22_8ohm",
@@ -40,16 +58,25 @@
       "maker_page": "https://www.wavecor.com/html/tw030wa21_22.html",
       "manufacturer_text_spl_download_advertised": true,
       "manufacturer_text_impedance_download_advertised": true,
-      "downloaded": false,
+      "downloaded": true,
       "sha256": null,
-      "phase_measured": null,
+      "phase_measured": true,
       "spl_basis": "infinite baffle 2.83Vrms 1m 1/6 oct",
       "impedance_basis": "free air low-current sine",
       "stock_variant": "TW030WA22-01",
-      "note": "Wavecor updated graphene-reinforced dome, NOT superseded TW030WA10"
+      "note": "Wavecor updated graphene-reinforced dome, NOT superseded TW030WA10",
+      "spl_points": 800,
+      "impedance_points": 800,
+      "spl_url": "https://www.wavecor.com/Driver%20measurements%20TXT/SPL%20response/TW030WA22_SPL_response.txt",
+      "spl_sha256": "4d175b0595fa068ba6bbc2cdf29060b36a4561ee043e1b7d8793c7e21fb1685d",
+      "impedance_url": "https://www.wavecor.com/Driver%20measurements%20TXT/Impedance%20response/TW030WA22_impedance_response.txt",
+      "impedance_sha256": "a4404485c65124e7a14dbce83efa30384563614c03ac1b53fa785dd1bf9ef5c0",
+      "spl_phase_column_measured": true,
+      "impedance_phase_column_measured": true,
+      "phase_common_reference_verified": false
     }
   ],
-  "phase_requirement": "Complex acoustic sum requires matched magnitude+phase FRD, calibration, common temporal origin and fixture/baffle geometry. Manufacturer amplitude-only data are insufficient.",
+  "phase_requirement": "Manufacturer files have individual phase columns. These curves were not jointly measured with common acoustic origin on our finite test baffle; do not assert actual crossover coherence until timing/geometry is calibrated.",
   "first_real_mic_measurement_requirements": {
     "distances_m": [
       0.6,
@@ -97,5 +124,7 @@
     "electrical_filters": "ideal LR4 comparison only, not verified acoustic filters",
     "illustrative_mid_hf_spacing_m": 0.115,
     "temp_baseline_output": "threeway_acoustic_geometry.py"
-  }
+  },
+  "first_ci_url": "https://github.com/quendoris/DIY/actions/runs/41319037700",
+  "data_license_note": "Original manufacturer text is fetched and hashed on CI; no third-party raw data copied into the repo."
 }
