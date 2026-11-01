@@ -116,3 +116,8 @@ CI workflow: [threeway-geometry-study.yml](../../.github/workflows/threeway-geom
 **Proof state:** factory dimensions — `PUBLISHED`; geometry pack — `MODEL_TESTED`; piston/Bessel and specular images — `ANALYTIC_ASSUMPTION_AND_TESTS`; finite baffle acoustic radiation — `NOT_SOLVED`; manufacturer angle-specific FRD — `NOT_AVAILABLE_IN_THIS_DATASET`; full tri-way/room desk SPL or THD — `NOT_MEASURED`; production architecture/baffle freeze — `OPEN`.
 
 The test firmware/STM optical track is unaffected; it may continue independently when hardware arrives.
+
+
+## D2-OVERHEAD-01 changes the acoustic placement alternatives
+
+User proposed raising speakers **40–50cm above desk, 20–30cm above head, aimed down**, and allowing horizontal or diagonal LF/MID/HF mounting. The preceding study had assumed speaker near desktop and was therefore NOT an exhaustive comparison. [3D raised-mount study](D2-OVERHEAD-01-MONITOR-MOUNTING.md) distinguishes acoustic-axis height from stand platform height, tests **0°/45°/90° array roll**, individual driver rays through screens and hypothetical monitor heights, and still retains **model-only** evidence status. Future priorities: actual monitor array sizes/obstructions, stereo toe-in and room reflections, measured angular phase, structurally qualified overhead mount.
