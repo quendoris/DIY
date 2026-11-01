@@ -1,0 +1,101 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-01",
+  "purpose": "Three-way production-candidate integration with source-measurement provenance, never fabricated phase",
+  "evidence_status": "manufacturer_pages_verified; manufacturer_txt_not_yet_downloaded",
+  "reference_assembly": "Wavecor WF168WA06 + MR120BD02 + TW030WA22 satellite, 2 units; separate sub TBD",
+  "datasets": [
+    {
+      "id": "LOW_WF168WA06_8ohm",
+      "model": "WF168WA06",
+      "maker_page": "https://www.wavecor.com/html/wf168wa05_06.html",
+      "manufacturer_text_spl_download_advertised": true,
+      "manufacturer_text_impedance_download_advertised": true,
+      "downloaded": false,
+      "sha256": null,
+      "phase_measured": null,
+      "spl_basis": "infinite baffle 2.83Vrms 1m 1/6 oct",
+      "impedance_basis": "free air low-current sine",
+      "stock_variant": "WF168WA06-01",
+      "note": "Manufacturer Fo 41Hz and nominal 88dB; seller has conflicting values"
+    },
+    {
+      "id": "MID_MR120BD02_8ohm",
+      "model": "MR120BD02",
+      "maker_page": "https://www.wavecor.com/html/mr120bd01_02_03_04.html",
+      "manufacturer_text_spl_download_advertised": true,
+      "manufacturer_text_impedance_download_advertised": true,
+      "downloaded": false,
+      "sha256": null,
+      "phase_measured": null,
+      "spl_basis": "infinite baffle 2.83Vrms 1m 1/6 oct",
+      "impedance_basis": "free air low-current sine",
+      "stock_variant": "MR120BD02-01",
+      "distortion_fixture": "manufacturer 2L sealed chamber at 0.5m 5.1Vrms stepped sine, 1/12oct",
+      "note": "Time/phase and final baffle directivity not supplied by referenced magnitude tables"
+    },
+    {
+      "id": "HF_TW030WA22_8ohm",
+      "model": "TW030WA22",
+      "maker_page": "https://www.wavecor.com/html/tw030wa21_22.html",
+      "manufacturer_text_spl_download_advertised": true,
+      "manufacturer_text_impedance_download_advertised": true,
+      "downloaded": false,
+      "sha256": null,
+      "phase_measured": null,
+      "spl_basis": "infinite baffle 2.83Vrms 1m 1/6 oct",
+      "impedance_basis": "free air low-current sine",
+      "stock_variant": "TW030WA22-01",
+      "note": "Wavecor updated graphene-reinforced dome, NOT superseded TW030WA10"
+    }
+  ],
+  "phase_requirement": "Complex acoustic sum requires matched magnitude+phase FRD, calibration, common temporal origin and fixture/baffle geometry. Manufacturer amplitude-only data are insufficient.",
+  "first_real_mic_measurement_requirements": {
+    "distances_m": [
+      0.6,
+      0.7,
+      0.8
+    ],
+    "head_offsets_m": [
+      -0.1,
+      0,
+      0.1
+    ],
+    "horizontal_angles_deg": [
+      0,
+      15,
+      30,
+      45,
+      60
+    ],
+    "vertical_angles_deg": [
+      -15,
+      -10,
+      0,
+      10,
+      15
+    ],
+    "measured_phase": false,
+    "measured_lf_hf_gain_delay": false,
+    "measured_THDimd": false,
+    "driver_fixtures": "disposable plywood woofer enclosure, separately sealed 2L MR120 mid chamber, removable baffle",
+    "not_production_geometry": true
+  },
+  "simulation_defaults": {
+    "sub_sat_f_hz": [
+      70,
+      110
+    ],
+    "sat_low_mid_f_hz": [
+      350,
+      600
+    ],
+    "sat_mid_tweeter_f_hz": [
+      2000,
+      3000
+    ],
+    "electrical_filters": "ideal LR4 comparison only, not verified acoustic filters",
+    "illustrative_mid_hf_spacing_m": 0.115,
+    "temp_baseline_output": "threeway_acoustic_geometry.py"
+  }
+}
