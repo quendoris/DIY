@@ -1,5 +1,7 @@
 # D2-OVERHEAD-01 — Elevated Three-Way Stands, Downward Aim, 0° / 45° / 90° Driver Arrays
 
+> **SUPERSEDED HYPOTHETICAL USER GEOMETRY AS OF 2026-11-01:** Earlier this document used 35cm above desk for "ear height" and screens at 35/45/55cm. Those were purely assumed scenarios and MUST NOT be treated as the owner's actual desk. The owner has now MEASURED **head +60cm, main 32-inch top +70cm, side 27-inch top +60cm, shelf +10cm** and requires upgrade to three very large screens with no side clearance. Authoritative successor: **[D2-STEREO-01 — user heights and true L/R stereo with multiple monitors](D2-STEREO-01-MULTIMONITOR-REAL-HEIGHTS.md)**. Future screen heights are still hypotheses and exact ear height is unknown.
+
 2026-11-01 · **RESEARCH OPTION ADDED TO ACTIVE 3-WAY SYSTEM DESIGN**. This new study is about how loudspeaker placement relative to **multiple displays and the desk** can dominate small baffle-only geometry refinements. It **does not freeze final cabinet or purchase**. Owner-proposed stand-mounted speakers 40–50cm above table and 20–30cm above the head, aimed downward; layout is free to be vertical, horizontal or diagonal. We study these alternatives before designing a future visual enclosure.
 
 ## Crucial clarification of geometry (not a question; two test cases)
