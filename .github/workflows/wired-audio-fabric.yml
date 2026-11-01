@@ -1,0 +1,32 @@
+name: Wired audio fabric contract tests
+
+on:
+  push:
+    paths:
+      - "projects/diy-speakers/wired-audio-fabric/simulation/**"
+      - ".github/workflows/wired-audio-fabric.yml"
+  pull_request:
+    paths:
+      - "projects/diy-speakers/wired-audio-fabric/simulation/**"
+      - ".github/workflows/wired-audio-fabric.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  contract-tests:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Check deterministic contract invariants
+        working-directory: projects/diy-speakers/wired-audio-fabric/simulation
+        run: python3 -m unittest -v
+      - name: Verify sample model JSON
+        working-directory: projects/diy-speakers/wired-audio-fabric/simulation
+        run: |
+          python3 fabric.py > /tmp/wired-audio-fabric.json
+          python3 -c "import json; d=json.load(open('/tmp/wired-audio-fabric.json')); assert d['five_channel_24bit_96khz_mbps'] == 11.52; assert d['buffered_audio_suppressed_on_pause']; assert d['stop_incremented_epoch']; assert not d['actual_crypto_implemented']; print('Contract demo passed')"
