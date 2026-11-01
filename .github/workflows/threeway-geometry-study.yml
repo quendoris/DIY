@@ -6,6 +6,8 @@ on:
     paths:
       - "projects/diy-speakers/simulation/threeway_baffle_geometry.py"
       - "projects/diy-speakers/simulation/test_threeway_baffle_geometry.py"
+      - "projects/diy-speakers/simulation/threeway_wave_desk_model.py"
+      - "projects/diy-speakers/simulation/test_threeway_wave_desk_model.py"
       - "projects/diy-speakers/simulation/threeway_baffle_reference.scad"
       - ".github/workflows/threeway-geometry-study.yml"
 
@@ -23,7 +25,7 @@ jobs:
           python-version: "3.12"
       - name: Test dimension boundaries and ideal head-window model
         working-directory: projects/diy-speakers/simulation
-        run: python3 -m unittest -v test_threeway_baffle_geometry.py
+        run: python3 -m unittest -v test_threeway_baffle_geometry.py test_threeway_wave_desk_model.py
       - name: Reproduce factory-dimensioned panel study
         working-directory: projects/diy-speakers/simulation
         run: |
@@ -56,9 +58,33 @@ jobs:
                   a["mid_high_2500hz_ear_up_10cm_70cm_db"])
           print("CAUTION:",data["warnings"][0])
           PY
+      - name: Reproduce piston directivity + baffle edge paths + illustrative table reflections
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          python3 threeway_wave_desk_model.py > analysis/threeway-wave-desk.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("analysis/threeway-wave-desk.json").read_text())
+          print("PHYSICALLY MEASURED:",j["actual_speaker_measurements"])
+          print("WAVE EQ DIFFRACTION SOLVED:",j["wave_eq_finite_baffle_diffraction_solved"])
+          print("PISTON IDEAL SPL ANGULAR ATTENUATION:")
+          for n,v in j["ideal_farfield_piston_examples"].items():
+              print(n,v)
+          for x in j["layout_hypotheses"]:
+              if x["layout"] not in ("A_minimum_practical_vertical","F_side_LOW_left",
+                                    "G_side_LOW_right","E_wide_gaps_vertical"): continue
+              print("LAYOUT",x["layout"],"PANEL",x["panel_mm"])
+              print("DESK ALIGNMENT",x["nominal_ear_height_table_setup"])
+              print("POINT WINDOW",x["monopole_head_window"])
+              print("PISTON WINDOW",x["ideal_piston_head_window"])
+              for k in ("LOW","MID","HIGH"):
+                  if k in x["ideal_infinite_table_image_source_examples"]:
+                      print("DESK",k,x["ideal_infinite_table_image_source_examples"][k])
+          PY
       - name: Archive derived geometry model without proprietary vendor PDFs
         uses: actions/upload-artifact@v4
         with:
           name: threeway-geometric-window
-          path: projects/diy-speakers/simulation/analysis/threeway-baffle-model.json
+          path: projects/diy-speakers/simulation/analysis/*.json
           if-no-files-found: error
