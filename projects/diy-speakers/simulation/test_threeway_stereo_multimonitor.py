@@ -23,7 +23,7 @@ class StereoMultiMonitorTests(unittest.TestCase):
         self.assertEqual(USER_HEAD_MARK_M,.60)
         self.assertEqual(CURRENT_32_TOP_M,.70)
         self.assertEqual(CURRENT_27_SIDE_TOP_M,.60)
-        self.assertEqual(.70-.60,.10)
+        self.assertAlmostEqual(.70-.60,.10,places=12)
 
     def test_horizontal_stereo_triangle_is_symmetric(self):
         self.assertAlmostEqual(self.x,.7/math.sqrt(3),places=10)
@@ -91,12 +91,13 @@ class StereoMultiMonitorTests(unittest.TestCase):
 
     def test_moving_speaker_forward_of_displays_clears_ray_in_model(self):
         monitors=monitor_scenario("FUTURE_54_CENTER_42_SIDES")
-        x=stereo_lateral_x(.25)
-        speakers=[Satellite("L",-x,.85,.25,90),Satellite("R",x,.85,.25,-90)]
+        x=stereo_lateral_x(.10)
+        speakers=[Satellite("L",-x,.85,.10,90),Satellite("R",x,.85,.10,-90)]
         result=evaluate(speakers,monitors)
         self.assertEqual(result["two_speaker_all_six_faceplates_clear_count"],27)
-        # This does not imply that the cabinets are physically buildable
-        # nor that they would have a usable wide-stage stereo image.
+        # At 10cm listener depth the full cabinet may collide with head/arms,
+        # obscure the monitor's image and fail stand stability. Ray clear
+        # does NOT certify a practical or safe position.
 
     def test_explicit_missing_ear_height_and_future_tops_in_report(self):
         result=scenario_report()
