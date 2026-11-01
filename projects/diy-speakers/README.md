@@ -22,6 +22,8 @@ Design starting point: **[DESIGN-KICKOFF-D0.md](DESIGN-KICKOFF-D0.md)** — manu
 
 Full architecture: [STEREO-2.1-ARCHITECTURE.md](STEREO-2.1-ARCHITECTURE.md).
 
+User-proposed Chinese driver links and early-purchase/measurement contract: [ALIEXPRESS-CANDIDATES.md](ALIEXPRESS-CANDIDATES.md).
+
 New source-linked comparison: [CANDIDATE-COMPARISON.md](CANDIDATE-COMPARISON.md); phased spending and verification plan: [ATOMIC-ROADMAP.md](ATOMIC-ROADMAP.md). All mathematical models and test data: [simulation/](simulation/README.md).
 
 ## User intent
