@@ -6,6 +6,7 @@ point-source phase and reference calibration only.
 import cmath
 import math
 import unittest
+from pathlib import Path
 from threeway_baffle_geometry import (
   DRIVERS, ORDER, HEAD_X_M, HEAD_Y_M, TEST_DISTANCES_M, TEST_FREQUENCIES_HZ,
   REF_EAR_M, clearance_mm, default_layouts, distance_to_source_m,
@@ -119,6 +120,15 @@ class ThreewayBaffleTests(unittest.TestCase):
             self.assertAlmostEqual(clearance_mm(layout,"MID","HIGH"),5)
         self.assertAlmostEqual(layout_score(left)["rms_abs_db"],
                                layout_score(right)["rms_abs_db"],delta=1e-5)
+
+    def test_openscad_demo_matches_selected_report_and_disables_routing(self):
+        scad=Path(__file__).with_name("threeway_baffle_reference.scad").read_text()
+        self.assertIn('layout_mode = "vertical"',scad)
+        self.assertIn('illustrative_rear_cutouts = false',scad)
+        for marker in ("[102.5,103.0]","[102.5,252.0]","[102.5,369.0]",
+                       "[102.5,102.5]","[251.5,102.5]","[251.5,219.5]",
+                       "[227.5,102.5]","[78.5,102.5]","[78.5,219.5]"):
+            self.assertIn(marker,scad)
 
     def test_no_unphysical_input_or_fake_yield(self):
 
