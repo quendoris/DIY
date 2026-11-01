@@ -68,6 +68,20 @@ def stereo_lateral_x(axial_depth_m:float,stereo_half_angle_deg:float=30.)->float
         raise ValueError("invalid stereo geometry")
     return axial_depth_m*math.tan(math.radians(stereo_half_angle_deg))
 
+def true_equilateral_3d_lateral_x(axial_depth_m:float, source_axis_height_m:float,
+                                     head_reference_m:float=USER_HEAD_MARK_M)->float:
+    """For symmetric L/R sources x=+/-x, same depth and height:
+    |L-R| = |L-ear| = |R-ear| => 3*x*x = d*d + (H-h_ear)**2.
+
+    This is true equilateral 3D geometry under a single POINT source
+    acoustic reference, not guaranteed subjective image localization.
+    """
+    if axial_depth_m<=0 or min(source_axis_height_m,head_reference_m)<=0:
+        raise ValueError("invalid triangle geometry")
+    return math.sqrt((axial_depth_m**2+
+                     (source_axis_height_m-head_reference_m)**2)/3)
+
+
 def array_basis(speaker:Satellite,ear=(0.,USER_HEAD_MARK_M,0.)):
     center=(speaker.center_x_m,speaker.axis_height_m,speaker.axial_depth_m)
     n=unit(tuple(e-c for e,c in zip(ear,center)))  # aimed at listener
@@ -218,25 +232,32 @@ def scenario_report():
     for stage in ("MEASURED_TOPS_32_27","FUTURE_54_CENTER_42_SIDES"):
         m=monitor_scenario(stage)
         for source_depth in (.70,.60,.55,.40,.25):
-            sx=stereo_lateral_x(source_depth) # maintains ±30° horizontal stereo
             for height in (.80,.88,.92,.96,1.00):
-                for roll in (0.,45.,90.):
-                    speakers=[
-                        Satellite("L",-sx,height,source_depth,roll),
-                        Satellite("R",sx,height,source_depth,-roll)
-                    ]
-                    metrics=evaluate(speakers,m)
-                    scenarios.append({
-                       "monitor_configuration":stage,
-                       "speaker_depth_m":source_depth,
-                       "nominal_acoustic_axis_height_m":height,
-                       "roll_deg":roll,
-                       "speaker_center_offsets_m":[round(-sx,4),round(sx,4)],
-                       "horizontal_stereo_included_angle_deg":round(horizontal_stereo_angle(speakers),4),
-                       "true_3d_stereo_included_angle_deg":round(stereo_angle(speakers),4),
-                       "down_tilt_each_deg":round(down_tilt(speakers[0]),4),
-                       "visibility":metrics,
-                    })
+                for triangle in ("PLAN_60_DEG","TRUE_3D_EQUILATERAL"):
+                    sx=(stereo_lateral_x(source_depth) if triangle=="PLAN_60_DEG"
+                        else true_equilateral_3d_lateral_x(source_depth,height))
+                    for roll in (0.,45.,90.):
+                        speakers=[
+                            Satellite("L",-sx,height,source_depth,roll),
+                            Satellite("R",sx,height,source_depth,-roll)
+                        ]
+                        metrics=evaluate(speakers,m)
+                        hyp=math.sqrt(source_depth**2+sx**2+(height-USER_HEAD_MARK_M)**2)
+                        scenarios.append({
+                           "monitor_configuration":stage,
+                           "triangle_strategy":triangle,
+                           "speaker_depth_m":source_depth,
+                           "nominal_acoustic_axis_height_m":height,
+                           "roll_deg":roll,
+                           "speaker_center_offsets_m":[round(-sx,4),round(sx,4)],
+                           "stereo_base_width_m":round(2*sx,4),
+                           "source_to_head_distance_m":round(hyp,4),
+                           "base_to_ear_distance_ratio":round(2*sx/hyp,6),
+                           "horizontal_stereo_included_angle_deg":round(horizontal_stereo_angle(speakers),4),
+                           "true_3d_stereo_included_angle_deg":round(stereo_angle(speakers),4),
+                           "down_tilt_each_deg":round(down_tilt(speakers[0]),4),
+                           "visibility":metrics,
+                        })
     return {
        "study":"D2-STEREO-01",
        "user_measured":{
@@ -257,6 +278,7 @@ def scenario_report():
        },
        "speaker_layout":"Wavecor original vertical array rolled 0/45/90; L/R rotated oppositely for symmetry",
        "reference_stereo_horizontal_angle_deg":60,
+       "triangle_strategies":["PLAN_60_DEG","TRUE_3D_EQUILATERAL"],
        "reported_stand_height":"not modeled; platform and acoustic axis heights are different constraints",
        "scenarios":scenarios,
        "warnings":[
@@ -266,7 +288,7 @@ def scenario_report():
          "No acoustic diffraction/reflections from desk/screens nor room response; center-ray blocked != zero audible sound.",
          "Whole faceplate clearance uses conservative angular envelope with an additional 2cm setup margin.",
          "Speaker-depth 0.25m may be IN FRONT of screens; stand cantilever, overhang, viewing occlusion, mounting safety NOT qualified.",
-         "A 60° horizontal stereo angle is not an equilateral three-dimensional triangle when sources are elevated.",
+         "A 60-degree plan-view stereo angle is NOT a 3D equilateral triangle at elevated source height; true 3D geometry independently tested as a competing strategy.",
          "Do not claim that 15° tilt is hard law; vendor recommendations pertain primarily to traditional reference monitors.",
          "No actual mounted test speakers, 10-12in sub or hardware sync implemented."
        ]
