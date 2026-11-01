@@ -89,6 +89,69 @@
       "note": "Paper/glass-fiber, balanced drive, copper motor stabilization, 8Ω, after-break-in T/S; black coat version WF152BD14 has identical specs"
     },
     {
+      "id": "WAVECOR-WF152BD14",
+      "group": "china_high_performance",
+      "dia_class_in": 6,
+      "ohm": 8,
+      "fs_hz": 46,
+      "qts": 0.35,
+      "vas_l": 11.5,
+      "sens_db_2v83m": 87,
+      "linear_excursion_mm": 4.5,
+      "source_level": "manufacturer_html_after_break_in_and_ru_retailer",
+      "price": {
+        "rub": 14000,
+        "source": "Russian retailer posted catalogue, in stock listed",
+        "each": true
+      },
+      "primary_url": "https://wavecor.com/html/wf152bd13_14_15_16.html",
+      "retailer_url": "https://www.samodelka.ru/cats/10.htm?vendor=291",
+      "status": "final_intent_candidate",
+      "note": "Black coated, copper motor compensation; manufacturer downloadable frequency/impedance response text, 152-mm basket; check shop quantities"
+    },
+    {
+      "id": "WAVECOR-WF168WA02",
+      "group": "china_midwoofer",
+      "dia_class_in": 6.5,
+      "ohm": 8,
+      "fs_hz": 49,
+      "qts": 0.52,
+      "vas_l": 24.6,
+      "sens_db_2v83m": 89,
+      "linear_excursion_mm": 3,
+      "source_level": "manufacturer_html_and_ru_retailer",
+      "price": {
+        "rub": 9200,
+        "source": "Russian retailer posted catalogue, in stock listed",
+        "each": true
+      },
+      "primary_url": "https://www.wavecor.com/html/wf168wa01_02.html",
+      "retailer_url": "https://www.samodelka.ru/cats/10.htm",
+      "status": "final_intent_candidate",
+      "note": "Low-cost premium Chinese baseline, paper cone, 139cm2 and ±3mm geometric travel; very different higher-Qts alignment than M6N"
+    },
+    {
+      "id": "WAVECOR-WF168WA06",
+      "group": "china_midwoofer",
+      "dia_class_in": 6.5,
+      "ohm": 8,
+      "fs_hz": 41,
+      "qts": 0.5,
+      "vas_l": 27.7,
+      "sens_db_2v83m": 88,
+      "linear_excursion_mm": 3,
+      "source_level": "manufacturer_html_and_ru_retailer",
+      "price": {
+        "rub": 8600,
+        "source": "Russian retailer posted catalogue, in stock listed",
+        "each": true
+      },
+      "primary_url": "https://www.wavecor.com/html/wf168wa05_06.html",
+      "retailer_url": "https://www.samodelka.ru/goods/18446744073708524985.htm",
+      "status": "final_intent_candidate_with_listing_discrepancy",
+      "note": "Glass fiber cone; seller describes 86.5 dB and Fs49Hz while manufacturer lists 88dB and Fs41Hz, verify before order"
+    },
+    {
       "id": "SB-SB17NBAC35-4",
       "group": "international_control",
       "dia_class_in": 6,
