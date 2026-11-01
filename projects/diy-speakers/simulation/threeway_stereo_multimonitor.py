@@ -217,9 +217,9 @@ def scenario_report():
     scenarios=[]
     for stage in ("MEASURED_TOPS_32_27","FUTURE_54_CENTER_42_SIDES"):
         m=monitor_scenario(stage)
-        for source_depth in (.70,.40,.25):
+        for source_depth in (.70,.60,.55,.40,.25):
             sx=stereo_lateral_x(source_depth) # maintains ±30° horizontal stereo
-            for height in (.80,.88,.92,1.00):
+            for height in (.80,.88,.92,.96,1.00):
                 for roll in (0.,45.,90.):
                     speakers=[
                         Satellite("L",-sx,height,source_depth,roll),
