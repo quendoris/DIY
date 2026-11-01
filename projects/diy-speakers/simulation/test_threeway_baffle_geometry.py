@@ -107,6 +107,11 @@ class ThreewayBaffleTests(unittest.TestCase):
         self.assertIn("removable",r["physical_build_decision"])
         self.assertIn(r["conditionally_most_robust_layout_id"],
                       {x["id"] for x in r["layouts"] if x["physical_rim_clearance_pass"]})
+        self.assertFalse(r["winner_is_physically_proven"])
+        self.assertEqual(
+            set(r["near_tied_layout_ids_max_within_0_05db_of_best"]),
+            {"A_minimum_practical_vertical","F_side_LOW_left","G_side_LOW_right"})
+
 
     def test_left_and_right_woofer_layouts_fit_shorter_wider_panels(self):
         left=sidewoofer_layout("side_left",-1)
