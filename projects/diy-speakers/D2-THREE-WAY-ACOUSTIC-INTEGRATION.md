@@ -22,7 +22,9 @@ The **manufacturer itself** publishes numerical SPL and impedance text response 
 2. https://www.wavecor.com/html/mr120bd01_02_03_04.html — `MR120BD02/04 SPL response`, `MR120BD02/04 impedance response`. Factory **infinite-baffle** SPL 2.83V/1m, 1/6 octave; free-air impedance. Measured harmonic distortion: **2L sealed** enclosure, 0.5m, 5.1V RMS input to MR120BD02/04, 1/12 octave smoothing. The plotted THD curves need careful numerical extraction or own testing; do not claim universal level.
 3. https://www.wavecor.com/html/tw030wa21_22.html — `TW030WA22 on-axis SPL response`, `TW030WA22 impedance response`. Factory infinite-baffle, 2.83V/1m, 1/6 octave; free-air impedance. Distortion test: **0.5m, 2.83V** for TW030WA22. Note same manufacturer's old PDF has stale chart labels naming preceding TW030WA10; current HTML is authoritative for selected part and manufacture date.
 
-**Data not yet downloaded/replayed in this repository**; no hash or phase trace exists. Manufacturer text downloads may provide only magnitude SPL. A complex coherent acoustic response needs **phase** referenced to the same time and acoustic plane and actual baffle geometry. **Two-column frequency+dB is not equivalent to three-column phase-bearing FRD**. Do not use arbitrary `phase=0` to manufacture a flat crossover. Independent driver responses and real speaker off-axis/window measurements remain necessary.
+**PRIMARY MEASUREMENT UPDATE (2026-11-01):** All six original Wavecor numerical files are now retrieved, parsed and SHA-256 pinned: each LF/MID/HF unit has 800 frequency/dB/phase points AND 800 frequency/impedance/phase points. The actual unresolved property is COMMON acoustic time reference between independently measured drivers, not a missing phase column. See [D2-REAL-01](D2-REAL-01-WAVECOR-PHASE.md) and [source manifest](simulation/threeway_acoustic_sources.json). The source data were recorded in an infinite baffle, not our final enclosure. We do not claim measured total-speaker crossover coherence.
+
+
 
 ## Independent real-world reference
 
@@ -43,8 +45,8 @@ For a *hypothetical* 115mm MID↔HF centre separation, a listener 0.7m away shif
 ## Non-negotiable pre-production acoustic gates
 
 **D2-01 data & identity:**
-- Download manufacturer numeric SPL/impedance files with original source URL, timestamps and SHA-256; preserve them as *original manufacturer measurements*.
-- If phase is missing, classify `MAGNITUDE_ONLY`; acquire same-reference measured complex `.frd` data before claiming actual crossover sum.
+- **DONE:** download original manufacturer numerical curves, pin source URLs and SHA-256 digests, refuse unreviewed changes.
+- **DONE:** per-driver manufacturer acoustic phase measured and parsed. **OPEN:** all drivers measured on same actual baffle with a common timing reference; require this before an actual acoustic crossover claim.
 - Mark differences in T/S before/after burn-in, and seller data conflicts for M6N/D6G/F6N and WF168WA06.
 
 **D2-02 disposable fixtures:**
@@ -72,6 +74,9 @@ The owner explicitly says an upcoming marketplace `NUCLEO-H7S3L8 / STM32H7R3L9` 
 - [Three-way architecture](ADR-001-ACTIVE-THREE-WAY-SUB.md)
 - [Combined component data](THREE-WAY-PLUS-SUB-RESEARCH.md)
 - [Ideal complex crossover + nearfield geometry model](simulation/threeway_acoustic_geometry.py)
-- [Pending primary measurement dataset manifest](simulation/threeway_acoustic_sources.json)
+- [Reviewed original manufacturer URLs, source hashes and phase data](simulation/threeway_acoustic_sources.json)
+- [First real source crossovers and phase bridge results](D2-REAL-01-WAVECOR-PHASE.md)
+- [Real phase and impedance importer](simulation/wavecor_threeway_realdata.py)
+- [Conditional delay and head-position study](simulation/wavecor_phase_sensitivity.py)
 
 **No actual speaker crossover/physical SPL/THD is yet measured.** The numerical model is useful to identify constraints and design tests, not to certify sound quality.
