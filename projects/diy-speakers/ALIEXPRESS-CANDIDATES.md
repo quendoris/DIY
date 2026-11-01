@@ -2,12 +2,19 @@
 
 Date: 2026-11-01. Status: **user-provided leads; target listings not yet resolved, NO model/price/spec verified**.
 
-The owner asked whether low-cost Chinese loudspeaker drivers available through these AliExpress affiliate redirects can replace the costly imported reference midwoofers:
+The owner initially supplied two ali.click URLs and then provided **three direct AliExpress Russia item IDs with explicit selected SKUs**:
 
-- Candidate A: https://ali.click/2nf7p1i
-- Candidate B: https://ali.click/8jf7p1e
+| Label | Listing | Selected SKU | Identity verified? |
+|---|---|---|---|
+| A | https://aliexpress.ru/item/1005012112593734.html?sku_id=12000057541009369 | 12000057541009369 | **No — storefront unavailable** |
+| B | https://aliexpress.ru/item/1005010706311970.html?sku_id=12000053252107661 | 12000053252107661 | **No — storefront unavailable** |
+| C | https://aliexpress.ru/item/1005013335483366.html?sku_id=12000060917810176 | 12000060917810176 | **No — storefront unavailable** |
 
-Automated retrieval of these shortened redirect destinations was unsuccessful. **Do not assign a manufacturer, nominal size, impedance, speaker type, price or T/S measurements to these links until the final product page is independently visible.** For inspection request direct `aliexpress.com/item/<id>.html` links or a screenshot of each listing including selected variant, exact model, price, shipping and any specification image.
+Owner's observation: all selected listing options are **under 10,000 RUB per unit** as seen in their account; this is **user-reported**, not an independently verified quote. We cannot yet establish model, loudspeaker role, frequency range, material, exact unit count, impedance or any Thiele–Small parameters.
+
+The old affiliate leads remain unresolved: https://ali.click/2nf7p1i and https://ali.click/8jf7p1e. Do not assume a one-to-one match with any of the three direct item IDs.
+
+AliExpress Russia storefront returned an access/anti-bot failure through available browsing methods; searching exact product/selected SKU IDs found **no reliable metadata match**. **Never substitute information from a similar-looking but different ID.** To identify the three listings, request one screenshot of each product title + selected variant + visible technical specifications (ideally seller's datasheet/table). If dimensions/options differ by SKU, the selected SKU is authoritative for this comparison.
 
 ## The main distinction: midrange vs midwoofer
 
@@ -54,3 +61,18 @@ Reference imported models for comparison: [CANDIDATE-COMPARISON.md](CANDIDATE-CO
 ## Decision discipline
 
 Until the final listing is visible, both user links are recorded as **UNRESOLVED**. No false comparison can be made. The correct next action is to inspect selected variants, source primary specs if possible, and then compare against HiVi and SB in the same math-and-measurement workflow.
+
+
+## Physical-development update: the real enclosure is the LAST step
+
+The owner explicitly wants a difficult, futuristic, beautiful final cabinet — not an early plywood compromise. The owner has access to a small tool workshop and can build **temporary plywood test enclosures / replaceable baffles**.
+
+The first electromechanical research fixture therefore uses:
+- **free-air / open-frame driver mounting for low-level electrical and T/S measurements only**, with high-pass and conservative input to prevent excessive unbaffled LF excursion;
+- a simple *temporary* measured-volume plywood or MDF test box for usable low-frequency, crossover and off-axis acoustic comparison; its volume, sealing, removable front panel and bracing must be documented;
+- replaceable baffles that fit exact **measured** driver cutout/mounting dimensions; no machining of the aesthetic final wood/resin/composite enclosure;
+- independent low-voltage amplifier/protected PSU and simple measurements with a calibrated microphone before any high-power testing.
+
+**Why not assess sound quality on an unbaffled driver?** Rear acoustic radiation cancels front bass and changes response; no final bass extension, baffle-step/directivity or crossover integration can be inferred from free-air listening.
+
+It can still make sense to purchase two of an affordable, correctly identified driver early as an **experiment** even with missing published T/S, provided exact model/impedance/geometry and quantity/cost are confirmed. The measurement bench can *produce* missing T/S before the final design.
