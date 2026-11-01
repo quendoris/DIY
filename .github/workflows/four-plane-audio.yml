@@ -1,0 +1,32 @@
+name: DIY four-plane audio contract
+
+on:
+  push:
+    paths:
+      - "projects/diy-speakers/wired-audio-fabric/four-plane/**"
+      - ".github/workflows/four-plane-audio.yml"
+  pull_request:
+    paths:
+      - "projects/diy-speakers/wired-audio-fabric/four-plane/**"
+      - ".github/workflows/four-plane-audio.yml"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  four-plane:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Run deterministic four-plane tests
+        working-directory: projects/diy-speakers/wired-audio-fabric/four-plane
+        run: python3 -m unittest -v
+      - name: Validate status output
+        working-directory: projects/diy-speakers/wired-audio-fabric/four-plane
+        run: |
+          python3 plane_model.py > /tmp/four-plane.json
+          python3 -c "import json; d=json.load(open('/tmp/four-plane.json')); assert d['nominal']['state'] == 'READY'; assert d['sub_power_fault']['state'] == 'FAULT'; assert not d['cryptography_implemented'] and not d['physical_clock_sync_implemented']; print('four-plane demo passed')"
