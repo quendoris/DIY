@@ -1,0 +1,57 @@
+name: DIY three-way overhead placement study
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/threeway_overhead_geometry.py"
+      - "projects/diy-speakers/simulation/test_threeway_overhead_geometry.py"
+      - "projects/diy-speakers/simulation/threeway_overhead_scene.scad"
+      - ".github/workflows/threeway-overhead-study.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  ray-visibility-and-3d-directivity:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Independent 3D rigid body rotation and occlusion unit tests
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v test_threeway_overhead_geometry.py
+      - name: Reproduce 18 over-monitor geometry scenarios
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          mkdir -p analysis
+          python3 threeway_overhead_geometry.py > analysis/threeway-overhead-3d.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("analysis/threeway-overhead-3d.json").read_text())
+          print("REAL MONITOR DIMENSIONS KNOWN:",j["real_monitor_geometry_known"])
+          print("REAL ACOUSTIC HEAD WINDOW:",j["true_wavecor_angular_phase_known"])
+          for s in j["scenarios"]:
+            if s["layout"]!="A_minimum_practical_vertical":
+              continue
+            print("MODE",s["scenario"],"TILT",s["direct_target_down_tilt_deg"],
+                  "ENVELOPE",s["envelope"],
+                  "HEAD",s["unobstructed_ideal_piston_head_window"],
+                  "SCREEN 35",s["monitor_occlusion_proxies"]["screen_top_35cm"]["blocking_bands"],
+                  "SCREEN 45",s["monitor_occlusion_proxies"]["screen_top_45cm"]["blocking_bands"],
+                  "SCREEN 55",s["monitor_occlusion_proxies"]["screen_top_55cm"]["blocking_bands"])
+          for s in j["scenarios"]:
+            if s["center_vertical_offset_m"]>.29 and s["layout"]=="A_minimum_practical_vertical":
+              print("HIGH-MOUNT",s["scenario"],"SCREEN45",
+                s["monitor_occlusion_proxies"]["screen_top_45cm"]["blocking_bands"])
+          PY
+      - name: Archive source-generated measurements classed as analytical only
+        uses: actions/upload-artifact@v4
+        with:
+          name: threeway-overhead-hypotheses
+          path: projects/diy-speakers/simulation/analysis/threeway-overhead-3d.json
+          if-no-files-found: error
