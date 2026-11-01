@@ -110,7 +110,7 @@ def crossing(source,ear,screen:Screen)->dict:
             "blocked":blocked,
             "top_margin_m":y-screen.top_height_m}
 
-def visibility(setup:Setup,screen:Screen):
+def visibility_at_ear(setup:Setup,screen:Screen,ear:tuple[float,float,float]):
     """Center-ray visibility + a conservative finite faceplate clearance proxy.
 
     If the center ray passes above the monitor, the full flange still may
@@ -118,7 +118,6 @@ def visibility(setup:Setup,screen:Screen):
     flange within a bounding sphere, yielding a conservative (not exact)
     projected radius at the screen plane.
     """
-    ear=(0.,setup.ear_height_m,0.)
     rows={}
     for k,p in sources(setup).items():
         c=crossing(p,ear,screen)
@@ -136,6 +135,51 @@ def visibility(setup:Setup,screen:Screen):
         c["full_flange_top_clearance_m"]=c["height_m"]-bound-screen.top_height_m
         rows[k]=c
     return rows
+
+def visibility(setup:Setup,screen:Screen):
+    return visibility_at_ear(setup,screen,(0.,setup.ear_height_m,0.))
+
+
+def clearance_over_head_window(setup:Setup,screen:Screen)->dict:
+    """Simple geometric screen test across an ear-movement envelope.
+
+    Not a sound diffraction model. Full nominal flange bounding is
+    conservative and no mechanical cabinet wall is included.
+    """
+    n=0
+    all_centers_clear=0
+    all_flange_clear=0
+    worst_top_margin=math.inf
+    worst_case=None
+    for depth in DISTANCES_M:
+        for head_x in HEAD_X_M:
+            for head_y in HEAD_Y_M:
+                ear=(head_x,setup.ear_height_m+head_y,
+                     setup.z_separation_m-depth)
+                rays=visibility_at_ear(setup,screen,ear)
+                n+=1
+                if not any(x["blocked"] for x in rays.values()):
+                    all_centers_clear+=1
+                if all(x["conservative_full_flange_clear"] for x in rays.values()):
+                    all_flange_clear+=1
+                for name,x in rays.items():
+                    # Top clearance alone is not the full visibility criterion
+                    # if the driver is completely outside screen width.
+                    if x["full_flange_top_clearance_m"]<worst_top_margin:
+                        worst_top_margin=x["full_flange_top_clearance_m"]
+                        worst_case={"band":name,"ear":[round(e,3) for e in ear],
+                                    "screen_top_m":screen.top_height_m}
+    return {
+        "head_positions_tested":n,
+        "all_three_center_rays_clear_positions":all_centers_clear,
+        "all_three_conservative_flange_clear_positions":all_flange_clear,
+        "fraction_all_centers_clear":round(all_centers_clear/n,4),
+        "fraction_all_flange_clear":round(all_flange_clear/n,4),
+        "worst_vertical_flange_top_margin_m":round(worst_top_margin,4),
+        "worst_vertical_top_margin_location":worst_case,
+        "is_obstructed_acoustic_field_quantified":False,
+    }
+
 
 def angle_to_normal(normal, direction):
     r=math.sqrt(sum(v*v for v in direction))
@@ -279,6 +323,10 @@ def scenarios()->dict:
           "envelope":{k:round(v,4) if isinstance(v,float) else v for k,v in bounds.items()},
           "support_semantics":stand_height_for_acoustic_center(st),
           "monitor_occlusion_proxies":view,
+          "monitor_clearance_through_head_movement":{
+              f"screen_top_{int(sc.top_height_m*100)}cm":
+                  clearance_over_head_window(st,sc)
+              for sc in screens},
           "unobstructed_ideal_piston_head_window":score,
           "stand_mechanics_qualified":False,
           "true_angular_array_measured":False
