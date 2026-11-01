@@ -97,10 +97,10 @@ All scores below are computed from **the above hypothetical model**, *not from m
 | Candidate | Flat-panel mm | 95th percentile absolute head-change | Worst head-change | RMS |
 |---|---:|---:|---:|---:|
 | **A: vertical, 5mm gaps** | 205×440 | **0.979dB** | **1.3404dB** | 0.4241dB |
-| B: vertical, 15/20mm gap | 205×475 | 1.2046dB | 1.6373dB | 0.5136dB |
-| C: HF shifted horizontally 40mm | 215×440 approx | 0.9736dB | 1.9113dB | 0.4352dB |
+| B: vertical, 15/20mm gap | 205×465 | 1.2046dB | 1.6373dB | 0.5136dB |
+| C: HF shifted horizontally 40mm | 215×435 | 0.9736dB | 1.9113dB | 0.4352dB |
 | D: 2mm rim gaps | — | **REJECTED by 5mm clearance rule** | — | — |
-| E: large 35/40mm gaps | 205×? | 1.5525dB | 2.1117dB | 0.6506dB |
+| E: large 35/40mm gaps | 205×505 | 1.5525dB | 2.1117dB | 0.6506dB |
 | **F: LOW left of MID/HF** | 330×290 | **0.9769dB** | **1.3401dB** | 0.4169dB |
 | **G: LOW right of MID/HF** | 330×290 | **0.9769dB** | **1.3401dB** | 0.4169dB |
 
@@ -116,7 +116,7 @@ Existing manufacturer **800-point FRD/phase curves are on-axis, separately measu
 
 1. Adopt **A narrow vertical** as the first interchangeable-baffle prototype if desk width matters. Build **F/G** if a shorter form is more useful or if we want a direct same-drivers geometric comparison.
 2. Use only a simple plywood *measurement fixture*; don't freeze fancy enclosure materials, grille, waveguide, passive radiators or mechanical styling.
-3. Confirm actual measured driver mounting cutouts, screw-head access and rear volumes. The MR120 MID must have its own airtight isolated test volume; manufacturer's harmonic-distortion measurements used **2 litres NET**. This is a **comparison fixture**, not final design spec. Confirm all material intrusion/displacement and real net chamber volume.
+3. Confirm actual measured driver mounting cutouts, screw-head access and rear volumes. The MR120 MID must have its own airtight isolated test volume; manufacturer's harmonic-distortion measurements used **2 litres internal volume**, with no explicit published net/gross displacement convention. This is a **comparison fixture**, not final design spec. Record both gross chamber volume and corrected net air volume after driver displacement, internal bracing and damping.
 4. On a common acoustic clock/measurement origin, obtain same-level **on-axis and off-axis complex FRD** (horizontal and vertical angles), genuine source time delay and decay including finite panel.
 5. Test listening-window map at actual 60–80cm ±head positions with microphone at controlled heights and mic-distance corrections; record objective deviations and real phase/lobing. Use DSP delays to align one reference point and evaluate *other* points without reoptimization.
 6. Re-run with HiVi M6N or D6G as final-intent LOW contenders, respecting their actual frames and mounting restrictions.
