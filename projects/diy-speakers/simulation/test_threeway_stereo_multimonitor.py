@@ -4,6 +4,7 @@ This is geometry validation, not a certified acoustic measurement or stand.
 """
 import math
 import unittest
+from pathlib import Path
 from threeway_baffle_geometry import DRIVERS
 from threeway_stereo_multimonitor import (
  USER_HEAD_MARK_M, CURRENT_32_TOP_M, CURRENT_27_SIDE_TOP_M,
@@ -110,6 +111,17 @@ class StereoMultiMonitorTests(unittest.TestCase):
         self.assertTrue(all(
           r["visibility"]["complete_acoustic_diffraction_and_directionality"] is False
           for r in result["scenarios"]))
+
+    def test_stereo_openscad_preview_is_labelled_nonproduction(self):
+        scad=Path(__file__).with_name("threeway_stereo_multimonitor_scene.scad").read_text()
+        self.assertIn("head_reference_height=.60",scad)
+        self.assertIn("source_axis_height=.92",scad)
+        self.assertIn('scenario="future"',scad)
+        self.assertIn("speaker_roll_deg=90",scad)
+        self.assertIn("show_supports=false",scad)
+        self.assertIn("displayed_screen(0,.35,1.196,.80)",scad)
+        self.assertIn("displayed_screen(0,.35,.708,.70)",scad)
+        self.assertIn("NOT a cut-ready baffle",scad)
 
     def test_invalid_monitor_and_bad_reference_fail(self):
         with self.assertRaises(ValueError):
