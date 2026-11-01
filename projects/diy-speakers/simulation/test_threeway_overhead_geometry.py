@@ -7,7 +7,7 @@ import unittest
 from pathlib import Path
 from threeway_overhead_geometry import (
   Setup, Screen, tilt_deg, unit_vectors, sources, distance, projected_baffle_extents,
-  crossing, visibility, clearance_over_head_window, angle_to_normal, band_pressure, compare_window,
+  crossing, visibility, clearance_over_head_window, required_axis_height_if_horizontal_above_whole_screen, angle_to_normal, band_pressure, compare_window,
   stand_height_for_acoustic_center, scenarios
 )
 from threeway_baffle_geometry import default_layouts, ideal_filters
@@ -108,6 +108,17 @@ class OverheadGeometryTests(unittest.TestCase):
         self.assertLess(window["all_three_conservative_flange_clear_positions"],45)
         self.assertLess(window["fraction_all_flange_clear"],1.)
         self.assertFalse(window["is_obstructed_acoustic_field_quantified"])
+
+    def test_full_clearance_across_head_zone_has_severe_tilt_tradeoff(self):
+        st=Setup("over",VERT,90,.65,.35)
+        threshold=required_axis_height_if_horizontal_above_whole_screen(
+            st,Screen(.35,.45,.3))
+        self.assertAlmostEqual(threshold["conservative_acoustic_axis_height_m"],.814,places=3)
+        self.assertGreater(threshold["corresponding_down_tilt_deg"],30)
+        self.assertFalse(threshold["real_stand_safe_or_listener_perception_guaranteed"])
+        with self.assertRaises(ValueError):
+            required_axis_height_if_horizontal_above_whole_screen(
+              self.s,Screen(.35,.45,.3))
 
     def test_acoustic_axis_and_platform_height_are_not_synonyms(self):
         st=stand_height_for_acoustic_center(self.s)
