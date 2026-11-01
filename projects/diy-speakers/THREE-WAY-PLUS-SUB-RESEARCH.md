@@ -40,7 +40,7 @@ Primary docs:
 
 | Driver | Spec facts | Russian observed RUB per piece | Why |
 |---|---|---:|---|
-| **Wavecor TW030WA22**, 8Ω | 30mm textile, ~91dB/2.83V/1m, manufacturer recommended ≥2kHz, Fs~780Hz | **8,200**, listed stock | accessible, compatible nominal load with 8Ω mid + woofer; final-capable |
+| **Wavecor TW030WA22**, 8Ω | 30mm graphene-reinforced Tetoron textile, ~91dB/2.83V/1m, manufacturer recommended ≥2kHz, Fs~780Hz | **8,200**, listed stock | accessible, compatible nominal load with 8Ω mid + woofer; final-capable |
 | **Wavecor TW030WA23**, 4Ω | 30mm graphene-reinforced Tetoron, ~94dB/2.83V/1m | **12,200**, listed stock | newer higher-tech motor/dome alternative, carefully normalize 4Ω |
 | **Wavecor TW030WA24**, 8Ω | same improved diaphragm, ~91.5dB/2.83V/1m | **12,200**, currently order/expected supply, verify checkout | compatible 8Ω alternate, motor/thermal limits and directivity test |
 | **Wavecor TW030WA11**, 4Ω | 30mm waveguide, Fs~410Hz, ~94dB/2.83V/1m, stated 1.5–25kHz range | **9,900**, mixed stock listings | lower possible crossover/favorable pattern; large 115mm waveguide may be awkward beside 4.75in MID at 0.7m |
@@ -49,7 +49,7 @@ Primary docs:
 Manufacturer:
 - TW030WA23/24 https://wavecor.com/html/tw030wa23_24_25_26.html (replacements for TW030WA13/14, which are being phased out).
 - TW030WA11 https://wavecor.com/html/tw030wa11_12.html
-- TW030WA21/22 manufacturer https://www.wavecor.com/html/tweeters.html ; source technical sheet on retailer https://www.samodelka.ru/pictures/data/wavecor_tw030wa22-01.pdf . PDF has an erroneous 'kHz' label for nominal Fs; expected Fs 780 **Hz**.
+- TW030WA21/22 manufacturer https://www.wavecor.com/html/tw030wa21_22.html ; updated graphene-reinforced Tetoron versions replacing TW030WA09/10, with published frequency response, impedance and THD measurements. An older retailer PDF has a resonance-frequency unit typo; manufacturer's live HTML clearly reports Fs 780 **Hz**.
 - SB26STWGC https://sbacoustics.com/product/sb26stwgc-4-fabric/
 - Russian price/availability snapshots https://www.samodelka.ru/cats/2.htm?vendor=291
 
