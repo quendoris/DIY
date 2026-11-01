@@ -111,3 +111,8 @@ A cheap full stereo solution is not valuable if the desired deep bass, clean mid
 3. Would a subwoofer under/next to the desk be acceptable? Placement is not fixed at design stage.
 4. Which exact model was heard: ADAM T5V/T8V, KRK ROKIT 5/8, or another?
 5. First digital source for development: PC USB audio into external DAC/DSP, or a self-contained controller?
+
+
+## Digital transport research branch
+
+The owner also proposed a **strictly wired**, distributed optical network between a central digital controller and separately powered satellites/subwoofer. The audio link is digital, so a DAC sits locally after the fiber receiver. The PC connects to the controller via USB-C using a chosen compliant data protocol. Receiver-side buffering and independently authenticated control are to be verified, as are multi-device clock drift and synchronization. Read [wired-audio-fabric/README.md](wired-audio-fabric/README.md) and [CONTRACT.md](wired-audio-fabric/CONTRACT.md). This idea does **not** replace the separate wireless earbuds concept.
