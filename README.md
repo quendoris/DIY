@@ -30,7 +30,7 @@ Research-first, incremental high-fidelity desktop 2.1 audio concept: two midrang
 
 Status: **requirements captured / modular 2.1 simulation next**
 
-See: [projects/diy-speakers](projects/diy-speakers/README.md)
+See: [projects/diy-speakers](projects/diy-speakers/README.md) and [wired optical audio fabric](projects/diy-speakers/wired-audio-fabric/README.md)
 
 ### Shared Audio System
 The player and earbuds share a dedicated digital radio link, audio-quality acceptance criteria, ANC timing requirements and joint validation gates.
