@@ -1,5 +1,7 @@
 # ARCHITECTURE DECISION 001 — Active 3-Way Stereo Satellites + Independent Subwoofer
 
+> **RESEARCH VERSUS PRODUCTION BOARD:** [ADR-003](ADR-003-RESEARCH-HARDWARE-QUALIFICATION.md) explicitly permits an imperfect NUCLEO variant as an electrically safe, identified and documented optical research/stress fixture, while every finished custom speaker PCB has stronger source, solder, firmware, electrical and post-assembly acceptance requirements. The active pre-STM task is [D2 acoustic integration](D2-THREE-WAY-ACOUSTIC-INTEGRATION.md).
+
 > **Stage ordering amendment:** [ADR-002](ADR-002-OPTICAL-FIRST-BENCH.md) supersedes **the physical order only**: optical link on NUCLEO-H7S3L8 with factory supplies first; custom monitored power module second. The 7-channel/3-way+sub topology remains fixed. Physical optical testing must not be represented as already completed.
 
 Date: 2026-11-01. Decision status: **OWNER-SELECTED AND FROZEN AS PROJECT TOPOLOGY**. Driver models, crossover points, DAC chip count, power rails, enclosures and supplier quotes are **not** frozen.
