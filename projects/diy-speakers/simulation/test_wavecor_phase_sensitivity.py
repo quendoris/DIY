@@ -19,6 +19,10 @@ class SensitivityTests(unittest.TestCase):
         rows=responses_for(flat_inputs(),450,2500)
         self.assertLess(flattening_metric(rows),1e-9)
 
+    def test_naive_three_way_cascade_is_not_flat(self):
+        rows=responses_for(flat_inputs(),450,2500,bridge_low_phase=False)
+        self.assertGreater(flattening_metric(rows),.05)
+
     def test_relative_delay_changes_ideal_summed_response(self):
         curves=flat_inputs()
         base=dict(responses_for(curves,450,2500))
