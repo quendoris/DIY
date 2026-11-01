@@ -103,3 +103,14 @@ Still open: exact manufacturer drivers, crossover frequencies/slopes, 4Ω vs 8Ω
 ## Current D2 physics boundary
 
 The [D2-WAVE-02](D2-WAVE-02-DIRECTIVITY-DESK-DIFFRACTION.md) geometry-plus-desk study adds ideal finite-diaphragm directivity, geometric baffle edge path delays and desk image-source models. All are explicitly tagged **analytical model**, not a solved actual finite-baffle acoustic response; the builder still needs directivity and common-phase measurements. The final enclosure is designed around the chosen qualified placement **last**, not fixed by the current plywood panel rectangles.
+
+
+## Installation envelope frozen as a goal, NOT as dimensions (D2-STEREO-01)
+
+The owner has measured **head +60cm above the desk; 32-inch central monitor TOP +70cm; existing 27-inch side TOP +60cm; shelf +10cm**. Lateral desk space is unavailable. The system MUST remain capable of integrating into **a future three-large-monitor array** (potentially 42–54in), not merely the existing two screens. Ear canal height and monitor array width/depth are not measured.
+
+**The leading mechanical-acoustic arrangement under investigation** is a pair of mirrored, HORIZONTAL Wavecor LF/MID/HF baffles on strongly fixed DESK-ANCHORED raised supports, physically ABOVE screens, aimed/down-tilted toward the listener, preserving a symmetric L/R stereo triangle. Diagonal (±45°) and vertical arrays remain adversarial controls and are not technically forbidden.
+
+**This is NOT a frozen final acoustical/production layout.** [D2-STEREO-01](D2-STEREO-01-MULTIMONITOR-REAL-HEIGHTS.md) now controls the measured-position contract and the 3D paired stereo/multi-monitor test, including all six driver rays/full flanges, proper L/R toe-in and future monitor growth. Desired perception (externalized/out-of-head stereophonic image) still requires real listening tests; aiming speakers at the ears cannot remove physical source elevation or guarantee enveloping localization.
+
+Potential horizontal MID/HF acoustic lobing, diffraction from the screens, ceiling reflections and bracket loads remain independent constraints. **The shell comes last** as a consequence of actual acoustic placement and test evidence; custom supports must be separately engineered for structural safety, not assumed safe because rigidly clamped to the tabletop.
