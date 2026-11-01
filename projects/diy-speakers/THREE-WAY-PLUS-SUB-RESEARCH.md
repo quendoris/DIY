@@ -1,5 +1,7 @@
 # Stereo Three-Way Satellites + Independent Subwoofer — Full Driver-System Research
 
+> **ARCHITECTURE DECISION — 2026-11-01:** The owner chose **full active 3-way satellites plus an independent powered sub**. The 2-way controls and previous comments about 'earning' the 3-way topology are **historical research questions only**. We shall use 2-way or commercial references for **external performance comparison**, not to reconsider our own topology. See [ADR-001](ADR-001-ACTIVE-THREE-WAY-SUB.md). Final system budget and schedule are flexible and the final cabinet comes last.
+
 Date: 2026-11-01. Status: **components sourced, electrical/physics hypotheses; NO proven optimal crossover, no purchase, no measured response**.
 
 ## Owner requirements and architecture
