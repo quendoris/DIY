@@ -123,3 +123,8 @@ Every numerical result receives source file URL, exact part revision, model comm
 ## First physical foundation: reusable power modules
 
 The owner selected power supply/protection development as the first physical foundation, reused by multiple DIY devices. The [shared-power module](../shared-power/README.md) compares certified external AC/DC adapters and serviceable low-voltage local regulators, hardware short/overtemperature protection, output-noise qualifications and fanless vs acoustically isolated fan-cooled electronics compartments. All unsafe mains and surge testing remains for appropriately qualified facilities. The independent four-plane logical audio system is described in [FOUR-PLANE-ARCHITECTURE.md](wired-audio-fabric/FOUR-PLANE-ARCHITECTURE.md).
+
+
+## Design kickoff — 2026-11-01
+
+We start with [DESIGN-KICKOFF-D0.md](DESIGN-KICKOFF-D0.md): compare SB15MFC30-8 (5in), SB17NRX2C35-8 (6in), HiVi M6N-B, two SB Acoustics tweeters, and three 10/12in Dayton sub drivers. First preliminary inverse-Qtc closed-box calculation is [simulation/design_sweep.py](simulation/design_sweep.py), with reproducible assertions. The **first physical build remains the independent safe low-voltage DC power module**; its detailed rail/power ratings will follow acoustic/electronics envelope calculations. No components have been ordered or mechanically frozen.
