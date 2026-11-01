@@ -24,6 +24,9 @@ Another independent finished-speaker measurement for HiVi L6-4R: https://ampslab
 | HiVi **D6G** | 6.5in, 8Ω | 44Hz/.38/12.1L¹ | 85 dB¹ | owner 7,762 RUB, unusually large 76mm coil and composite cone | ¹secondary T/S/sensitivity; motor and revision validation outstanding |
 | HiVi **F6N** | 6.5in, 8Ω | **SOURCE CONFLICT** | ~89 dB seller | owner 6,729 RUB | seller vs alternate: 44/.34/22.7 vs 48/.43/19.1; hold until source reconciled |
 | Wavecor **WF152BD06** (or black WF152BD14) | 6in, 8Ω | 46/.35/11.5L *after burn-in* | 87 dB | **Chinese high-performance direct rival**, balanced motor, copper cap, downloadable measured response + impedance text files | local landed price TBD; no same-protocol HiVi measured comparison |
+| Wavecor **WF168WA02** | 6.5in, 8Ω | 49/.52/24.6L | 89 dB | 139cm² paper cone, Russian retailer **9,200 RUB each**, described in stock | ±3mm excursion; bigger cone, higher Qts, no common-method HiVi distortion test |
+| Wavecor **WF168WA06** | 6.5in, 8Ω | 41/.50/27.7L | 88 dB manufacturer | 131cm² glass-fiber cone, Russian retailer **8,600 RUB each**, described in stock | **seller quotes 86.5dB, Fs49; manufacturer 88dB, Fs41** — must resolve variant/mislabeled item |
+| Wavecor **WF152BD14** | 6in, 8Ω | 46/.35/11.5L after burn-in | 87 dB | Black-coated balanced-drive motor, **152mm outer basket**; Russian retailer **14,000 RUB each** | Strong on documentation and nearfield footprint, but compare same-SPL THD before paying more |
 | SB **SB17NBAC35-4** | 6in, 4Ω | 30/.29/42.6L | 90 dB | independent AudioHorn test frontrunner, copper sleeve and low Le | 4Ω, bigger Vas, fixture/tweeter integration required |
 | SB **SB17NBAC35-8** | 6in, 8Ω | 31.5/.35/45L | 86.5 dB | same family in 8Ω; manufacturer full response/off-axis specification | independently measured -4 results not automatically transferable; EU shop ~€86.45 inc VAT, no Russia landed quote |
 | SB **SB15NBAC30-8** | 5in, 8Ω | 35.5/.37/17L | 85.5 dB | compact reference for 60–80 cm + multi-monitor desktop | smaller diaphragm; must evaluate thermal SPL and midrange distortion |
@@ -34,7 +37,7 @@ Another independent finished-speaker measurement for HiVi L6-4R: https://ampslab
 
 Sources:
 - HiVi values from user's seller cards; see [owner comparison](HIVI-F6N-D6G-M6N-REVIEW.md) and [JSON](simulation/hivi_offers_2026-11-01.json).
-- Wavecor WF152BD06 (including **post-break-in** values) https://www.wavecor.com/html/wf152bd05_06_07_08.html ; alternate black coating WF152BD14 https://wavecor.com/html/wf152bd13_14_15_16.html.
+- Wavecor WF152BD06 (including **post-break-in** values) https://www.wavecor.com/html/wf152bd05_06_07_08.html ; black coating WF152BD14 https://wavecor.com/html/wf152bd13_14_15_16.html. WF168WA02 https://www.wavecor.com/html/wf168wa01_02.html ; WF168WA06 https://www.wavecor.com/html/wf168wa05_06.html ; Moscow/Russia storefront observed prices https://www.samodelka.ru/cats/10.htm?vendor=291 . Availability is a listing, not a verified transaction.
 - SB NBAC -4 https://sbacoustics.com/product/6in-sb17nbac35-4/ ; -8 https://sbacoustics.com/product/6in-sb17nbac35-8/ ; compact 5in https://sbacoustics.com/product/5in-sb15nbac30-8/.
 - Scan-Speak: https://www.scan-speak.dk/product/18w-4434g00/ and https://www.soundimports.eu/en/scan-speak-18w4434g00.html.
 - SEAS: https://seas.no/index.php?Itemid=238&catid=44&id=102%3Ah1571-08-u18rnxp&option=com_content&view=article.
@@ -42,6 +45,15 @@ Sources:
 - EU SB -8 offer: https://www.soundimports.eu/en/sb-acoustics-sb17nbac35-8.html.
 
 **Important**: Model names and source quality matter. Never confuse M6N with M6N-B, F6N with F6, Wavecor WF152BD06 with 4Ω WF152BD05, or SB17NBAC35-4 with SB17NBAC35-8.
+
+## New practical finding: genuinely buyable Chinese alternatives in Russia
+
+Russian catalog https://www.samodelka.ru/cats/10.htm?vendor=291 shows:
+- WF168WA06-01 at **8,600 RUB each**, posted in stock; manufacturer specifies Fs41Hz, sensitivity 88dB, Qts .50, 8Ω, glass fiber. Retailer claims Fs49Hz and sensitivity 86.5dB — **material discrepancy**.
+- WF168WA02-01 at **9,200 RUB each**, posted in stock; Fs49Hz, 89dB, Qts .52, 8Ω, paper cone, ±3mm theoretical linear stroke.
+- WF152BD06-01 and black-coated WF152BD14 at **14,000 RUB each**, posted in stock; compact 6-inch 8Ω balanced-drive motor. The black coating avoids manufacturer-recognized UV-induced cone fade in uncoated sibling.
+
+These are meaningful same-market prices, versus owner-observed 6,439 RUB per HiVi M6N and 7,762 per HiVi D6G. Supplier checkout, model/variant, delivery, replacements and final invoice remain unconfirmed. This validates **high-performance Chinese competition is not merely an import substitute**.
 
 ## Normalization caveat — don't rank by marketing dB
 
@@ -77,10 +89,11 @@ Compare all final-intent candidates to the same **acoustic** targets, rather tha
 
 ## Proposed focused four-way measurement shortlist (not ordered yet)
 
-- **HiVi M6N** — owner-priced, credible Chinese 8Ω final candidate.
-- **HiVi D6G** — different cone/motor with potential advantages only measurable at equal SPL.
-- **Wavecor WF152BD14 / WF152BD06** — **Chinese high-performance engineering comparator**, 6in, 8Ω, copper-stabilized motor and downloadable response/impedance data.
-- **SB17NBAC35-4** — independent 95dB distortion winner *in tested 4Ω configuration*, high-performing control.
+- **HiVi M6N** — 6,439 RUB owner-observed, credible Chinese 8Ω final candidate.
+- **Wavecor WF168WA02 / WF168WA06** — Russian-stock 9,200 / 8,600 RUB 8Ω midwoofers; different 6.5in cone/radiation and Qts than M6N, good matched-value challengers.
+- **Wavecor WF152BD14** — 14,000 RUB, premium *Chinese* 6in 8Ω balanced-drive engineering competitor with actual numeric response/impedance data and narrower 152mm basket.
+- **SB17NBAC35-4** — independent 95dB distortion winner *in tested 4Ω configuration*, high-performing international control.
+- **HiVi D6G** — different cone/motor worth comparing if we want a fifth measured variant, but no evidence yet of superior THD.
 - Keep **SB15NBAC30-8** as compact fifth candidate if desk width/directivity becomes decisive. Scan-Speak as independent external control with strong manufacturer documentation. PURIFI only as an ambitious upper-bound reference when actual distortion margin matters.
 
 Not all specimens need to be bought simultaneously. A starter purchase could be **one HiVi M6N + one D6G** only if seller identification is verified, but it's preferable to have Wavecor and SB17NBAC source-based curves in the software first; the physical head-to-head must be run on actual comparable fixtures.
