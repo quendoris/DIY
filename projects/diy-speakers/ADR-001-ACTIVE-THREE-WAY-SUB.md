@@ -114,3 +114,10 @@ The owner has measured **head +60cm above the desk; 32-inch central monitor TOP 
 **This is NOT a frozen final acoustical/production layout.** [D2-STEREO-01](D2-STEREO-01-MULTIMONITOR-REAL-HEIGHTS.md) now controls the measured-position contract and the 3D paired stereo/multi-monitor test, including all six driver rays/full flanges, proper L/R toe-in and future monitor growth. Desired perception (externalized/out-of-head stereophonic image) still requires real listening tests; aiming speakers at the ears cannot remove physical source elevation or guarantee enveloping localization.
 
 Potential horizontal MID/HF acoustic lobing, diffraction from the screens, ceiling reflections and bracket loads remain independent constraints. **The shell comes last** as a consequence of actual acoustic placement and test evidence; custom supports must be separately engineered for structural safety, not assumed safe because rigidly clamped to the tabletop.
+
+
+## New user mechanical placement requirements, 2026-11-01 (D2-MOUNT-01)
+
+In addition to actual owner heights (+60cm head, +70cm 32-inch top, +60cm side 27-inch top), the horizontal-over-monitor array's nominal longitudinal/depth offset is **ZERO** to the monitor plane; no deep-back setback requiring excessive elevation. Owner estimates **~10kg per satellite** and REQUIRES load path / joints working target **≥50kgf** and stress/proof target **≥100kgf**, and a desk attachment with a recessed/embedded bolt. These are *minimum desired engineering targets*, NOT proof that such hardware currently exists or the tabletop can carry it. Full loads include gravity moments at worst-case lever offsets and independent retention to an actually reliable structural support.
+
+[Structural/placement contract D2-MOUNT-01](D2-MOUNT-01-COPLANAR-STRUCTURAL-SAFETY.md) supersedes any earlier assumption that the speaker should sit 20–35cm behind the monitors. Front-panel speaker source zero-depth is not the same as entire rotated rigid housing remaining out of monitor clearances. Future 3-monitor scalability and true stereo geometry remain fixed requirements. The actual shell remains the last design task.
