@@ -265,6 +265,12 @@ def report() -> dict:
                 "sample_frequencies_hz":TEST_FREQUENCIES_HZ},
       "layouts":layouts,
       "conditionally_most_robust_layout_id":valid[0]["id"],
+      "near_tied_layout_ids_max_within_0_05db_of_best":[
+          row["id"] for row in valid if
+          row["ideal_model_head_window"]["worst_case"]["abs_delta_db"]
+          <= valid[0]["ideal_model_head_window"]["worst_case"]["abs_delta_db"]+0.05
+      ],
+      "winner_is_physically_proven":False,
       "physical_build_decision":"removable test baffle only; no finalized enclosure",
       "warnings":[
         "Ranking is conditional on ideal omnidirectional point drivers, NOT actual Wavecor measured off-axis.",
