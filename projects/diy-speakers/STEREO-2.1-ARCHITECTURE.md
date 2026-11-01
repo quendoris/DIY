@@ -1,5 +1,7 @@
 # Stereo 2.1 — owner-approved direction and architectural options
 
+> **HISTORICAL OPTIONS DOCUMENT — SUPERSEDED 2026-11-01.** The owner now fixes the topology to **fully active three-way L/R satellites plus a separate active sub, seven DAC output and amplifier channels**. Earlier two-way/passive topology discussions remain only as dated exploration; they are **not** the target or a mandatory gate. Read [ADR-001 — current binding architecture](ADR-001-ACTIVE-THREE-WAY-SUB.md) and [THREE-WAY-PLUS-SUB-RESEARCH.md](THREE-WAY-PLUS-SUB-RESEARCH.md). Final enclosure remains LAST; project aims for complete open hardware/software build docs.
+
 Status: **requirements captured, design and component selection not frozen**.
 Updated after the owner clarified placement, sound goals, aesthetics and incremental budget.
 
