@@ -37,7 +37,7 @@ class SourceAuditTests(unittest.TestCase):
         self.assertIn("common",D["phase_requirement"])
 
     def test_original_data_not_republished(self):
-        self.assertIn("not copied",D["data_license_note"])
+        self.assertIn("no third-party raw data copied",D["data_license_note"])
 
 
 if __name__=="__main__":
