@@ -1,0 +1,339 @@
+{
+  "revision": "v0.1",
+  "date": "2026-11-01",
+  "purpose": "Find parts for serious finished 3-way satellite stereo system plus separate LF sub; compare against 2-way+sub.",
+  "constraints": {
+    "listener_distance_m": [
+      0.6,
+      0.8
+    ],
+    "satellite_count": 2,
+    "room_area_m2_approx": 19,
+    "final_cabinet": "deferred until last; replaceable plywood measurement enclosures only",
+    "pricing": "catalog observed RUB; no checkout or delivery confirmed",
+    "status": "screened by manufacturer docs, not physically measured or universally ranked"
+  },
+  "midranges": [
+    {
+      "id": "Wavecor MR120BD02",
+      "kind": "dedicated midrange",
+      "size_in": 4.75,
+      "ohm": 8,
+      "frequency_hz": [
+        200,
+        4000
+      ],
+      "sensitivity_db_2v83_1m": 86,
+      "fs_hz": 73,
+      "sd_cm2": 50,
+      "xmax_mm": 1.5,
+      "price_rub_unit": 12000,
+      "stock_listing": "in stock",
+      "maker": "https://www.wavecor.com/html/mr120bd01_02_03_04.html",
+      "seller": "https://www.samodelka.ru/cats/10.htm?vendor=291",
+      "note": "Kevlar/carbon motor, mid-only needs its own isolated chamber; manufacturer suggested band not final crossover."
+    },
+    {
+      "id": "Wavecor MR120BD01",
+      "kind": "dedicated midrange",
+      "size_in": 4.75,
+      "ohm": 4,
+      "frequency_hz": [
+        200,
+        4000
+      ],
+      "sensitivity_db_2v83_1m": 89,
+      "fs_hz": 72,
+      "sd_cm2": 50,
+      "xmax_mm": 1.5,
+      "price_rub_unit": 12000,
+      "stock_listing": "in stock",
+      "maker": "https://www.wavecor.com/html/mr120bd01_02_03_04.html",
+      "seller": "https://www.samodelka.ru/cats/10.htm?vendor=291",
+      "note": "4ohm alternative: 2.83V ≈2W nominal, not comparable by power with 8ohm."
+    },
+    {
+      "id": "Wavecor WF120BD04",
+      "kind": "4.75 inch midwoofer usable as independent mid driver",
+      "size_in": 4.75,
+      "ohm": 8,
+      "frequency_hz": [
+        null,
+        4000
+      ],
+      "sensitivity_db_2v83_1m": 86,
+      "fs_hz": 71.5,
+      "price_rub_unit": 12100,
+      "stock_listing": "in stock",
+      "maker": "https://www.wavecor.com/html/wf120bd03_04_07_08.html",
+      "seller": "https://www.samodelka.ru/cats/10.htm?vendor=291",
+      "note": "Balanced drive but not optimized exclusively for mid, contrast with MR120BD02."
+    },
+    {
+      "id": "Wavecor WF118WA02",
+      "kind": "lower cost 4.5 inch midwoofer, possible mid alternative",
+      "size_in": 4.5,
+      "ohm": 8,
+      "price_rub_unit": 7700,
+      "stock_listing": "in stock",
+      "maker": "https://www.wavecor.com/html/mid-woofers.html",
+      "seller": "https://www.samodelka.ru/cats/10.htm?vendor=291",
+      "note": "Need verified distortion and nominal performance before replacing dedicated MR120."
+    },
+    {
+      "id": "SB Acoustics SB12MNRX2-25-4",
+      "kind": "dedicated 4 inch midrange 4ohm reference",
+      "size_in": 4,
+      "ohm": 4,
+      "fs_hz": 63.5,
+      "sensitivity_db_2v83_1m": 90.5,
+      "sd_cm2": 50,
+      "price_rub_unit": null,
+      "maker": "https://sbacoustics.com/product/4-sb12mnrx2-25-4-norex/",
+      "note": "Optimized short coil, copper motor ring; check actual current supply. Do not confuse with older OEM-only SB12MNRX25-4"
+    },
+    {
+      "id": "Scan-Speak 10F/8424G00",
+      "kind": "10 cm wideband driver considered for midrange",
+      "size_in": 4,
+      "ohm": 8,
+      "fs_hz": 90,
+      "sensitivity_db_2v83_1m": 86.5,
+      "sd_cm2": 36,
+      "price_rub_unit": null,
+      "maker": "https://www.scan-speak.dk/product/10f-8424g00/",
+      "note": "Compact, copper cap; midrange duty requires tested highpass and THD"
+    }
+  ],
+  "tweeters": [
+    {
+      "id": "Wavecor TW030WA22",
+      "kind": "30mm textile dome 8ohm",
+      "ohm": 8,
+      "fs_hz": 780,
+      "sensitivity_db_2v83_1m": 91,
+      "manufacturer_range_hz": [
+        2000,
+        25000
+      ],
+      "price_rub_unit": 8200,
+      "stock_listing": "in stock",
+      "maker": "https://www.wavecor.com/html/tweeters.html",
+      "seller": "https://www.samodelka.ru/cats/2.htm?vendor=291",
+      "note": "Distinguish current series TW030WA21/22 and published PDF nominal resonance typo unit"
+    },
+    {
+      "id": "Wavecor TW030WA23",
+      "kind": "30mm graphene-reinforced textile dome 4ohm",
+      "ohm": 4,
+      "sensitivity_db_2v83_1m": 94,
+      "manufacturer_range_hz": [
+        2000,
+        30000
+      ],
+      "price_rub_unit": 12200,
+      "stock_listing": "in stock",
+      "maker": "https://wavecor.com/html/tw030wa23_24_25_26.html",
+      "seller": "https://www.samodelka.ru/cats/2.htm?vendor=291",
+      "note": "Current TW030WA13 successor; 4Ω only, not 8Ω"
+    },
+    {
+      "id": "Wavecor TW030WA24",
+      "kind": "30mm graphene-reinforced textile dome 8ohm",
+      "ohm": 8,
+      "sensitivity_db_2v83_1m": 91.5,
+      "manufacturer_range_hz": [
+        2000,
+        30000
+      ],
+      "price_rub_unit": 12200,
+      "stock_listing": "listed, order/arrival differs by current page",
+      "maker": "https://wavecor.com/html/tw030wa23_24_25_26.html",
+      "seller": "https://www.samodelka.ru/cats/2.htm?vendor=291",
+      "note": "8Ω, may not be currently available for prompt order"
+    },
+    {
+      "id": "Wavecor TW030WA11",
+      "kind": "30mm waveguide textile tweeter 4ohm",
+      "ohm": 4,
+      "fs_hz": 410,
+      "sensitivity_db_2v83_1m": 94,
+      "manufacturer_range_hz": [
+        1500,
+        25000
+      ],
+      "price_rub_unit": 9900,
+      "stock_listing": "listing varies between in stock and order; checkout needed",
+      "maker": "https://wavecor.com/html/tw030wa11_12.html",
+      "seller": "https://www.samodelka.ru/cats/2.htm?vendor=291",
+      "note": "Integral waveguide helps directed control, but not equivalent to matched directivity without measurement"
+    },
+    {
+      "id": "SB Acoustics SB26STWGC-4",
+      "kind": "fabric tweeter with waveguide",
+      "ohm": 4,
+      "fs_hz": 780,
+      "sensitivity_db_2v83_1m": 93,
+      "price_rub_unit": null,
+      "maker": "https://sbacoustics.com/product/sb26stwgc-4-fabric/",
+      "note": "Reference tweeter, rated power quoted with 2.6kHz 12dB/o HP; not 120W raw"
+    }
+  ],
+  "bass_satellites": [
+    {
+      "id": "HiVi M6N",
+      "ohm": 8,
+      "price_rub_unit": 6439,
+      "price_source": "owner listing",
+      "maker": "https://www.rumoh.eu/speakers/hivi/woofer/1711/hivi-m6n",
+      "note": "6.5 inch lower satellite woofer, must highpass at sub split"
+    },
+    {
+      "id": "HiVi D6G",
+      "ohm": 8,
+      "price_rub_unit": 7762,
+      "price_source": "owner listing",
+      "maker": "https://www.swanspeakers.com/commercial/product/view?id=479",
+      "note": "Unusually large motor coil, sensitivity 85 dB; verification of manufacturer specs pending"
+    },
+    {
+      "id": "Wavecor WF168WA06",
+      "ohm": 8,
+      "price_rub_unit": 8600,
+      "price_source": "Russian retailer",
+      "maker": "https://www.wavecor.com/html/wf168wa05_06.html",
+      "note": "Manufacturer vs seller source conflict in Fs/sensitivity"
+    },
+    {
+      "id": "Wavecor WF152BD14",
+      "ohm": 8,
+      "price_rub_unit": 14000,
+      "price_source": "Russian retailer",
+      "maker": "https://wavecor.com/html/wf152bd13_14_15_16.html",
+      "note": "6-inch premium midwoofer, worthwhile if compact geometry and mid-distortion benefits are proven"
+    }
+  ],
+  "subwoofers": [
+    {
+      "id": "Wavecor SW280WA01",
+      "diameter_in": 11,
+      "ohm": 4,
+      "fs_hz": 26,
+      "sd_cm2": 335,
+      "xmax_oneway_mm": 6,
+      "vd_cm3": 201,
+      "price_rub_unit": 16450,
+      "stock_listing": "in stock discounted",
+      "maker": "https://www.wavecor.com/html/sw280wa01.html",
+      "seller": "https://www.samodelka.ru/cats/11.htm",
+      "note": "Low profile, limited displacement for deep powerful bass; design comparator NOT top bass recommendation"
+    },
+    {
+      "id": "Wavecor SW259WA01",
+      "diameter_in": 10.25,
+      "ohm": 4,
+      "fs_hz": 29,
+      "sd_cm2": 312,
+      "xmax_oneway_mm": 11.5,
+      "vd_cm3": 358.8,
+      "price_rub_unit": 32000,
+      "stock_listing": "in stock",
+      "maker": "https://www.wavecor.com/html/sw259wa01_02.html",
+      "seller": "https://www.samodelka.ru/cats/11.htm",
+      "note": "Modern 10inch unit replacing SW263WA03; 200W continuous test conditions"
+    },
+    {
+      "id": "Wavecor SW312WA05",
+      "diameter_in": 12.25,
+      "ohm": 4,
+      "fs_hz": 28,
+      "sd_cm2": 488,
+      "xmax_oneway_mm": 11.5,
+      "vd_cm3": 561.2,
+      "price_rub_unit": 34700,
+      "stock_listing": "in stock",
+      "maker": "https://wavecor.com/html/sw312wa03_04_05_06.html",
+      "seller": "https://www.samodelka.ru/cats/11.htm",
+      "note": "Black cone version; 12.25inch, 250W continuous; cabinet modeling still mandatory"
+    },
+    {
+      "id": "Dayton RSS265HO-4",
+      "diameter_in": 10,
+      "ohm": 4,
+      "fs_hz": 26.9,
+      "sd_cm2": 349.7,
+      "xmax_oneway_mm": 12.3,
+      "vd_cm3": 430.1,
+      "price_rub_unit": null,
+      "maker": "https://daytonaudio.com/product/120/rss265ho-4-10-reference-ho-subwoofer-4-ohm",
+      "note": "Higher displacement 10inch benchmark; real delivered Russian price missing"
+    },
+    {
+      "id": "Dayton RSS315HF-4",
+      "diameter_in": 12,
+      "ohm": 4,
+      "fs_hz": 24.2,
+      "sd_cm2": 514.7,
+      "xmax_oneway_mm": 14.3,
+      "vd_cm3": 736,
+      "price_rub_unit": null,
+      "maker": "https://daytonaudio.com/product/121/rss315hf-4-12-reference-hf-subwoofer-4-ohm",
+      "note": "High-displacement 12inch benchmark, price/delivery not verified"
+    }
+  ],
+  "sample_systems": [
+    {
+      "id": "three_way_hivi_wavecor",
+      "per_satellite": [
+        "HiVi M6N",
+        "Wavecor MR120BD02",
+        "Wavecor TW030WA22"
+      ],
+      "sub": "Wavecor SW312WA05",
+      "estimated_drivers_rub": 87978,
+      "speaker_channels": 7,
+      "caution": "only transducer purchases; excludes amplification, processing, power, cabinets, tools, taxes"
+    },
+    {
+      "id": "three_way_all_wavecor",
+      "per_satellite": [
+        "Wavecor WF168WA06",
+        "Wavecor MR120BD02",
+        "Wavecor TW030WA22"
+      ],
+      "sub": "Wavecor SW312WA05",
+      "estimated_drivers_rub": 92300,
+      "speaker_channels": 7,
+      "caution": "8Ω for all satellites, 4Ω for sub; raw pricing only"
+    },
+    {
+      "id": "two_way_hivi",
+      "per_satellite": [
+        "HiVi M6N",
+        "Wavecor TW030WA22"
+      ],
+      "sub": "Wavecor SW312WA05",
+      "estimated_drivers_rub": 63978,
+      "speaker_channels": 5,
+      "caution": "acoustic baseline needing measured crossover; 2-way+sub is 3 acoustic bands system-wide"
+    }
+  ],
+  "rejected": [
+    {
+      "id": "Wavecor SW310WA02",
+      "reason": "manufacturer explicitly discontinued, replaced by SW312WA03"
+    },
+    {
+      "id": "Wavecor SW263WA01/03",
+      "reason": "discontinued, replaced by SW259WA02/01"
+    },
+    {
+      "id": "Wavecor TW030WA13/14",
+      "reason": "manufacturer phased out, replaced by TW030WA23/24"
+    },
+    {
+      "id": "SB12MNRX25-4",
+      "reason": "older OEM-only/discontinued; prefer documented SB12MNRX2-25-4 if buyable"
+    }
+  ]
+}
