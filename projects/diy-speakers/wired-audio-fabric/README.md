@@ -1,5 +1,7 @@
 # Wired Optical Audio Fabric — Stationary 2.1 System
 
+> **PROJECT TOPOLOGY FIXED — 2026-11-01:** the target is **L:LF/MID/HF, R:LF/MID/HF, SUB**, seven independent digital-to-analogue output channels and amplifiers over three synchronized, optical-networked device enclosures. It does not require seven distinct DAC ICs. See [ADR-001](../ADR-001-ACTIVE-THREE-WAY-SUB.md). Four network planes retain their logical roles; their tests must not claim physical synchronization or certified health before measurements.
+
 Status: **new owner design hypothesis, verification-first**, no selected custom PHY/PCB/BOM.
 
 This is a new wired transport/control research branch for the **stationary desktop satellites and subwoofer**. Do **not** silently replace the separately discussed **portable player + dedicated-radio earbuds** design with this policy; they are distinct systems.
