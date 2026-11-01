@@ -1,5 +1,7 @@
 # Shared Power, Protection & Cooling — DIY Foundation
 
+> **PHYSICAL SEQUENCE SUPERSEDED 2026-11-01:** [ADR-002](../diy-speakers/ADR-002-OPTICAL-FIRST-BENCH.md) makes the STM32/optical link (factory USB power and certified converter adapters) the first physical experiment. The reusable monitored DC power module is the **next** physical development phase. Older text describing power as the first module is historical. No mains circuit is planned before the optical tests.
+
 Status: **cross-project research, no live-mains circuit approved**. This should be reusable in the wired stationary speakers, optical controller and other DIY hardware where applicable. If later separated into a `DIY-snippets` repository, preserve links, licenses, interface specification, test vectors and version history. No separate repository has been created yet.
 
 ## Why start here?
