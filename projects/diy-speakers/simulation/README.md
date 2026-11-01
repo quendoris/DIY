@@ -167,3 +167,10 @@ The prior 35cm ear-height was only a simulation scenario and is superseded as a 
 - [GitHub workflow](../../../.github/workflows/threeway-multimonitor-stereo.yml) archives **150 scenarios** with 3D L/R angles and 27-location visibility statistics. Full [architectural result](../D2-STEREO-01-MULTIMONITOR-REAL-HEIGHTS.md).
 
 No acoustic waveform from any physical Wavecor/HiVi speaker, real triple-screen edge dimensions, safe stand design or binaural localization was measured here.
+
+
+## D2-MOUNT-01 — speaker same depth as monitor, rated load path
+
+[Three-way coplanar mount mechanical model](threeway_coplanar_mount_mechanics.py) explicitly enforces owner's **ZERO depth offset** idea and calculates whole front flat panel + real outer flange extents at L/R yaw and tilt, with screen-top cases +70cm measured/current and +80cm hypothetical/future. Six driver-ray clearance is evaluated across 27 assumed head positions: a 0.925m acoustic axis with a speculative 0.80m monitor top can clear the nominal FRONT panel but still have 0/27 rays clear (some outermost sources rotate behind a nominal screen plane). Separately the model computes **10kg nominal / 50kgf working / 100kgf proof demand** at table-base arms 0.15–0.40m, hinge CoM arms 0.03–0.15m, and 0.06–0.12m anchor row spacing. E.g. at 0.30m arm with 100kgf proof, gravity moment ~294.2Nm; 0.08m anchor row pitch has ideal force couple ~3.68kN, not a real fastener capacity.
+
+See [tests](test_threeway_coplanar_mount_mechanics.py), [source-verified full safety contract](../D2-MOUNT-01-COPLANAR-STRUCTURAL-SAFETY.md) and [own CI](../../../.github/workflows/threeway-coplanar-mount-mechanics.yml). The recessed desk fastener must be engineered as an actual structure, not assumed safe because a single blind insert claims a high kg rating. **No hardware, desk or stand is certified by source code.**
