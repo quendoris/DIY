@@ -121,3 +121,8 @@ A low-cost 3-way route uses WF118WA02 (7,700) instead of MR120BD02 (12,000), but
 Perform an actual combined acoustic crossover simulation using **manufacturer FRD/ZMA curves with original measurement provenance** for Wavecor MR120BD02, TW030WA22 and candidate HiVi/Wavecor lower woofer, rather than only T/S/F3. Wavecor offers downloadable numeric frequency/impedance data for many current models. For HiVi, source their exact measurements or measure own specimens; do not invent angular responses from only 2.83V sensitivity.
 
 **Decision gate:** full three-way only earns its additional cost and DSP complexity if it demonstrably reduces midrange distortion or compression / improves polar response and headroom compared with a carefully optimized two-way+sub at the same target listening SPL. Do not assume either architecture is superior merely from parts count.
+
+
+## D2-GEO-01 — acoustic-first arrangement, no fixed enclosure aesthetics
+
+As directed by the owner, [geometry now follows actual driver drawings](D2-GEO-01-WAVECOR-BAFFLE.md), and the eventual futuristic enclosure will be shaped around whichever head-window measurement passes. OpenSCAD preview and reproducible model compare narrow vertical vs mirrored side-mounted LF, both potentially production-worthy layouts; model-only acoustic results do not certify either. Full 3-way plus SUB topology stays fixed.
