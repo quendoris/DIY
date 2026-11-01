@@ -1,6 +1,8 @@
 # AliExpress Midwoofer Candidates — Pending Exact Identification
 
-Date: 2026-11-01. Status: **user-provided leads; target listings not yet resolved, NO model/price/spec verified**.
+Date: 2026-11-01. Status: **three named HiVi models supplied by owner; user-observed prices; seller identity and exact item-to-variant mapping not externally verified**.
+
+**Update:** owner identified models/descriptions/prices as HiVi F6N (6,729 RUB), HiVi D6G (7,762 RUB) and HiVi M6N (6,439 RUB). They are now compared against independently available specifications, including a serious F6N revision/source discrepancy, in [HIVI-F6N-D6G-M6N-REVIEW.md](HIVI-F6N-D6G-M6N-REVIEW.md). The unresolved SKU mapping and source separation in the table below remain valid.
 
 The owner initially supplied two ali.click URLs and then provided **three direct AliExpress Russia item IDs with explicit selected SKUs**:
 
