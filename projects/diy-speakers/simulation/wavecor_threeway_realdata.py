@@ -92,7 +92,9 @@ def parse_wavecor(text: str, kind: str) -> Curve:
         if not line or line.startswith(("#",";","*")):
             continue
         cols=line.replace(",",".").split()
-        if len(cols)>=3 and cols[0].lower() in ("freq","frequency"):
+        if cols and cols[0].lower() in ("freq","frequency"):
+            if len(cols)!=3:
+                raise ValueError(f"line {n}: manufacturer response header must include phase")
             if kind=="spl" and not ("db" in cols[1].lower() and "phase" in cols[2].lower()):
                 raise ValueError("SPL header is not Freq dB Phase")
             if kind=="impedance" and not ("ohm" in cols[1].lower() and cols[2].lower() in ("deg","phase")):
