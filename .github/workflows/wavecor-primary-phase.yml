@@ -1,0 +1,54 @@
+name: Wavecor primary phase & impedance integration
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/wavecor_threeway_realdata.py"
+      - "projects/diy-speakers/simulation/test_wavecor_threeway_realdata.py"
+      - ".github/workflows/wavecor-primary-phase.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  real-manufacturer-inputs:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Test importer on synthetic known data
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v test_wavecor_threeway_realdata.py
+      - name: Fetch ORIGINAL Wavecor SPL phase and impedance from all 3 drivers
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          mkdir -p analysis
+          python3 wavecor_threeway_realdata.py --out analysis/primary-source-response.json > /dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          data=json.loads(Path("analysis/primary-source-response.json").read_text())
+          print("MEASUREMENT CLASS:",data["status"])
+          for name,x in data["drivers"].items():
+            print("INPUT",name,x["model"],"SPL samples",x["spl_samples"],
+                  "IMP samples",x["imp_samples"],"valid FRD phase",x["phase_column_present"])
+            print("SHA SPL",x["spl_txt"]["sha256"],"IMP",x["impedance_txt"]["sha256"])
+            print("at 400/1000/2500/5000 Hz dB:",{k:v for k,v in x["spl_ref_2v83_1m"].items()
+                  if k in ("400","1000","2500","5000")})
+          print("CAUTION: published independent phase origins have not been validated for common baffle")
+          for x in data["illustrative_responses"]:
+            if x["freq_hz"] in (450,1000,2500,4000,7000):
+              print("HYPOTHETICAL",x["freq_hz"],
+                    "published_phase_combination_dB",x["assumed_published_phase_combined_db"],
+                    "constructive_limit_dB",x["max_constructive_phase_envelope_db"])
+          PY
+      - name: Retain derived source-hash and crossover diagnostic evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: wavecor-primary-source-report
+          path: projects/diy-speakers/simulation/analysis/primary-source-response.json
+          if-no-files-found: error
