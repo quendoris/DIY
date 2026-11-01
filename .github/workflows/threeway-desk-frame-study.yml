@@ -1,0 +1,53 @@
+name: DIY desk 50x50 profile and solid-wood support hypotheses
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/threeway_desk_frame_structural.py"
+      - "projects/diy-speakers/simulation/test_threeway_desk_frame_structural.py"
+      - ".github/workflows/threeway-desk-frame-study.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  preserve-unknowns-and-structural-demands:
+    runs-on: ubuntu-latest
+    timeout-minutes: 4
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Strictly separate real desk dimensions from ideal steel/timber hypotheses
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v test_threeway_desk_frame_structural.py
+      - name: Report raw 50mm square tube mechanical section and wood mass assumptions
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          mkdir -p analysis
+          python3 threeway_desk_frame_structural.py > analysis/desk-frame-2026-11-01.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("analysis/desk-frame-2026-11-01.json").read_text())
+          print("OWNER GEOMETRY",j["owner_measured_geometry"])
+          print("ACTUAL UNKNOWN FIELD STATUS",j["unknown_requirements"])
+          print("TOP VOLUME",j["main_desktop_volume_m3"])
+          print("MASS ONLY IF EXAMPLE SPECIES DENSITY",j["main_solid_wood_mass_scenarios_not_actual"])
+          for s in j["illustrative_tube_sections"]:
+              print("HYPOTHETICAL STEEL CLOSED PROFILE",s)
+          for s in j["illustrative_tube_span_model"]:
+              print("NOT REAL FULL FRAME DEFLECTION",s)
+          for m in j["load_case_moments"]:
+              print("SPEAKER BASE MOMENTS ONLY",m)
+          print("ACTUAL RATING VERIFIED",j["real_structural_capacity_certified"])
+          print("MAIN LOAD PATH",j["architecture_preference"]["primary_load_path"])
+          PY
+      - name: Archive evidence graded hypothesis JSON
+        uses: actions/upload-artifact@v4
+        with:
+          name: desk-50x50-solidwood-structural-hypotheses
+          path: projects/diy-speakers/simulation/analysis/desk-frame-2026-11-01.json
+          if-no-files-found: error
