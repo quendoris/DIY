@@ -111,8 +111,31 @@ def crossing(source,ear,screen:Screen)->dict:
             "top_margin_m":y-screen.top_height_m}
 
 def visibility(setup:Setup,screen:Screen):
+    """Center-ray visibility + a conservative finite faceplate clearance proxy.
+
+    If the center ray passes above the monitor, the full flange still may
+    intersect its angular silhouette. Project the entire nominal round
+    flange within a bounding sphere, yielding a conservative (not exact)
+    projected radius at the screen plane.
+    """
     ear=(0.,setup.ear_height_m,0.)
-    return {k:crossing(p,ear,screen) for k,p in sources(setup).items()}
+    rows={}
+    for k,p in sources(setup).items():
+        c=crossing(p,ear,screen)
+        t=(screen.plane_z_m-p[2])/(ear[2]-p[2])
+        radius=DRIVERS[k].outer_diameter_mm/2000
+        bound=(1-t)*radius
+        # Entirely clear in vertical or lateral silhouette, as a sufficient
+        # (not necessary) condition for geometrical unobstructed aperture.
+        above=c["height_m"]-bound>screen.top_height_m
+        lateral=abs(c["x_m"]-screen.center_x_m)-bound>screen.halfwidth_m
+        c["conservative_full_flange_clear_above"]=above
+        c["conservative_full_flange_clear_laterally"]=lateral
+        c["conservative_full_flange_clear"]=above or lateral
+        c["projected_flange_bound_radius_m"]=bound
+        c["full_flange_top_clearance_m"]=c["height_m"]-bound-screen.top_height_m
+        rows[k]=c
+    return rows
 
 def angle_to_normal(normal, direction):
     r=math.sqrt(sum(v*v for v in direction))
@@ -236,6 +259,8 @@ def scenarios()->dict:
             per=visibility(st,sc)
             view[f"screen_top_{int(sc.top_height_m*100)}cm"]={
                 "blocking_bands":[k for k,v in per.items() if v["blocked"]],
+                "not_certified_full_flange_clear":[k for k,v in per.items() if not v["conservative_full_flange_clear"]],
+                "flange_lower_edge_top_margin_m":{k:round(v["full_flange_top_clearance_m"],4) for k,v in per.items()},
                 "ray_crossing_y_m":{k:round(v["height_m"],4) for k,v in per.items()},
                 "top_clearance_m":{k:round(v["top_margin_m"],4) for k,v in per.items()}
             }
