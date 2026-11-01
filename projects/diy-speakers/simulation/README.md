@@ -61,3 +61,8 @@ Sources:
 - https://www.adam-audio.com/en/t-series/t8v/
 
 Our proposed 2.1 system distributes deep bass to the independent sub, rather than matching the 8-inch T8V's cabinet size on the crowded desk. Similar or stronger bass requires future defined SPL/distortion and integration tests, not these nominal specifications alone.
+
+
+## D0: inverse sealed box sizing
+
+[design_sweep.py](design_sweep.py) calculates a hypothetical net sealed volume for a selected target Qtc using manufacturer Fs/Qts/Vas from [candidates.json](candidates.json). Example `python3 design_sweep.py --qtc .707`; independent math checks in [test_design_sweep.py](test_design_sweep.py). At Qtc=.707 the comparison yields SB15MFC30-8 ~6.68 L and F3 ~74.5 Hz, SB17NRX2C35-8 ~14.73 L and ~61.4 Hz, HiVi M6N-B ~9.58 L and ~83.4 Hz. This **is not a fully modeled final cabinet**, nor a midrange-quality ranking; final integration requires measured crossover/directivity, listening geometry, nonlinear output limits and sub coupling. See [../DESIGN-KICKOFF-D0.md](../DESIGN-KICKOFF-D0.md).
