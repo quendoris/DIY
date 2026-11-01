@@ -1,0 +1,59 @@
+name: DIY three-way real-height multi-monitor stereo study
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - "projects/diy-speakers/simulation/threeway_stereo_multimonitor.py"
+      - "projects/diy-speakers/simulation/test_threeway_stereo_multimonitor.py"
+      - ".github/workflows/threeway-multimonitor-stereo.yml"
+
+permissions:
+  contents: read
+
+jobs:
+  verify-stereo-over-display-geometry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: Verify real owner heights and 3D stereo-to-screen intersections
+        working-directory: projects/diy-speakers/simulation
+        run: python3 -m unittest -v test_threeway_stereo_multimonitor.py
+      - name: Evaluate existing and hypothetical future three-monitor configurations
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          mkdir -p analysis
+          python3 threeway_stereo_multimonitor.py > analysis/threeway-stereo-multimonitor.json
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          r=json.loads(Path("analysis/threeway-stereo-multimonitor.json").read_text())
+          print("USER MEASURED FACTS:",r["user_measured"])
+          print("ILLUSTRATIVE UNKNOWN ASSUMPTIONS:",r["unmeasured_assumptions"])
+          print("TOTAL SCENARIOS",len(r["scenarios"]))
+          print("REPORT SCORES: all SIX flange rays from BOTH stereo speakers unobstructed, 27 head positions")
+          for c in r["scenarios"]:
+            if (c["speaker_depth_m"] in (.70,.40)
+                and c["roll_deg"] in (0.,45.,90.)
+                and c["nominal_acoustic_axis_height_m"] in (.80,.88,.92,1.00)):
+              m=c["visibility"]
+              print("SCENARIO",c["monitor_configuration"],
+                    "SOURCE_DEPTH",c["speaker_depth_m"],
+                    "HEIGHT",c["nominal_acoustic_axis_height_m"],
+                    "ROLL",c["roll_deg"],
+                    "DOWN_TILT",c["down_tilt_each_deg"],
+                    "CLEAR_CENTERS",m["two_speaker_all_six_center_rays_clear_count"],
+                    "CLEAR_FLANGES",m["two_speaker_all_six_faceplates_clear_count"],
+                    "/27","3D_STEREO_ANGLE",c["true_3d_stereo_included_angle_deg"])
+          print("NO REAL ACOUSTIC/PRODUCTION VALIDATION:",r["warnings"][-1])
+          PY
+      - name: Retain conditional source-based stereo geometry evidence
+        uses: actions/upload-artifact@v4
+        with:
+          name: threeway-stereo-multimonitor-scenarios
+          path: projects/diy-speakers/simulation/analysis/threeway-stereo-multimonitor.json
+          if-no-files-found: error
