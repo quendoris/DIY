@@ -4,6 +4,7 @@ No physical over-the-monitor speaker or safe stand measured.
 """
 import math
 import unittest
+from pathlib import Path
 from threeway_overhead_geometry import (
   Setup, Screen, tilt_deg, unit_vectors, sources, distance, projected_baffle_extents,
   crossing, visibility, angle_to_normal, band_pressure, compare_window,
@@ -72,6 +73,29 @@ class OverheadGeometryTests(unittest.TestCase):
         horizontal=visibility(short,screen)
         self.assertTrue(vertical["LOW"]["blocked"])
         self.assertFalse(horizontal["LOW"]["blocked"])
+
+    def test_aperture_clearance_is_stricter_than_center_ray(self):
+        high=Setup("over",VERT,90,.65,.35)
+        screen=Screen(.35,.45,.3)
+        rows=visibility(high,screen)
+        self.assertFalse(any(v["blocked"] for v in rows.values()))
+        for r in rows.values():
+            self.assertIn("projected_flange_bound_radius_m",r)
+            self.assertGreater(r["projected_flange_bound_radius_m"],0)
+            if r["conservative_full_flange_clear_above"]:
+                self.assertGreater(r["full_flange_top_clearance_m"],0)
+        self.assertTrue(all(r["conservative_full_flange_clear"] for r in rows.values()))
+
+    def test_openscad_scene_has_matching_geometry_axes_and_roll_modes(self):
+        scad=Path(__file__).with_name("threeway_overhead_scene.scad").read_text()
+        self.assertIn("roll_deg=90",scad)
+        self.assertIn("acoustic_axis_height_m=.65",scad)
+        self.assertIn("ear_height_m=.35",scad)
+        self.assertIn("rotate([90+pitch_deg,0,0])",scad)
+        self.assertIn("rotate([0,0,roll_deg])",scad)
+        self.assertIn("show_placeholder_stand=false",scad)
+        for v in ("low_xy","mid_xy","high_xy","screen_top_height_m"):
+            self.assertIn(v,scad)
 
     def test_acoustic_axis_and_platform_height_are_not_synonyms(self):
         st=stand_height_for_acoustic_center(self.s)
