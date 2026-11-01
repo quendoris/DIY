@@ -143,6 +143,8 @@ class StereoMultiMonitorTests(unittest.TestCase):
         self.assertIn('scenario="future"',scad)
         self.assertIn("speaker_roll_deg=90",scad)
         self.assertIn("show_supports=false",scad)
+        self.assertIn('triangle_strategy="true_3d_equilateral"',scad)
+        self.assertIn("function speaker_half_base()",scad)
         self.assertIn("displayed_screen(0,.35,1.196,.80)",scad)
         self.assertIn("displayed_screen(0,.35,.708,.70)",scad)
         self.assertIn("NOT a cut-ready baffle",scad)
