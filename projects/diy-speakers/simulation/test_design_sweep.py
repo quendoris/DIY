@@ -26,7 +26,9 @@ class InverseBoxTests(unittest.TestCase):
             volume_for_qtc(.8, 30, .7)
 
     def test_midwoofer_volumes_at_qtc_707(self):
-        result = compare(CATALOG, .707)
+        # The Butterworth identity F3=Fc requires exact Qtc=1/sqrt(2),
+        # not the rounded approximation 0.707.
+        result = compare(CATALOG, 1 / math.sqrt(2))
         rows = {v["id"]: v for v in result["midwoofers"]}
         self.assertAlmostEqual(rows["SB15MFC30-8"]["net_box_l"], 6.68, delta=.03)
         self.assertAlmostEqual(rows["SB17NRX2C35-8"]["net_box_l"], 14.73, delta=.03)
