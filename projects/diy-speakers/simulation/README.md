@@ -76,3 +76,8 @@ The owner supplied descriptions and unit prices for **HiVi F6N, D6G, M6N**. [hiv
 ## Final-intent Chinese and international benchmark — 2026-11-01
 
 [final_intent_longlist_2026-11.json](final_intent_longlist_2026-11.json) records the serious production-candidate longlist, including HiVi M6N/D6G, Wavecor WF152BD06/14, WF168WA02/06, SB17NBAC 4/8ohm, Scan-Speak 18W, SEAS and PURIFI. Russian seller prices from indexed listings are stored as **observed** prices rather than confirmed payable quotes; incompatible source revisions and absent data remain explicit. The [test_final_intent_longlist.py](test_final_intent_longlist.py) audit asserts provenance, unit currency, corrected nominal 2.83V vs 1W conversion, variant identity and documented uncertainty. No script claims measured THD or determines a brand winner. Full [competitive review](../FINAL-INTENT-MIDWOOFER-COMPETITION.md).
+
+
+## Three-way satellite combinations + separate SUB
+
+[threeway_system_candidates_2026-11.json](threeway_system_candidates_2026-11.json) contains independently-sourceable Chinese dedicated 4.75in midranges and dome tweeters, other control options, real Russian price observations for 10/12in subwoofer drivers, and explicit replacement warnings for discontinued models. [threeway_system_audit.py](threeway_system_audit.py) reproduces **7 vs 5 amplifier/DAC channel** counts, drivers-only RUB totals and nominal Vd=`Sd × Xmax` while leaving 25Hz SPL/THD unclaimed. [test_threeway_system_audit.py](test_threeway_system_audit.py) verifies the assumptions. Full review [../THREE-WAY-PLUS-SUB-RESEARCH.md](../THREE-WAY-PLUS-SUB-RESEARCH.md).
