@@ -108,7 +108,7 @@
   "tweeters": [
     {
       "id": "Wavecor TW030WA22",
-      "kind": "30mm textile dome 8ohm",
+      "kind": "30mm graphene-reinforced textile dome 8ohm",
       "ohm": 8,
       "fs_hz": 780,
       "sensitivity_db_2v83_1m": 91,
@@ -118,9 +118,9 @@
       ],
       "price_rub_unit": 8200,
       "stock_listing": "in stock",
-      "maker": "https://www.wavecor.com/html/tweeters.html",
+      "maker": "https://www.wavecor.com/html/tw030wa21_22.html",
       "seller": "https://www.samodelka.ru/cats/2.htm?vendor=291",
-      "note": "Distinguish current series TW030WA21/22 and published PDF nominal resonance typo unit"
+      "note": "Updated TW030WA09/10 series, graphene-reinforced Tetoron; 8 ohm, ~91 dB/2.83 V, Fs~780Hz, 2–25kHz recommended; factory measured FR/IMP/THD available."
     },
     {
       "id": "Wavecor TW030WA23",
