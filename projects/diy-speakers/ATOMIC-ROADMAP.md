@@ -1,5 +1,7 @@
 # Atomic Development Plan — Modular Stereo 2.1
 
+> **FRAME-TO-MOUNT GATE:** Owner has now supplied 2×1m desk, **50×50mm metal-profile candidate frame (material still to verify)**, 50mm solid wood main top planned, secondary upper shelf, double-sided wood-to-frame screws unspecified. Keep full 50kgf WLL/100kgf proof each satellite, model local receiver directly on metal support, and prevent fastening of solid wood with zero across-grain movement. [D2-FRAME-01](D2-FRAME-01-50X50-STEEL-WOOD-DESK.md). Need exact section wall/type and frame cross-member drawing before approving hardware; STM experiments independent.
+
 > **NEW HARD MECHANICAL GATE:** [D2-MOUNT-01](D2-MOUNT-01-COPLANAR-STRUCTURAL-SAFETY.md) records owner's 0cm speaker depth relative to monitor plane, ~10kg satellite, ≥50kgf working load target and ≥100kgf proof/stress target, with rigid desk-anchored recessed/embedded bolt. Real table/frame and hinge moment/load qualification are required BEFORE putting a 3-way above a user's head. The final cabinet is designed only after acoustic placement and mass/CoM gates. Mechanics/monitor source model: [threeway_coplanar_mount_mechanics.py](simulation/threeway_coplanar_mount_mechanics.py).
 
 > **LATEST FIRST PHYSICAL GATE:** [ADR-002 optical STM32 lab](ADR-002-OPTICAL-FIRST-BENCH.md) (1/2/5m fiber) comes **before** the protected low-voltage power prototype. This is a phase-order change, not a 2-way/3-way architecture revision. See [repeatable test procedure](OPTICAL-TEST-PROCEDURE.md) and host [UDP testbed](simulation/optical_host_probe.py).
