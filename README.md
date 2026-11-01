@@ -58,6 +58,11 @@ Status: **concept / deferred until budget allows**
 
 See: [projects/acoustic-volumetric-cad](projects/acoustic-volumetric-cad/README.md)
 
+### Shared Power, Protection & Cooling
+Reusable low-voltage supply, protection, electrical-noise and thermal-management research across DIY projects. Includes a qualifications matrix; initial bench uses certified external AC/DC modules.
+
+See: [projects/shared-power](projects/shared-power/README.md)
+
 ## Repository policy
 
 Concept documents distinguish **owner requirements**, **implementation candidates** and **unvalidated claims**. Expensive metal fabrication follows bench validation, not the other way around.
