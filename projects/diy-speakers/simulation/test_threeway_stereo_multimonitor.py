@@ -9,7 +9,7 @@ from threeway_baffle_geometry import DRIVERS
 from threeway_stereo_multimonitor import (
  USER_HEAD_MARK_M, CURRENT_32_TOP_M, CURRENT_27_SIDE_TOP_M,
  Monitor,Satellite,unit,dot,source_centers,source_ray_to_screen,
- stereo_lateral_x,stereo_angle,horizontal_stereo_angle,down_tilt,
+ stereo_lateral_x,true_equilateral_3d_lateral_x,stereo_angle,horizontal_stereo_angle,down_tilt,
  monitor_scenario,evaluate,scenario_report,array_basis
 )
 
@@ -32,6 +32,21 @@ class StereoMultiMonitorTests(unittest.TestCase):
         self.assertAlmostEqual(down_tilt(self.left),down_tilt(self.right),places=11)
         self.assertLess(stereo_angle([self.left,self.right]),60)
         self.assertGreater(stereo_angle([self.left,self.right]),50)
+
+    def test_true_equilateral_height_adjusts_stereo_base_and_included_angle(self):
+        h=.92
+        d=.70
+        x=true_equilateral_3d_lateral_x(d,h)
+        self.assertAlmostEqual(x,math.sqrt((d*d+(.92-.60)**2)/3),places=12)
+        self.assertGreater(x,stereo_lateral_x(d))
+        stereo=[Satellite("L",-x,h,d,90),Satellite("R",x,h,d,-90)]
+        self.assertAlmostEqual(stereo_angle(stereo),60,places=10)
+        self.assertGreater(horizontal_stereo_angle(stereo),60)
+        full_distance=math.sqrt(x*x+d*d+(h-USER_HEAD_MARK_M)**2)
+        self.assertAlmostEqual(full_distance,2*x,places=10)
+        self.assertAlmostEqual(2*x,.889,delta=.002)
+        with self.assertRaises(ValueError):
+            true_equilateral_3d_lateral_x(.7,-1)
 
     def test_true_3d_pair_preserves_local_baffle_distances(self):
         a=source_centers(self.left)
@@ -107,7 +122,16 @@ class StereoMultiMonitorTests(unittest.TestCase):
         self.assertEqual(result["user_measured"]["central_32_monitor_top_above_table_m"],.70)
         self.assertEqual(result["unmeasured_assumptions"]["future_54_top_height_m"],.80)
         self.assertEqual(result["unmeasured_assumptions"]["future_42_sides_top_height_m"],.73)
-        self.assertEqual(len(result["scenarios"]),150)
+        self.assertEqual(len(result["scenarios"]),300)
+        sample=next(v for v in result["scenarios"]
+          if v["monitor_configuration"]=="MEASURED_TOPS_32_27"
+          and v["triangle_strategy"]=="TRUE_3D_EQUILATERAL"
+          and v["speaker_depth_m"]==.70
+          and v["nominal_acoustic_axis_height_m"]==.92
+          and v["roll_deg"]==90)
+        self.assertAlmostEqual(sample["base_to_ear_distance_ratio"],1.,places=6)
+        self.assertAlmostEqual(sample["true_3d_stereo_included_angle_deg"],60.,places=5)
+
         self.assertTrue(all(
           r["visibility"]["complete_acoustic_diffraction_and_directionality"] is False
           for r in result["scenarios"]))
