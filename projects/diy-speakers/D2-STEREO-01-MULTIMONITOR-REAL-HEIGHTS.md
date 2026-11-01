@@ -29,6 +29,15 @@ Nominal example:
 
 Published vertical driver reference flanges retained from factory source drawings: LF Ø168mm, MID Ø120mm, HF Ø104mm. For horizontal three-way rotation, LF/MID/HF run along the front panel roughly across its width. Left/right roll sign is mirrored so two speakers can be symmetric about listener. This is a physical test fixture geometry, NOT a production-approved baffle cutout, diffraction response, actual individual acoustic centers, DAC delays or production enclosure design.
 
+
+## True 3D stereo triangle versus the conventional 60-degree plan
+
+Two source-placement strategies are now independently checked:
+- PLAN_60_DEG: for front-back speaker depth d, side offsets x=±d/√3. At d=0.70m, source-axis +0.92m, and listener head-reference +0.60m, x=±0.4041m. The physical speaker-to-speaker base is 0.8083m; each real 3D speaker-to-head distance ~0.8694m; true included 3D stereo angle 55.41 degrees.
+- TRUE_3D_EQUILATERAL: solve (2x)^2=x^2+d^2+(H-ear)^2, giving x=sqrt((d²+(H-ear)²)/3). At identical heights and depth, x=±0.4444m, and both physical base and each source-to-head distance =0.8887m. The true 3D stereo included angle is exactly 60 degrees; top-down angle is ~64.8 degrees. The tilt becomes about 21.10 degrees rather than 21.60 degrees.
+
+The 60-degree real spatial triangle is not automatically a guarantee of a particular stereo image (height perception and inter-driver lobing remain). BOTH strategies are preserved for acoustic measurement. Under the hypothetical future 54/42/42 scenario, a 0.92m source height and .70m depth leave 0/27 full speaker-aperture listening points geometrically clear for BOTH strategies; widening the base is not a magic monitor-avoidance solution.
+
 ## Three-screen obstacle scenarios: measured vs unknown
 
 Current example:
@@ -99,6 +108,6 @@ The full Wavecor 3-way+sub architecture and final enclosure-last strategy remain
 - [Stereo+multi-monitor model](simulation/threeway_stereo_multimonitor.py), with hard-coded user measurements distinctly labelled.
 - [Source-vs-assumption and stereo geometry tests](simulation/test_threeway_stereo_multimonitor.py).
 - [Stereo 3-screen OpenSCAD visualization](simulation/threeway_stereo_multimonitor_scene.scad), change `scenario`, `speaker_roll_deg`, `source_axis_height`, `speaker_depth`. Stand-only preview disabled.
-- [CI test + 150-scenario JSON artifact](https://github.com/quendoris/DIY/actions/runs/41326336519), with same reference files, no inferred real acoustics.
+- [CI test + 300-scenario JSON artifact (plan-view and full 3D equilateral)](https://github.com/quendoris/DIY/actions/runs/41327049427), with same reference files, no inferred real acoustics.
 
 **Claim grades:** +60/+70/+60 heights = OWNER_MEASURED; 10cm shelf = OWNER_STATED; future 42–54-inch = OWNER_TARGET; nominal 16:9 widths = DERIVED_ONLY; monitor x and depth/future tops = HYPOTHETICAL; driver geometry = MANUFACTURER_DRAWINGS; 3D source visibility and no-obstruction fractions = MODEL_ONLY; soundfield/thermal/mechanical safety/psychoacoustics = NOT_YET_MEASURED.
