@@ -1,5 +1,7 @@
 # Premium DIY Loudspeakers — Research Concept
 
+> **FIRST HARDWARE GATE UPDATE, 2026-11-01:** The owner selected an **STM32 NUCLEO optical-link prototype as the first physical experiment, BEFORE custom DC power**. Compare fiber spans **1m/2m/5m**, implement packet contract, diagnostics and synchronization progressively, then grow DC power, separate DACs, amplifiers, and finally the futuristic cabinet. See **[ADR-002: Optical First](ADR-002-OPTICAL-FIRST-BENCH.md)** and **[OPTICAL TEST PROCEDURE](OPTICAL-TEST-PROCEDURE.md)**. The original power-first sequence is historical.
+
 > **ARCHITECTURE UPDATE — 2026-11-01:** The owner selected **two fully active three-way satellite speakers plus a separate active subwoofer**. Seven separately controllable DAC *output channels* and seven amplifier channels are the design baseline; the choice of distinct converter ICs remains open. This decision supersedes earlier open-ended comparisons and 2-way purchase plans. See **[ADR-001](ADR-001-ACTIVE-THREE-WAY-SUB.md)**. The final futuristic enclosure is built LAST and the complete publicly auditable/rebuildable design is a project deliverable, not a stretch goal. Historic text below records earlier trade-offs, not current architecture alternatives.
 
 Status: **owner constraints captured / stereo 2.1 preferred research baseline; final aesthetic cabinet deliberately postponed until last**.
