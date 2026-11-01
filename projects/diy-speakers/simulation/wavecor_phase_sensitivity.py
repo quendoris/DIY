@@ -13,7 +13,7 @@ import math
 from pathlib import Path
 
 from threeway_acoustic_geometry import lr4_pair
-from wavecor_threeway_realdata import SOURCES, fetch, parse_wavecor
+from wavecor_threeway_realdata import SOURCES, PINNED_MANIFEST, fetch, parse_wavecor, validate_original_source_sha
 
 BASELINE_DB=86.0
 ANCHORS={"LOW":180.,"MID":1100.,"HIGH":6000.}
@@ -140,11 +140,13 @@ def main():
     p.add_argument("--out",type=Path)
     args=p.parse_args()
     curves={}
+    manifest=json.loads(PINNED_MANIFEST.read_text(encoding="utf8"))
     for name,source in SOURCES.items():
         if args.offline_dir:
             text=(args.offline_dir/f"{name}_spl.txt").read_text(encoding="utf8-sig")
         else:
-            text,_,_=fetch(source["spl"])
+            text,sha,_=fetch(source["spl"])
+            validate_original_source_sha(name,"spl",sha,manifest)
         curves[name]=parse_wavecor(text,"spl")
     report=investigate(curves)
     content=json.dumps(report,ensure_ascii=False,indent=2,sort_keys=True)+"\n"
