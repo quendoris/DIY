@@ -113,3 +113,8 @@ No live speaker has been measured; no 25-Hz at target SPL, no off-axis polar cur
 ## Deliverable discipline
 
 Every numerical result receives source file URL, exact part revision, model commit, units, assumptions, scripts, automated assertions, known mismatches and source vs result separation. Avoid selecting a 200k-RUB BOM while the project is still at a free simulation gate.
+
+
+## Cross-cutting research: wired optical audio fabric
+
+[Wired Audio Fabric](wired-audio-fabric/README.md) adds separate digital data/control scheduling, local per-speaker DACs, receiver-side buffering, endpoint identities, clock discipline and wired optical link research. The [first executable contract](wired-audio-fabric/simulation/README.md) covers logical pause/stop/epoch/fault handling, not PHY, security hardware, clock synchronization or analog performance. Treat it as a reusable foundational module that can be prototyped in software **in parallel with** driver/acoustic planning, without purchasing a full enclosure or complete amplifiers.
