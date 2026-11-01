@@ -26,7 +26,7 @@ def trims_for(curves):
 
 def responses_for(curves, fc1: float, fc2: float, 
                   low_delay_us: float=0., mid_delay_us: float=0., high_delay_us: float=0.,
-                  freqs=KEY_FREQS) -> list[tuple[float, float]]:
+                  freqs=KEY_FREQS, bridge_low_phase: bool=True) -> list[tuple[float, float]]:
     if not 200 <= fc1 < fc2 <= 5000:
         raise ValueError("invalid crossover hypothesis")
     factors=trims_for(curves)
@@ -35,7 +35,11 @@ def responses_for(curves, fc1: float, fc2: float,
     for f in freqs:
         lo,hi=lr4_pair(f,fc1)
         l2,h2=lr4_pair(f,fc2)
-        filters={"LOW":lo,"MID":hi*l2,"HIGH":hi*h2}
+        # In a naive cascade, MID+HIGH inherits the upper-split allpass
+        # phase while LOW does not. A compensating upper-split ALLPASS
+        # (l2+h2) on LOW restores exact flat-driver magnitude identity.
+        filters={"LOW":lo*(l2+h2) if bridge_low_phase else lo,
+                 "MID":hi*l2,"HIGH":hi*h2}
         amplitudes=[
           curves[n].complex_at(f)*factors[n]*filters[n]*
              cmath.exp(-2j*math.pi*f*delays[n]*1e-6)
@@ -105,11 +109,12 @@ def investigate(curves) -> dict:
                "nominal_phase_scenario_f2500_db":round(dict(pred)[2500.],3),
             })
     return {
-      "model":"real_magnitude_and_per_driver_phase + ideal cascaded LR4 with hypothetical common phase origin",
+      "model":"real magnitude/independent phase + ideal cascaded LR4 with a LOW-branch upper-LR4 allpass bridge, hypothetical common phase origin",
       "measured_system":False,
       "phase_origins_cross_driver_verified":False,
       "finite_baffle_or_on_axis_acoustic_centers_measured":False,
       "valid_for_component_selection":False,
+      "upper_crossover_allpass_bridge_for_low_band":True,
       "reference_lf_mid_hz":450,
       "reference_mid_hf_hz":2500,
       "amplitude_reference_db":BASELINE_DB,
@@ -121,7 +126,7 @@ def investigate(curves) -> dict:
       "known_limitations":[
          "Not a three-way real speaker measurement or proof of optimal crossover.",
          "Manufacturer responses from independently measured drivers without demonstrated common time origin.",
-         "Ideal LR4 electrical transfer; real enclosure, baffle diffraction, directivity, amplifier, DSP and EQ excluded.",
+         "Ideal LR4 electrical transfer with LOW upper-split phase bridge; real cabinet, directivity, amplifier DSP and EQ excluded.",
          "Driver locations .15m and .115m separations are illustrative; no verified installation geometry.",
          "Source/speaker response calibration, individual gain trim and acoustic delay remain to be measured.",
          "Choosing minimum RMS in conditional simulations is not an optimization certificate.",
