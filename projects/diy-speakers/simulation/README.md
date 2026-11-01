@@ -1,5 +1,7 @@
 # Near-field Stereo 2.1 Acoustic Research Bench
 
+> **ARCHITECTURE — frozen by owner 2026-11-01:** two active three-way satellite boxes plus an independent sub = **7 DAC output + 7 amplifier channels**. Current authoritative decision [ADR-001](../ADR-001-ACTIVE-THREE-WAY-SUB.md); [architecture_3way_contract.json](architecture_3way_contract.json) and [test_architecture_3way_contract.py](test_architecture_3way_contract.py) assert the fixed topology, four planes, modular clock/power domains, openness and honest proof boundaries. Older two-way models remain useful purely as historical acoustic controls.
+
 The first executable, dependency-free Python bench for the owner's **60–80 cm** desktop listening position and modular stereo 2.1 direction.
 
 ## Candidate comparison (new)
