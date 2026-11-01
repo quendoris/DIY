@@ -83,3 +83,24 @@ The owner supplied descriptions and unit prices for **HiVi F6N, D6G, M6N**. [hiv
 ## Three-way satellite combinations + separate SUB
 
 [threeway_system_candidates_2026-11.json](threeway_system_candidates_2026-11.json) contains independently-sourceable Chinese dedicated 4.75in midranges and dome tweeters, other control options, real Russian price observations for 10/12in subwoofer drivers, and explicit replacement warnings for discontinued models. [threeway_system_audit.py](threeway_system_audit.py) reproduces **7 vs 5 amplifier/DAC channel** counts, drivers-only RUB totals and nominal Vd=`Sd × Xmax` while leaving 25Hz SPL/THD unclaimed. [test_threeway_system_audit.py](test_threeway_system_audit.py) verifies the assumptions. Full review [../THREE-WAY-PLUS-SUB-RESEARCH.md](../THREE-WAY-PLUS-SUB-RESEARCH.md).
+
+
+## Optical-first STM32 bench scripts (ADR-002)
+
+- [optical_bench_contract.py](optical_bench_contract.py) calculates the **96/192kHz × 24/32 bit** seven-channel application bandwidth and per-endpoint share, Ethernet MTU block limits, optical line-rate examples, nominal silica fiber propagation and the statistical upper limit on packet failure if zero independent errors were observed.
+- [test_optical_bench_contract.py](test_optical_bench_contract.py) independently exercises the arithmetic and preserves **NOT TESTED** physical status.
+- [optical_host_probe.py](optical_host_probe.py) is a runnable, host-only UDP CRC/sequence/epoch echo tool supporting local actual network tests; **no STM32 implementation yet**. [test_optical_host_probe.py](test_optical_host_probe.py) verifies data patterns, corrupted frame rejection and actual localhost UDP echo.
+
+Commands from this directory:
+
+```bash
+python3 -m unittest -v
+python3 optical_bench_contract.py > optical_estimates.json
+# terminal 1 (local-only test)
+python3 optical_host_probe.py serve --bind 127.0.0.1 --port 50808 --limit 100
+# terminal 2 (local-only test)
+python3 optical_host_probe.py probe --host 127.0.0.1 --port 50808 --count 100 --size 1024
+```
+
+**Full STM32 → 1/2/5m fiber workflow:** [../OPTICAL-TEST-PROCEDURE.md](../OPTICAL-TEST-PROCEDURE.md). No genuine fiber/device tests have been run yet; this code only validates assumptions and host framing.
+
