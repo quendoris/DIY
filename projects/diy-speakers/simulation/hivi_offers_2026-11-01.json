@@ -1,0 +1,129 @@
+{
+  "schema_version": 1,
+  "date": "2026-11-01",
+  "reference": "Owner-supplied Russian AliExpress product descriptions, verified against cited independent source pages where stated",
+  "status": "unmeasured candidate research; seller identity and exact revisions remain unverified",
+  "candidates": [
+    {
+      "model": "HiVi F6N",
+      "listing_id": "not conclusively mapped to one of three AliExpress item IDs",
+      "unit_price_rub_user_observed": 6729,
+      "nominal_ohm": 8,
+      "rated_w": 45,
+      "max_w": 90,
+      "scenarios": [
+        {
+          "id": "seller_spec",
+          "fs_hz": 44,
+          "qts": 0.34,
+          "vas_l": 22.7,
+          "xmax_mm": 3.5,
+          "sensitivity_db_2v83_1m": 89,
+          "qms": 2.01,
+          "qes": 0.41,
+          "mms_g": 15.6,
+          "bl_tm": 8.5,
+          "voice_coil_mm": 25,
+          "vc_winding_mm": 14.5,
+          "gap_mm": 7.5,
+          "provenance": "user_supplied_seller_listing"
+        },
+        {
+          "id": "other_published_f6n",
+          "fs_hz": 48,
+          "qts": 0.43,
+          "vas_l": 19.1,
+          "xmax_mm": 4.5,
+          "sensitivity_db_2v83_1m": 88.7,
+          "qms": 8.5,
+          "qes": 0.45,
+          "mms_g": 12,
+          "bl_tm": 7.3,
+          "voice_coil_mm": 25,
+          "vc_winding_mm": null,
+          "gap_mm": null,
+          "provenance": "third_party_database",
+          "source": "https://bits.00aud.io/drivers/hivi/f6n-8ohm",
+          "note": "Conflicts with seller scenario; DO NOT use unrelated model F6 as replacement"
+        }
+      ],
+      "purchase_status": "HOLD until variant/measurements clarified"
+    },
+    {
+      "model": "HiVi D6G",
+      "listing_id": "owner supplied nearby article 1005012112593734, item mapping to verify",
+      "unit_price_rub_user_observed": 7762,
+      "nominal_ohm": 8,
+      "rated_w": 60,
+      "max_w": 120,
+      "scenarios": [
+        {
+          "id": "published_d6g",
+          "fs_hz": 44,
+          "qts": 0.38,
+          "vas_l": 12.1,
+          "xmax_mm": 4.8,
+          "sensitivity_db_2v83_1m": 85,
+          "qms": 4.08,
+          "qes": 0.43,
+          "mms_g": 22,
+          "bl_tm": 9.5,
+          "voice_coil_mm": 76,
+          "vc_winding_mm": 15.5,
+          "gap_mm": 6,
+          "provenance": "third_party_independently_crosschecked",
+          "source": "https://bits.00aud.io/drivers/hivi/d6g-8ohm",
+          "additional_source": "https://diyaudiocart.com/product/hivi-d6g-6-1-2-midrange-yellow-kevlar-cone-casting-aluminum-frame-8ohm-pair/",
+          "manufacturer_description": "https://www.swanspeakers.com/commercial/product/view?id=479",
+          "note": "T/S from third party, not from owner card; manufacturer description corroborates model and 76-mm coil"
+        }
+      ],
+      "purchase_status": "PROMISING A/B only after vendor variant verification"
+    },
+    {
+      "model": "HiVi M6N",
+      "listing_id": "not conclusively mapped to one of three AliExpress item IDs",
+      "unit_price_rub_user_observed": 6439,
+      "nominal_ohm": 8,
+      "rated_w": 45,
+      "max_w": 90,
+      "scenarios": [
+        {
+          "id": "seller_m6n",
+          "fs_hz": 46,
+          "qts": 0.39,
+          "vas_l": 21.9,
+          "xmax_mm": 4.3,
+          "sensitivity_db_2v83_1m": 89,
+          "qms": 4.69,
+          "qes": 0.42,
+          "mms_g": 13.9,
+          "bl_tm": 7.8,
+          "voice_coil_mm": 25,
+          "vc_winding_mm": 14.5,
+          "gap_mm": 6,
+          "provenance": "user_supplied_seller_listing",
+          "source": "https://www.rumoh.eu/speakers/hivi/woofer/1711/hivi-m6n",
+          "note": "Seller labels Mms 13.9 'L'; dimensional typo: physical moving mass in grams; alternate published sources give 13.6 g. No M6N-B substitution without confirming actual variation."
+        }
+      ],
+      "purchase_status": "FIRST BENCH CANDIDATE, not final system selection"
+    }
+  ],
+  "model_scope": "closed-box small signal only; fixed hypothetical 8-liter net volume and Qtc=1/sqrt(2) comparison; no actual response, SPL, room, acoustic crossover, distortion, thermal or measured parameters",
+  "selected_product_urls": [
+    {
+      "url": "https://aliexpress.ru/item/1005012112593734.html?sku_id=12000057541009369",
+      "sku_id": "12000057541009369"
+    },
+    {
+      "url": "https://aliexpress.ru/item/1005010706311970.html?sku_id=12000053252107661",
+      "sku_id": "12000053252107661"
+    },
+    {
+      "url": "https://aliexpress.ru/item/1005013335483366.html?sku_id=12000060917810176",
+      "sku_id": "12000060917810176"
+    }
+  ],
+  "note": "Product URLs and textual model descriptions are both supplied, but mapping of each named model to each exact selected SKU cannot be established from reliably accessible seller pages. Do not assert a mapping."
+}
