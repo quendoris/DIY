@@ -101,3 +101,8 @@ Manufacturer: https://www.arctic.de/en/P8-PWM-PST/
 Use a **certified external low-voltage AC/DC adapter** with proper connectors and a small isolated-downstream *DC-only* distribution board, hardware current limit, supervisor, sensors, dummy loads and data logger. Research power and heat at the low-voltage DC stage **before** custom mains design. External adapter can remain final if it meets size/noise/safety objectives.
 
 No high-voltage destructive testing by hobbyist shorting to 'see what survives'. Independent accredited lab tests are the route for dangerous mains transients and conformity.
+
+
+## Connection to stationary wired audio
+
+The [four-plane optical audio fabric](../diy-speakers/wired-audio-fabric/FOUR-PLANE-ARCHITECTURE.md) should consume only time-stamped trusted telemetry from this module. In every speaker, local hardware cutoff must remain effective even when the central controller, network, monitoring firmware or cooling fan is unavailable. A central `READY` status is never a substitute for the local protection circuit.
