@@ -6,6 +6,8 @@ on:
     paths:
       - "projects/diy-speakers/simulation/wavecor_threeway_realdata.py"
       - "projects/diy-speakers/simulation/test_wavecor_threeway_realdata.py"
+      - "projects/diy-speakers/simulation/wavecor_phase_sensitivity.py"
+      - "projects/diy-speakers/simulation/test_wavecor_phase_sensitivity.py"
       - ".github/workflows/wavecor-primary-phase.yml"
 
 permissions:
@@ -46,9 +48,29 @@ jobs:
                     "published_phase_combination_dB",x["assumed_published_phase_combined_db"],
                     "constructive_limit_dB",x["max_constructive_phase_envelope_db"])
           PY
+      - name: Sweep measured-source phase scenarios with a proper three-way phase bridge
+        working-directory: projects/diy-speakers/simulation
+        run: |
+          python3 wavecor_phase_sensitivity.py --out analysis/phase-sensitivity.json > /dev/null
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          j=json.loads(Path("analysis/phase-sensitivity.json").read_text())
+          print("CONDITIONAL MODEL:",j["model"])
+          print("THREE-WAY PHASE BRIDGE:",j["upper_crossover_allpass_bridge_for_low_band"])
+          print("NOT MEASURED REAL SPEAKER:",j["measured_system"])
+          print("CROSSOVER SCENARIOS (NOT RANKED FOR FINAL PURCHASE):")
+          for row in j["crossover_hypothetical_ranking"][:10]:
+            print(row)
+          print("RELATIVE DELAY sensitivity:")
+          for row in j["relative_channel_delay_sensitivity"]:
+            print(row)
+          print("HEAD MOVE .7m +10cm:",next(v for v in j["geometry_only_head_motion_scenarios"]
+                if v["listener_distance_m"] == .7 and v["vertical_head_offset_m"] == .1))
+          PY
       - name: Retain derived source-hash and crossover diagnostic evidence
         uses: actions/upload-artifact@v4
         with:
           name: wavecor-primary-source-report
-          path: projects/diy-speakers/simulation/analysis/primary-source-response.json
+          path: projects/diy-speakers/simulation/analysis/*.json
           if-no-files-found: error
