@@ -1,5 +1,7 @@
 # Wired Optical Audio Fabric — Stationary 2.1 System
 
+> **New owner hypothesis (2026-11-08):** [Clock-state evidence and progressive fault-graph diagnosis](../RESEARCH-2026-11-08-DISTRIBUTED-CLOCK-FAULT-GRAPH.md). Hash equality is not clock synchronization: counters, timestamp uncertainty and physical measurements remain independent proof obligations. This note does not freeze a PHY or clock-correction algorithm.
+
 > **First physical experiment:** [ADR-002](../ADR-002-OPTICAL-FIRST-BENCH.md) sets the optical 1/2/5m STM32 link first, using actual media converters and temporary factory supplies. [OPTICAL-TEST-PROCEDURE.md](../OPTICAL-TEST-PROCEDURE.md) and the [host framing tool](../simulation/optical_host_probe.py) give test steps. This does **not** prove inter-device timing, physical fiber BER or any security guarantees until corresponding hardware measurements exist.
 
 > **PROJECT TOPOLOGY FIXED — 2026-11-01:** the target is **L:LF/MID/HF, R:LF/MID/HF, SUB**, seven independent digital-to-analogue output channels and amplifiers over three synchronized, optical-networked device enclosures. It does not require seven distinct DAC ICs. See [ADR-001](../ADR-001-ACTIVE-THREE-WAY-SUB.md). Four network planes retain their logical roles; their tests must not claim physical synchronization or certified health before measurements.
